@@ -1,4 +1,3 @@
-
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -11,14 +10,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white shadow hover:shadow-lg hover:-translate-y-0.5 transition-all",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow hover:shadow-lg hover:-translate-y-0.5 transition-all",
-        outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground shadow hover:shadow-lg hover:-translate-y-0.5 transition-all",
-        secondary:
-          "bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow hover:shadow-lg hover:from-teal-600 hover:to-cyan-600 hover:-translate-y-0.5 transition-all",
-        ghost: "hover:bg-accent hover:text-accent-foreground hover:-translate-y-0.5 transition-all",
-        link: "text-primary underline-offset-4 hover:underline transition-all",
+        destructive: "bg-destructive text-white hover:bg-destructive/90 shadow hover:shadow-lg hover:-translate-y-0.5 transition-all",
+        outline: "border border-input bg-background hover:bg-accent text-white hover:text-white shadow hover:shadow-lg hover:-translate-y-0.5 transition-all",
+        secondary: "bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow hover:shadow-lg hover:from-teal-600 hover:to-cyan-600 hover:-translate-y-0.5 transition-all",
+        ghost: "hover:bg-accent text-white hover:text-white hover:-translate-y-0.5 transition-all",
+        link: "text-white underline-offset-4 hover:underline transition-all",
       },
       size: {
         default: "h-10 px-4 py-2",
