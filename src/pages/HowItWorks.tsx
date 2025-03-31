@@ -83,7 +83,7 @@ const HowItWorks = () => {
   }];
 
   return <MainLayout>
-      <section className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white py-20 relative overflow-hidden">
+      <section className="bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-40 h-40 rounded-full bg-white/20 -translate-x-1/2 -translate-y-1/2"></div>
           <div className="absolute bottom-0 right-0 w-60 h-60 rounded-full bg-white/20 translate-x-1/2 translate-y-1/2"></div>
@@ -116,10 +116,10 @@ const HowItWorks = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-white to-purple-50">
+      <section className="py-20 bg-gradient-to-b from-blue-50 to-cyan-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-800 font-medium text-sm mb-4">Processus Simple</span>
+            <span className="inline-block px-4 py-2 rounded-full bg-blue-100 text-blue-800 font-medium text-sm mb-4">Processus Simple</span>
             <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">Une estimation en quelques étapes simples</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Obtenez rapidement une estimation précise de votre véhicule grâce à notre processus simplifié.
@@ -156,7 +156,7 @@ const HowItWorks = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-purple-50 to-white">
+      <section className="py-20 bg-gradient-to-b from-cyan-50 to-blue-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-2 rounded-full bg-blue-100 text-blue-800 font-medium text-sm mb-4">Nos avantages</span>
@@ -201,7 +201,7 @@ const HowItWorks = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="py-20 bg-gradient-to-r from-blue-50 to-teal-100">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-8 md:mb-0">
@@ -255,7 +255,7 @@ const HowItWorks = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+      <section className="py-20 bg-gradient-to-b from-cyan-50 to-blue-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-2 rounded-full bg-pink-100 text-pink-800 font-medium text-sm mb-4">Témoignages</span>
@@ -295,7 +295,7 @@ const HowItWorks = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white">
+      <section className="py-16 bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div 
             className="max-w-3xl mx-auto"
