@@ -592,9 +592,7 @@ const HowItWorks = () => {
           duration: 0.5
         }}>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Prêt à connaître la vraie valeur de votre véhicule ?</h2>
-            <p className="text-xl mb-8 text-white/90">
-              Estimez gratuitement votre véhicule en quelques secondes et obtenez une valorisation précise basée sur les données du marché.
-            </p>
+            <p className="text-xl mb-8 text-white/90">Accédez à une estimation précise en quelques secondes grâce à notre IA. Souscrivez à un abonnement et profitez d’une analyse détaillée basée sur les tendances du marché.</p>
             
             <motion.div whileHover={{
             scale: 1.05
