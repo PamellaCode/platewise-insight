@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import ScrollToTopButton from '../ScrollToTopButton';
 import { Toaster } from '@/components/ui/toaster';
 import { motion } from 'framer-motion';
 
@@ -30,6 +31,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         {children}
       </motion.main>
       <Footer />
+      <ScrollToTopButton />
       <Toaster />
     </div>
   );
