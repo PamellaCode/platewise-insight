@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   BarChart2, 
-  Car, 
   CreditCard, 
   FileText, 
   Home,
@@ -25,7 +24,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   
   const navigation = [
     { name: 'Tableau de bord', path: '/dashboard', icon: Home },
-    { name: 'Mes estimations', path: '/dashboard/estimations', icon: Car },
+    { name: 'Mes estimations', path: '/dashboard/estimations', icon: FileText },
     { name: 'Historique', path: '/dashboard/history', icon: FileText },
     { name: 'Abonnement', path: '/dashboard/subscription', icon: CreditCard },
     { name: 'Statistiques', path: '/dashboard/stats', icon: BarChart2 },
@@ -59,7 +58,11 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
             <div className="flex-shrink-0 flex items-center px-4">
               <Link to="/dashboard" className="flex items-center space-x-2">
-                <Car className="h-8 w-8 text-white" />
+                <img 
+                  src="/lovable-uploads/8f9a39ff-7c91-49b9-b893-f85887ce27fb.png" 
+                  alt="ArgusAI Logo" 
+                  className="h-10" 
+                />
                 <span className="text-xl font-bold text-white">ArgusAI</span>
               </Link>
             </div>
@@ -111,7 +114,11 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
               <div className="flex items-center flex-shrink-0 px-4">
                 <Link to="/dashboard" className="flex items-center space-x-2">
-                  <Car className="h-8 w-8 text-white" />
+                  <img 
+                    src="/lovable-uploads/8f9a39ff-7c91-49b9-b893-f85887ce27fb.png" 
+                    alt="ArgusAI Logo" 
+                    className="h-10" 
+                  />
                   <span className="text-xl font-bold text-white">ArgusAI</span>
                 </Link>
               </div>

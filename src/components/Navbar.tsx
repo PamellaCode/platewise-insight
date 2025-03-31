@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Car } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,7 +30,11 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <Car className="h-8 w-8 text-argus-blue-500" />
+              <img 
+                src="/lovable-uploads/8f9a39ff-7c91-49b9-b893-f85887ce27fb.png" 
+                alt="ArgusAI Logo" 
+                className="h-10"
+              />
               <span className="text-xl font-bold text-argus-blue-500">ArgusAI</span>
             </Link>
           </div>
