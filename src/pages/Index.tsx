@@ -7,7 +7,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import LicensePlateSearch from '@/components/LicensePlateSearch';
 import Chatbot from '@/components/Chatbot';
 import MainLayout from '@/components/layouts/MainLayout';
-
 const fadeIn = {
   hidden: {
     opacity: 0,
@@ -21,7 +20,6 @@ const fadeIn = {
     }
   }
 };
-
 const staggerContainer = {
   hidden: {
     opacity: 0
@@ -33,37 +31,29 @@ const staggerContainer = {
     }
   }
 };
-
 const Index = () => {
-  const features = [
-    {
-      icon: <Zap className="h-12 w-12 text-teal-500" />,
-      title: 'Estimation instantanée',
-      description: 'Obtenez une estimation de la valeur de votre véhicule en quelques secondes',
-      bgColor: "bg-gradient-to-br from-teal-50 to-teal-100 border-teal-200"
-    },
-    {
-      icon: <BarChart className="h-12 w-12 text-blue-500" />,
-      title: 'Analyse précise',
-      description: 'Notre algorithme analyse des millions de données pour une estimation au plus juste',
-      bgColor: "bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200"
-    },
-    {
-      icon: <Shield className="h-12 w-12 text-indigo-500" />,
-      title: 'Données sécurisées',
-      description: 'Vos informations personnelles sont protégées et jamais partagées',
-      bgColor: "bg-gradient-to-br from-indigo-50 to-indigo-100 border-indigo-200"
-    },
-    {
-      icon: <Clock className="h-12 w-12 text-cyan-500" />,
-      title: 'Historique des prix',
-      description: 'Accédez à l\'évolution des prix du marché pour mieux anticiper',
-      bgColor: "bg-gradient-to-br from-cyan-50 to-cyan-100 border-cyan-200"
-    }
-  ];
-
-  return (
-    <MainLayout>
+  const features = [{
+    icon: <Zap className="h-12 w-12 text-teal-500" />,
+    title: 'Estimation instantanée',
+    description: 'Obtenez une estimation de la valeur de votre véhicule en quelques secondes',
+    bgColor: "bg-gradient-to-br from-teal-50 to-teal-100 border-teal-200"
+  }, {
+    icon: <BarChart className="h-12 w-12 text-blue-500" />,
+    title: 'Analyse précise',
+    description: 'Notre algorithme analyse des millions de données pour une estimation au plus juste',
+    bgColor: "bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200"
+  }, {
+    icon: <Shield className="h-12 w-12 text-indigo-500" />,
+    title: 'Données sécurisées',
+    description: 'Vos informations personnelles sont protégées et jamais partagées',
+    bgColor: "bg-gradient-to-br from-indigo-50 to-indigo-100 border-indigo-200"
+  }, {
+    icon: <Clock className="h-12 w-12 text-cyan-500" />,
+    title: 'Historique des prix',
+    description: 'Accédez à l\'évolution des prix du marché pour mieux anticiper',
+    bgColor: "bg-gradient-to-br from-cyan-50 to-cyan-100 border-cyan-200"
+  }];
+  return <MainLayout>
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -73,15 +63,16 @@ const Index = () => {
         </div>
         <div className="container mx-auto px-4 py-20 relative z-10">
           <div className="flex flex-col md:flex-row items-center">
-            <motion.div 
-              className="md:w-1/2 mb-10 md:mb-0"
-              initial={{opacity: 0, x: -50}}
-              animate={{opacity: 1, x: 0}}
-              transition={{duration: 0.6}}
-            >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
-                Estimation de la valeur de votre véhicule par IA
-              </h1>
+            <motion.div className="md:w-1/2 mb-10 md:mb-0" initial={{
+            opacity: 0,
+            x: -50
+          }} animate={{
+            opacity: 1,
+            x: 0
+          }} transition={{
+            duration: 0.6
+          }}>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">L'IA qui calcule la vraie valeur de votre voiture</h1>
               <p className="text-xl mb-8 text-white/90 max-w-lg">
                 Obtenez une estimation précise et instantanée de la valeur de votre véhicule grâce à notre technologie d'intelligence artificielle avancée.
               </p>
@@ -98,12 +89,16 @@ const Index = () => {
                 </Button>
               </div>
             </motion.div>
-            <motion.div 
-              className="md:w-1/2"
-              initial={{opacity: 0, x: 50}}
-              animate={{opacity: 1, x: 0}}
-              transition={{duration: 0.6, delay: 0.2}}
-            >
+            <motion.div className="md:w-1/2" initial={{
+            opacity: 0,
+            x: 50
+          }} animate={{
+            opacity: 1,
+            x: 0
+          }} transition={{
+            duration: 0.6,
+            delay: 0.2
+          }}>
               <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-xl border border-white/20">
                 <h2 className="text-2xl font-bold mb-4">Estimez votre véhicule</h2>
                 <p className="mb-6 text-white/90">Entrez votre plaque d'immatriculation pour commencer</p>
@@ -125,20 +120,14 @@ const Index = () => {
             </p>
           </div>
           
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{once: true, amount: 0.2}}
-          >
-            {features.map((feature, index) => (
-              <motion.div 
-                key={index} 
-                className={`rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center relative border ${feature.bgColor}`}
-                variants={fadeIn}
-                whileHover={{y: -5, boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'}}
-              >
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{
+          once: true,
+          amount: 0.2
+        }}>
+            {features.map((feature, index) => <motion.div key={index} className={`rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center relative border ${feature.bgColor}`} variants={fadeIn} whileHover={{
+            y: -5,
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+          }}>
                 <div className="flex justify-center mb-6">
                   <div className="p-3 rounded-full bg-white/80 shadow-inner">
                     {feature.icon}
@@ -146,8 +135,7 @@ const Index = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-gray-800">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
-              </motion.div>
-            ))}
+              </motion.div>)}
           </motion.div>
         </div>
       </section>
@@ -164,27 +152,24 @@ const Index = () => {
           </div>
           
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <motion.div 
-              className="md:w-1/2"
-              initial={{opacity: 0, x: -50}}
-              whileInView={{opacity: 1, x: 0}}
-              viewport={{once: true}}
-              transition={{duration: 0.6}}
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80" 
-                alt="Estimation de véhicule" 
-                className="rounded-2xl shadow-2xl border-4 border-white"
-              />
+            <motion.div className="md:w-1/2" initial={{
+            opacity: 0,
+            x: -50
+          }} whileInView={{
+            opacity: 1,
+            x: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }}>
+              <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80" alt="Estimation de véhicule" className="rounded-2xl shadow-2xl border-4 border-white" />
             </motion.div>
             
-            <motion.div 
-              className="md:w-1/2 space-y-8"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{once: true, amount: 0.2}}
-            >
+            <motion.div className="md:w-1/2 space-y-8" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{
+            once: true,
+            amount: 0.2
+          }}>
               <motion.div variants={fadeIn} className="flex items-start">
                 <div className="flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-r from-blue-400 to-cyan-500 text-white mr-4 flex-shrink-0 shadow">
                   <span className="font-bold">1</span>
@@ -232,13 +217,17 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-r from-blue-50 to-teal-100">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-12">
-            <motion.div 
-              className="md:w-1/2 mb-8 md:mb-0"
-              initial={{opacity: 0, x: -50}}
-              whileInView={{opacity: 1, x: 0}}
-              viewport={{once: true}}
-              transition={{duration: 0.6}}
-            >
+            <motion.div className="md:w-1/2 mb-8 md:mb-0" initial={{
+            opacity: 0,
+            x: -50
+          }} whileInView={{
+            opacity: 1,
+            x: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }}>
               <span className="inline-block px-4 py-2 rounded-full bg-indigo-100 text-indigo-800 font-medium text-sm mb-4">Assistant virtuel</span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Posez vos questions à notre assistant</h2>
               <p className="text-lg text-gray-600 mb-8">
@@ -265,13 +254,18 @@ const Index = () => {
                 </div>
               </div>
             </motion.div>
-            <motion.div 
-              className="md:w-1/2"
-              initial={{opacity: 0, x: 50}}
-              whileInView={{opacity: 1, x: 0}}
-              viewport={{once: true}}
-              transition={{duration: 0.6, delay: 0.2}}
-            >
+            <motion.div className="md:w-1/2" initial={{
+            opacity: 0,
+            x: 50
+          }} whileInView={{
+            opacity: 1,
+            x: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6,
+            delay: 0.2
+          }}>
               <div className="chatbot-container bg-white p-6 rounded-xl shadow-xl border border-gray-100">
                 <Chatbot />
               </div>
@@ -283,22 +277,22 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white">
         <div className="container mx-auto px-4 text-center">
-          <motion.div 
-            className="max-w-3xl mx-auto"
-            initial={{opacity: 0, y: 20}}
-            whileInView={{opacity: 1, y: 0}}
-            viewport={{once: true}}
-            transition={{duration: 0.5}}
-          >
+          <motion.div className="max-w-3xl mx-auto" initial={{
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.5
+        }}>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Prêt à découvrir la valeur de votre véhicule ?</h2>
             <p className="text-xl mb-8 text-white/90">
               Estimez gratuitement votre véhicule en quelques secondes et obtenez une valorisation précise basée sur les données du marché.
             </p>
-            <Button 
-              className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-              size="lg"
-              asChild
-            >
+            <Button className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" size="lg" asChild>
               <Link to="/register">
                 Essayer gratuitement
                 <ArrowRight className="ml-2" />
@@ -307,8 +301,6 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-    </MainLayout>
-  );
+    </MainLayout>;
 };
-
 export default Index;
