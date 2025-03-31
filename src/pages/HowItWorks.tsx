@@ -4,6 +4,7 @@ import { Check, HelpCircle, ArrowDown, Info, Settings, Zap, ArrowRight } from 'l
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import MainLayout from '@/components/layouts/MainLayout';
+
 const fadeIn = {
   hidden: {
     opacity: 0,
@@ -17,6 +18,7 @@ const fadeIn = {
     }
   }
 };
+
 const staggerContainer = {
   hidden: {
     opacity: 0
@@ -28,6 +30,7 @@ const staggerContainer = {
     }
   }
 };
+
 const HowItWorks = () => {
   const steps = [{
     icon: <HelpCircle className="h-12 w-12 text-pink-500" />,
@@ -50,6 +53,7 @@ const HowItWorks = () => {
     description: "Ajustez les paramètres comme le kilométrage, l'état ou les options pour affiner l'estimation de votre véhicule.",
     bgColor: "bg-gradient-to-br from-teal-50 to-teal-100 border-teal-200"
   }];
+
   const features = [{
     title: "IA de pointe",
     description: "Notre technologie d'intelligence artificielle analyse des millions de données pour une estimation précise.",
@@ -67,6 +71,7 @@ const HowItWorks = () => {
     description: "Une expérience utilisateur simplifiée pour obtenir rapidement et facilement l'information dont vous avez besoin.",
     bgColor: "bg-gradient-to-br from-fuchsia-50 to-fuchsia-100 border-fuchsia-200"
   }];
+
   const testimonials = [{
     text: "J'ai vendu ma voiture 15% plus cher grâce à l'estimation précise d'AutoCote. Je recommande vivement ce service !",
     author: "Marie D.",
@@ -76,6 +81,7 @@ const HowItWorks = () => {
     author: "Thomas L.",
     role: "Concessionnaire automobile"
   }];
+
   return <MainLayout>
       <section className="bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -321,4 +327,5 @@ const HowItWorks = () => {
       </section>
     </MainLayout>;
 };
+
 export default HowItWorks;
