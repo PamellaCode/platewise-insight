@@ -86,12 +86,12 @@ const Index = () => {
                 Obtenez une estimation précise et instantanée de la valeur de votre véhicule grâce à notre technologie d'intelligence artificielle avancée.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50" asChild>
+                <Button size="lg" className="bg-white text-auto-blue-500 hover:bg-blue-50" asChild>
                   <Link to="/how-it-works">
                     Comment ça marche <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10" asChild>
+                <Button size="lg" variant="outline" className="text-auto-blue-500 border-white hover:bg-white/10" asChild>
                   <Link to="/pricing">
                     Voir les abonnements
                   </Link>
