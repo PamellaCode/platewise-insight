@@ -108,7 +108,7 @@ const ProfileTab = () => {
                     <Button variant="outline" size="sm" className="text-gray-700">
                       Changer
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" className="text-gray-600">
                       Supprimer
                     </Button>
                   </div>
