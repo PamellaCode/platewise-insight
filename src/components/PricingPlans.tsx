@@ -1,14 +1,30 @@
+
 import React from 'react';
 import { CheckCircle2, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-const PricingPlans: React.FC = () => {
+
+// Update the component to accept isAnnual prop
+interface PricingPlansProps {
+  isAnnual: boolean;
+}
+
+const PricingPlans: React.FC<PricingPlansProps> = ({ isAnnual }) => {
+  // Calculate price based on billing cycle
+  const getPrice = (monthlyPrice: string, discount: number = 20) => {
+    if (!isAnnual) return monthlyPrice;
+    
+    const numericPrice = parseFloat(monthlyPrice.replace(',', '.').replace('€', ''));
+    const annualPrice = (numericPrice * 12 * (1 - discount / 100)).toFixed(2).replace('.', ',');
+    return `${annualPrice}€`;
+  };
+  
   const plans = [{
     name: 'Bronze',
-    price: '5,99€',
-    period: 'par mois',
+    price: getPrice('5,99€'),
+    period: isAnnual ? 'par an' : 'par mois',
     description: 'Idéal pour les particuliers avec un usage occasionnel.',
     features: ['1 estimation par mois', 'Résultat cote Argus uniquement', 'Accès au chatbot assistant', 'Estimations supplémentaires à 3€ par unité', 'Annulation à tout moment'],
     popular: false,
@@ -20,8 +36,8 @@ const PricingPlans: React.FC = () => {
     gradient: 'from-amber-500/20 to-amber-700/20'
   }, {
     name: 'Argent',
-    price: '9,99€',
-    period: 'par mois',
+    price: getPrice('9,99€'),
+    period: isAnnual ? 'par an' : 'par mois',
     description: 'Parfait pour les particuliers avec plusieurs véhicules.',
     features: ['3 estimations par mois', 'Résultat cote Argus détaillé', 'Annonce visuelle pour Leboncoin', "Courbe d'évolution de la valeur", 'Estimations supplémentaires à 3€ par unité', 'Support prioritaire'],
     popular: true,
@@ -33,8 +49,8 @@ const PricingPlans: React.FC = () => {
     gradient: 'from-slate-500/20 to-slate-700/20'
   }, {
     name: 'Or',
-    price: '49,99€',
-    period: 'par mois',
+    price: getPrice('49,99€'),
+    period: isAnnual ? 'par an' : 'par mois',
     description: 'Solution complète pour les professionnels de l\'automobile.',
     features: ['10 estimations par mois', 'Résultat cote Argus détaillé', 'Annonce visuelle pour Leboncoin', "Courbe d'évolution de la valeur", 'Accès aux historiques sur 10 véhicules', "Carte d'évolution de la valeur du modèle", 'Estimations supplémentaires à 10€ par unité', 'Support dédié et prioritaire'],
     popular: false,
@@ -45,6 +61,7 @@ const PricingPlans: React.FC = () => {
     estimations: 10,
     gradient: 'from-amber-500/20 to-auto-gold/20'
   }];
+  
   return <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-8 px-4">
       {plans.map((plan, index) => <div key={plan.name} className="relative w-full">
           <Card className={`h-full flex flex-col border-2 rounded-2xl overflow-hidden relative group
@@ -111,4 +128,5 @@ const PricingPlans: React.FC = () => {
         </div>)}
     </div>;
 };
+
 export default PricingPlans;
