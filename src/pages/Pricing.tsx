@@ -100,6 +100,7 @@ const Pricing = () => {
       {/* Pricing Plans Section */}
       <section className="py-20 bg-gradient-to-b from-blue-50 to-cyan-100">
         <div className="container mx-auto px-4">
+          {/* Pass isAnnual prop to PricingPlans */}
           <PricingPlans isAnnual={isAnnual} />
         </div>
       </section>

@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Search, Zap, Clock, ArrowRight, Shield, BarChart, Car } from 'lucide-react';
+import { Search, Zap, Clock, ArrowRight, Shield, BarChart, Car, Check } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import LicensePlateSearch from '@/components/LicensePlateSearch';
 import Chatbot from '@/components/Chatbot';
