@@ -1,11 +1,11 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send } from 'lucide-react';
+import { Send, User, Bot } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar } from '@/components/ui/avatar';
+import { Card } from '@/components/ui/card';
 
 interface Message {
   id: number;
@@ -77,64 +77,90 @@ const Chatbot: React.FC = () => {
   };
 
   return (
-    <div className="chatbot-container border rounded-lg shadow-lg bg-white overflow-hidden flex flex-col h-[400px]">
-      <div className="bg-auto-blue-500 text-white p-3">
-        <h3 className="font-semibold">Assistant AutoCote</h3>
-        <p className="text-xs text-gray-200">En ligne • Répond instantanément</p>
+    <div className="chatbot-container flex flex-col h-[500px] rounded-xl overflow-hidden">
+      <div className="bg-gradient-to-r from-argus-blue-500 to-argus-blue-400 text-white p-4 flex items-center gap-3">
+        <div className="relative">
+          <Avatar className="h-10 w-10 border-2 border-white">
+            <div className="bg-auto-gold flex items-center justify-center h-full w-full rounded-full text-white text-sm font-bold">
+              AC
+            </div>
+          </Avatar>
+          <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-white rounded-full"></span>
+        </div>
+        <div>
+          <h3 className="font-bold text-lg">Assistant AutoCote</h3>
+          <p className="text-xs text-blue-50 opacity-90">Répond instantanément • Expert automobile</p>
+        </div>
       </div>
 
-      <ScrollArea className="flex-grow p-4">
+      <ScrollArea className="flex-grow p-4 bg-gradient-to-b from-gray-50 to-white">
         {messages.map((message) => (
           <div
             key={message.id}
             className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'} mb-4`}
           >
-            <div
-              className={`max-w-[80%] ${
-                message.sender === 'user'
-                  ? 'bg-auto-blue-500 text-white'
-                  : 'bg-gray-100 text-gray-800'
-              } rounded-lg p-3`}
-            >
-              {message.sender === 'bot' && (
-                <div className="flex items-center mb-1">
-                  <Avatar className="h-6 w-6 mr-2">
-                    <div className="bg-auto-gold flex items-center justify-center h-full w-full rounded-full text-xs font-bold">
-                      AC
-                    </div>
-                  </Avatar>
-                  <span className="text-xs font-semibold">Assistant</span>
+            {message.sender === 'user' ? (
+              <Card className="max-w-[80%] bg-gradient-to-br from-argus-blue-500 to-argus-blue-600 text-white rounded-2xl rounded-tr-none p-3 shadow-md">
+                <div className="flex justify-between items-start mb-1">
+                  <div className="flex items-center">
+                    <Avatar className="h-6 w-6 mr-2 bg-white/20">
+                      <User className="h-4 w-4 text-white" />
+                    </Avatar>
+                    <span className="text-xs font-medium text-blue-50">Vous</span>
+                  </div>
+                  <span className="text-xs opacity-70 ml-2">{formatTime(message.timestamp)}</span>
                 </div>
-              )}
-              <p className="text-sm">{message.text}</p>
-              <span className="text-xs opacity-70 block text-right mt-1">
-                {formatTime(message.timestamp)}
-              </span>
-            </div>
+                <p className="text-sm">{message.text}</p>
+              </Card>
+            ) : (
+              <Card className="max-w-[80%] bg-white border border-blue-100 rounded-2xl rounded-tl-none p-3 shadow-sm">
+                <div className="flex justify-between items-start mb-1">
+                  <div className="flex items-center">
+                    <Avatar className="h-6 w-6 mr-2 bg-gradient-to-r from-argus-blue-500 to-auto-gold">
+                      <Bot className="h-4 w-4 text-white" />
+                    </Avatar>
+                    <span className="text-xs font-semibold text-argus-blue-500">Assistant</span>
+                  </div>
+                  <span className="text-xs text-gray-400 ml-2">{formatTime(message.timestamp)}</span>
+                </div>
+                <p className="text-sm text-gray-700">{message.text}</p>
+              </Card>
+            )}
           </div>
         ))}
         {isTyping && (
           <div className="flex justify-start mb-4">
-            <div className="bg-gray-100 text-gray-800 rounded-lg p-3">
-              <div className="flex space-x-1">
-                <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></span>
-                <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></span>
-                <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
+            <Card className="max-w-[80%] bg-white border border-blue-100 rounded-2xl rounded-tl-none p-3">
+              <div className="flex items-center">
+                <Avatar className="h-6 w-6 mr-2 bg-gradient-to-r from-argus-blue-500 to-auto-gold">
+                  <Bot className="h-4 w-4 text-white" />
+                </Avatar>
+                <span className="text-xs font-semibold text-argus-blue-500 mr-2">Assistant</span>
+                <div className="flex space-x-1">
+                  <span className="w-2 h-2 bg-argus-blue-400 rounded-full animate-bounce"></span>
+                  <span className="w-2 h-2 bg-argus-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></span>
+                  <span className="w-2 h-2 bg-argus-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
+                </div>
               </div>
-            </div>
+            </Card>
           </div>
         )}
         <div ref={messagesEndRef} />
       </ScrollArea>
 
-      <form onSubmit={handleSend} className="border-t p-2 flex items-center">
+      <form onSubmit={handleSend} className="p-4 bg-white border-t border-gray-100 flex items-center gap-2">
         <Input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Posez votre question..."
-          className="flex-grow border-none focus-visible:ring-0 focus-visible:ring-offset-0"
+          className="flex-grow rounded-full border-gray-200 focus-visible:ring-1 focus-visible:ring-argus-blue-500 focus-visible:ring-offset-1 px-4 py-3"
         />
-        <Button type="submit" size="sm" variant="ghost" disabled={!input.trim()}>
+        <Button 
+          type="submit" 
+          size="icon" 
+          className={`rounded-full w-10 h-10 ${!input.trim() ? 'bg-gray-200 text-gray-400' : 'bg-gradient-to-r from-argus-blue-500 to-argus-teal-500 text-white hover:shadow-lg transition-all'}`} 
+          disabled={!input.trim()}
+        >
           <Send className="h-5 w-5" />
         </Button>
       </form>

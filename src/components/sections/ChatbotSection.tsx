@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Check, MessageCircle } from 'lucide-react';
 import Chatbot from '@/components/Chatbot';
 
 const ChatbotSection: React.FC = () => {
@@ -74,7 +74,17 @@ const ChatbotSection: React.FC = () => {
               delay: 0.2
             }}
           >
-            <div className="chatbot-container bg-white p-8 rounded-xl shadow-xl border border-gray-100">
+            <div className="chatbot-container bg-white p-6 rounded-2xl shadow-2xl border border-blue-100 backdrop-blur-sm relative overflow-hidden">
+              {/* Élément décoratif */}
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-blue-200/30 to-teal-200/30 rounded-full blur-2xl"></div>
+              <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-gradient-to-tr from-indigo-200/30 to-cyan-200/30 rounded-full blur-2xl"></div>
+              
+              {/* Badge de statut */}
+              <div className="absolute -top-3 -right-3 bg-gradient-to-r from-green-400 to-teal-500 text-white text-xs px-3 py-1 rounded-full shadow-lg flex items-center">
+                <span className="w-2 h-2 bg-white rounded-full mr-1 animate-pulse"></span>
+                En ligne
+              </div>
+              
               <Chatbot />
             </div>
           </motion.div>
