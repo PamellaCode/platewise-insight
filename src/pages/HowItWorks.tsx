@@ -351,7 +351,7 @@ const HowItWorks = () => {
                     <div className="flex items-start">
                       <div className="mr-4 mt-1">
                         <motion.div 
-                          className="flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 text-white shadow-lg"
+                          className="flex items-center justify-center h-10 w-10 text-white"
                           whileHover={{
                             rotate: 360,
                             transition: { duration: 0.7 }
