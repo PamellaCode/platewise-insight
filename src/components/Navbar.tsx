@@ -53,7 +53,10 @@ const Navbar: React.FC = () => {
           </div>
           
           <div className="hidden md:flex md:items-center md:space-x-4">
-            <Button variant="ghost" asChild>
+            <Button 
+              variant={location.pathname === '/login' ? 'secondary' : 'ghost'} 
+              asChild
+            >
               <Link to="/login">Connexion</Link>
             </Button>
             <Button variant="secondary" asChild>
@@ -95,7 +98,11 @@ const Navbar: React.FC = () => {
             <div className="pt-4 pb-3 border-t border-gray-200">
               <Link 
                 to="/login" 
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-argus-blue-500 hover:bg-argus-blue-50" 
+                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  location.pathname === '/login' 
+                    ? 'bg-argus-blue-50 text-argus-blue-500' 
+                    : 'text-gray-600 hover:text-argus-blue-500 hover:bg-argus-blue-50'
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Connexion
@@ -123,3 +130,4 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+
