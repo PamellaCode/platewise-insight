@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { CheckCircle2, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -81,9 +80,13 @@ const PricingPlans: React.FC = () => {
                 <HoverCard>
                   <HoverCardTrigger asChild>
                     <div className={`w-8 h-8 rounded-full ${plan.color} flex items-center justify-center 
-                      text-white text-sm font-bold cursor-help transition-transform hover:scale-110`}>?</div>
+                      text-white text-sm font-bold cursor-help transition-transform hover:scale-110 relative z-50`}>?</div>
                   </HoverCardTrigger>
-                  <HoverCardContent side="top" align="center" className="w-80 z-50">
+                  <HoverCardContent 
+                    side="top" 
+                    align="center" 
+                    className="w-80 z-[999] absolute top-full mt-2 shadow-2xl rounded-lg border-2 border-gray-200 bg-white"
+                  >
                     <p className="text-sm">{plan.description}</p>
                     <p className="text-xs mt-2 opacity-80">Cliquez sur "S'abonner maintenant" pour profiter de ces avantages.</p>
                   </HoverCardContent>
