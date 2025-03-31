@@ -1,8 +1,10 @@
+
 import React from 'react';
 import { CheckCircle2, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+
 const PricingPlans: React.FC = () => {
   const plans = [{
     name: 'Bronze',
@@ -41,10 +43,21 @@ const PricingPlans: React.FC = () => {
     buttonVariant: 'outline' as const,
     estimations: 10
   }];
-  return <div className="grid grid-cols-1 md:grid-cols-3 gap-12 px-8 lg:px-24 md:px-0">
-      {plans.map(plan => <div key={plan.name} className={`relative transition-all duration-300 hover:translate-y-[-10px] ${plan.popular ? 'z-10' : 'z-0'}`}>
+
+  return (
+    <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-8 px-4">
+      {plans.map((plan, index) => (
+        <div 
+          key={plan.name} 
+          className="relative transition-all duration-300 hover:scale-110 hover:z-20 z-10"
+          style={{
+            transform: 'scale(1)',
+            transformOrigin: 'center',
+            transition: 'transform 0.3s ease, z-index 0s linear',
+          }}
+        >
           <Card className={`h-full flex flex-col border-2 rounded-2xl overflow-hidden relative 
-              ${plan.popular ? plan.borderColor + ' shadow-2xl' : 'border-gray-200 shadow-xl'} w-full min-w-[320px] max-w-[400px] mx-auto`}>
+              ${plan.popular ? plan.borderColor + ' shadow-2xl' : 'border-gray-200 shadow-xl'} w-full min-w-[300px] max-w-[320px] mx-auto`}>
             {plan.popular && <div className="absolute -top-4 right-0 left-0 flex justify-center">
                 <div className="flex items-center gap-1 bg-auto-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                   <Star className="h-3 w-3" fill="white" /> POPULAIRE
@@ -85,7 +98,10 @@ const PricingPlans: React.FC = () => {
               </Button>
             </CardFooter>
           </Card>
-        </div>)}
-    </div>;
+        </div>
+      ))}
+    </div>
+  );
 };
+
 export default PricingPlans;
