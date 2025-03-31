@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const Dashboard = () => {
   // L'utilisateur est abonné à la formule Bronze dans cet exemple
   const subscription = {
-    plan: 'bronze',
+    plan: 'bronze' as 'bronze' | 'silver' | 'gold',
     displayName: 'Bronze',
     creditsTotal: 1,
     creditsUsed: 1,
