@@ -1,3 +1,4 @@
+
 import React from 'react';
 import MainLayout from '@/components/layouts/MainLayout';
 import PricingPlans from '@/components/PricingPlans';
@@ -5,6 +6,7 @@ import { CheckCircle2, HelpCircle } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+
 const Pricing = () => {
   // Questions fréquemment posées sur les abonnements
   const faqs = [{
@@ -26,6 +28,7 @@ const Pricing = () => {
     question: 'La carte d\'évolution de la valeur du modèle est-elle disponible pour tous les véhicules ?',
     answer: 'Oui, cette fonctionnalité est disponible pour la plupart des modèles populaires. Elle présente l\'évolution des prix sur le marché au cours des dernières années.'
   }];
+  
   const features = [{
     name: 'Estimation de base',
     bronze: true,
@@ -77,17 +80,18 @@ const Pricing = () => {
     silver: false,
     gold: true
   }];
+  
   return <MainLayout>
       {/* Hero Section */}
-      <section className="bg-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Plans d'abonnement</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+      <section className="bg-gradient-to-b from-white to-gray-50 py-16 md:py-24">
+        <div className="container mx-auto px-4 md:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-auto-blue-500 via-slate-700 to-auto-gold bg-clip-text text-transparent">Plans d'abonnement</h1>
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12">
             Choisissez la formule qui correspond à vos besoins, du particulier occasionnel au professionnel de l'automobile.
           </p>
 
           <Tabs defaultValue="monthly" className="max-w-md mx-auto mb-12">
-            <TabsList className="grid w-full grid-cols-2">
+            <TabsList className="grid w-full grid-cols-2 mb-8">
               <TabsTrigger value="monthly">Mensuel</TabsTrigger>
               <TabsTrigger value="yearly" disabled>Annuel (Bientôt)</TabsTrigger>
             </TabsList>
@@ -99,12 +103,12 @@ const Pricing = () => {
       </section>
 
       {/* Feature Comparison */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">Comparaison des fonctionnalités</h2>
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-8">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Comparaison des fonctionnalités</h2>
 
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
+          <div className="overflow-x-auto rounded-xl shadow">
+            <table className="w-full border-collapse bg-white">
               <thead>
                 <tr className="bg-auto-blue-500 text-white">
                   <th className="p-4 text-left min-w-[200px]">Fonctionnalité</th>
@@ -133,18 +137,18 @@ const Pricing = () => {
       </section>
 
       {/* FAQs */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Questions fréquentes</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Questions fréquentes</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Tout ce que vous devez savoir sur nos abonnements et fonctionnalités
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto">
             <div className="grid gap-6">
-              {faqs.map((faq, index) => <div key={index} className="border rounded-lg p-6 bg-gray-50">
+              {faqs.map((faq, index) => <div key={index} className="border rounded-lg p-6 bg-gray-50 hover:shadow-md transition-shadow">
                   <div className="flex items-start">
                     <HelpCircle className="h-6 w-6 text-auto-blue-500 mr-3 flex-shrink-0 mt-0.5" />
                     <div>
@@ -158,7 +162,18 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-r from-auto-blue-500 to-slate-900 text-white">
+        <div className="container mx-auto px-4 md:px-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">Prêt à découvrir la valeur de votre véhicule ?</h2>
+          <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
+            Obtenez une estimation précise et des outils professionnels pour valoriser votre véhicule sur le marché.
+          </p>
+          <Button size="lg" className="bg-auto-gold hover:bg-auto-gold/90 text-auto-blue-500 font-bold text-lg" asChild>
+            <Link to="/register">Essayer gratuitement</Link>
+          </Button>
+        </div>
+      </section>
       
     </MainLayout>;
 };
