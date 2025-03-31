@@ -70,8 +70,8 @@ export default {
 					200: '#9CB8D1',
 					300: '#769DC0',
 					400: '#5A8BB3',
-					500: '#0A3D62', // Couleur primaire de l'application
-					600: '#09375A',
+					500: '#3D7AA6',
+					600: '#0A3D62', // Couleur primaire - Bleu foncé 
 					700: '#072F4F',
 					800: '#062745',
 					900: '#041C33',
@@ -82,7 +82,7 @@ export default {
 					200: '#9EE2D3',
 					300: '#78D7C1',
 					400: '#5DCEB3',
-					500: '#1ABC9C', // Couleur secondaire de l'application
+					500: '#1ABC9C', // Couleur secondaire - Vert-bleu
 					600: '#18AB8F',
 					700: '#14957D',
 					800: '#11806B',

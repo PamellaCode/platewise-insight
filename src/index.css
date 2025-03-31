@@ -14,16 +14,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 198 75% 21%;
+    --primary: 198 75% 21%;  /* Bleu foncé #0A3D62 */
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 174 75% 37%;
+    --secondary: 174 75% 37%;  /* Vert-bleu #1ABC9C */
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 174 75% 37%;
+    --accent: 174 75% 37%;  /* Vert-bleu #1ABC9C comme accent */
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -46,16 +46,16 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 198 75% 21%;
+    --primary: 198 75% 21%;  /* Bleu foncé #0A3D62 */
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 174 75% 37%;
+    --secondary: 174 75% 37%;  /* Vert-bleu #1ABC9C */
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 174 75% 37%;
+    --accent: 174 75% 37%;  /* Vert-bleu #1ABC9C comme accent */
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -100,4 +100,37 @@
 .feature-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Nouvelles classes de dégradés qui utilisent notre palette de couleurs principale */
+.primary-gradient {
+  @apply bg-gradient-to-r from-argus-blue-600 to-argus-blue-800;
+}
+
+.secondary-gradient {
+  @apply bg-gradient-to-r from-argus-teal-400 to-argus-teal-600;
+}
+
+.primary-to-secondary-gradient {
+  @apply bg-gradient-to-r from-argus-blue-600 via-argus-teal-500 to-argus-teal-400;
+}
+
+.secondary-to-primary-gradient {
+  @apply bg-gradient-to-r from-argus-teal-400 via-argus-teal-500 to-argus-blue-600;
+}
+
+.text-gradient-primary {
+  @apply bg-gradient-to-r from-argus-blue-600 to-argus-blue-400 bg-clip-text text-transparent;
+}
+
+.text-gradient-secondary {
+  @apply bg-gradient-to-r from-argus-teal-600 to-argus-teal-400 bg-clip-text text-transparent;
+}
+
+.card-hover {
+  @apply hover:shadow-lg hover:shadow-argus-blue-500/10 transition-all duration-300 hover:-translate-y-1;
+}
+
+.glass-card {
+  @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-xl;
 }
