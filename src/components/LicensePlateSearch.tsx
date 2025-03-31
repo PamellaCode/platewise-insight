@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -76,7 +75,7 @@ const LicensePlateSearch: React.FC = () => {
           value={licensePlate}
           onChange={handleInputChange}
           placeholder="AA-123-AA"
-          className="license-plate pr-24 text-lg h-14 text-center bg-white shadow-md focus:ring-2 focus:ring-auto-blue-500"
+          className="license-plate pr-24 text-lg h-14 text-center text-black bg-white shadow-md focus:ring-2 focus:ring-auto-blue-500"
           disabled={isLoading}
           maxLength={9}
         />
