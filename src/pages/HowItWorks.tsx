@@ -360,22 +360,7 @@ const HowItWorks = () => {
               }
             }} />
               
-              <motion.div className="absolute -right-4 -bottom-4 bg-gradient-to-br from-teal-400 to-green-500 p-3 rounded-full shadow-xl" initial={{
-              opacity: 0,
-              scale: 0.5,
-              rotate: -10
-            }} whileInView={{
-              opacity: 1,
-              scale: 1,
-              rotate: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.4,
-              duration: 0.5
-            }}>
-                <Rocket className="h-8 w-8 text-white" />
-              </motion.div>
+              
             </div>
             
             <motion.div className="md:w-1/2 md:pl-10" initial={{
