@@ -54,8 +54,9 @@ const Navbar: React.FC = () => {
           
           <div className="hidden md:flex md:items-center md:space-x-4">
             <Button 
-              variant={location.pathname === '/login' ? 'secondary' : 'ghost'} 
+              variant={location.pathname === '/login' ? 'secondary' : 'default'} 
               asChild
+              className="text-white"
             >
               <Link to="/login">Connexion</Link>
             </Button>
@@ -130,4 +131,3 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-
