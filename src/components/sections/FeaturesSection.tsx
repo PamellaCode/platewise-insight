@@ -57,12 +57,12 @@ const FeaturesSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-blue-100 text-blue-800 font-medium text-sm mb-4">
-            Pourquoi AutoCote
+            Pourquoi ArgusAI
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
+          <h2 className="section-title">
             Une estimation fiable en quelques clics
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="section-description">
             Découvrez les avantages exclusifs de notre solution d'estimation de véhicules basée sur l'intelligence artificielle.
           </p>
         </div>
@@ -92,8 +92,8 @@ const FeaturesSection: React.FC = () => {
                   {feature.icon}
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-800">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <h3 className="text-xl font-bold mb-3 text-gray-800">{feature.title}</h3>
+              <p className="text-gray-700">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>

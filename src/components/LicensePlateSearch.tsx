@@ -67,13 +67,14 @@ const LicensePlateSearch: React.FC = () => {
           value={licensePlate}
           onChange={handleInputChange}
           placeholder="AA-123-AA"
-          className="license-plate pr-24 text-lg h-14 text-center text-black bg-white shadow-md focus:ring-2 focus:ring-auto-blue-500"
+          className="license-plate pr-24 text-lg h-14 text-center text-black bg-white shadow-md focus:ring-2 focus:ring-auto-blue-500 font-medium"
           disabled={isLoading}
           maxLength={9}
+          aria-label="Plaque d'immatriculation"
         />
         <Button
           type="submit"
-          className="absolute right-0 top-0 h-full rounded-l-none"
+          className="absolute right-0 top-0 h-full rounded-l-none text-base font-medium"
           disabled={isLoading}
         >
           {isLoading ? (
@@ -85,7 +86,7 @@ const LicensePlateSearch: React.FC = () => {
           )}
         </Button>
       </form>
-      <p className="text-center text-sm text-gray-500 mt-2">
+      <p className="text-center text-sm text-white/90 mt-3 font-medium">
         Entrez votre plaque d'immatriculation au format AA-123-AA
       </p>
     </div>
