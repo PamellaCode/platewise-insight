@@ -113,7 +113,7 @@ const SubscriptionTab = () => {
         </CardContent>
         <CardFooter className="flex flex-wrap justify-between gap-2">
           <Button variant="outline" size="sm">Modifier le mode de paiement</Button>
-          <Button variant="outline" size="sm" className="text-red-600 hover:text-red-700 hover:bg-red-50">Annuler l'abonnement</Button>
+          <Button variant="destructive" size="sm">Annuler l'abonnement</Button>
         </CardFooter>
       </Card>
 
@@ -158,7 +158,11 @@ const SubscriptionTab = () => {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button variant={plan.current ? "outline" : "default"} className="w-full" disabled={plan.current}>
+                <Button 
+                  variant={plan.current ? "outline" : "default"} 
+                  className="w-full" 
+                  disabled={plan.current}
+                >
                   {plan.current ? 'Formule actuelle' : 'Changer de formule'}
                 </Button>
               </CardFooter>
@@ -264,3 +268,4 @@ const SubscriptionTab = () => {
 };
 
 export default SubscriptionTab;
+
