@@ -120,7 +120,11 @@ const PricingPlans: React.FC<PricingPlansProps> = ({ isAnnual }) => {
               </div>
             </CardContent>
             <CardFooter className="mt-auto pt-6 relative z-10">
-              <Button variant={plan.buttonVariant} className={`w-full ${plan.buttonVariant === 'outline' ? plan.textColor + ' border-' + plan.textColor.split('-')[1] + ' hover:bg-' + plan.textColor.split('-')[1] + '/10' : 'bg-auto-blue-500 hover:bg-auto-blue-600'} py-6 text-base font-semibold transition-all duration-300 group-hover:scale-105 group-hover:shadow-md`} asChild>
+              <Button 
+                variant={plan.buttonVariant === 'outline' ? 'outline' : 'default'} 
+                className={`w-full py-6 text-base font-semibold transition-all duration-300 group-hover:scale-105 group-hover:shadow-md`} 
+                asChild
+              >
                 <Link to="/register">S'abonner maintenant</Link>
               </Button>
             </CardFooter>

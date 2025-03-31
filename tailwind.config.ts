@@ -87,6 +87,19 @@ export default {
 					700: '#14957D',
 					800: '#11806B',
 					900: '#0A5C4B',
+				},
+				'auto-gold': {
+					DEFAULT: '#D4AF37',
+					50: '#F9F4E6',
+					100: '#F3E9CC',
+					200: '#EAD599',
+					300: '#E2C066',
+					400: '#DAAA33',
+					500: '#D4AF37', // Couleur principale
+					600: '#B1922C',
+					700: '#8F7523',
+					800: '#6D5919',
+					900: '#4B3C10',
 				}
 			},
 			borderRadius: {
