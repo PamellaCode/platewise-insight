@@ -12,7 +12,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Dashboard = () => {
   const location = useLocation();
-  const currentTab = location.pathname.includes("/dashboard/history") ? "history" : "overview";
+  const currentTab = location.pathname.includes("/dashboard/assistant-ai") 
+    ? "assistant-ai" 
+    : location.pathname.includes("/dashboard/history") 
+      ? "history" 
+      : "overview";
   
   // L'utilisateur est abonné à la formule Bronze dans cet exemple
   const subscription = {
@@ -97,6 +101,12 @@ const Dashboard = () => {
               <Link to="/dashboard/history" className="flex items-center gap-1">
                 <History className="h-4 w-4" />
                 <span>Historique</span>
+              </Link>
+            </TabsTrigger>
+            <TabsTrigger value="assistant-ai" asChild>
+              <Link to="/dashboard/assistant-ai" className="flex items-center gap-1">
+                <MessageCircle className="h-4 w-4" />
+                <span>Assistant AI</span>
               </Link>
             </TabsTrigger>
           </TabsList>
@@ -206,15 +216,24 @@ const Dashboard = () => {
                 )}
               </div>
               
-              {/* Right Column - Chatbot */}
+              {/* Right Column - Image and Banner */}
               <div className="lg:col-span-5 space-y-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h2 className="text-xl font-semibold">Assistant ArgusAI</h2>
-                  <Button variant="ghost" size="sm" className="flex items-center">
-                    <MessageCircle className="h-4 w-4 mr-2" /> Aide
-                  </Button>
-                </div>
-                <Chatbot />
+                <Card className="border border-auto-blue-100 bg-gradient-to-br from-auto-blue-50 to-auto-teal-50">
+                  <CardContent className="p-6 text-center">
+                    <div className="bg-white rounded-full p-3 w-16 h-16 mx-auto mb-4 shadow-sm flex items-center justify-center">
+                      <MessageCircle className="h-8 w-8 text-argus-blue-500" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">Assistant ArgusAI</h3>
+                    <p className="text-gray-600 mb-4">
+                      Posez vos questions et obtenez des estimations personnalisées avec notre assistant intelligent.
+                    </p>
+                    <Button asChild>
+                      <Link to="/dashboard/assistant-ai">
+                        <MessageCircle className="h-4 w-4 mr-2" /> Discuter avec l'assistant
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </TabsContent>
@@ -267,6 +286,20 @@ const Dashboard = () => {
                 </div>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          <TabsContent value="assistant-ai" className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <div className="lg:col-span-8 lg:col-start-3 space-y-6">
+                <div className="flex items-center justify-between mb-3">
+                  <h2 className="text-xl font-semibold">Assistant ArgusAI</h2>
+                  <Button variant="ghost" size="sm" className="flex items-center">
+                    <MessageCircle className="h-4 w-4 mr-2" /> Aide
+                  </Button>
+                </div>
+                <Chatbot />
+              </div>
+            </div>
           </TabsContent>
         </Tabs>
       </div>
