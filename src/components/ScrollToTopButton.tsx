@@ -54,7 +54,19 @@ const ScrollToTopButton: React.FC = () => {
             aria-label="Remonter en haut"
           >
             <div className="relative">
-              <Car className="h-6 w-6" />
+              <motion.div
+                animate={{
+                  x: [0, -2, 2, 0],
+                  rotate: [-2, 2, -2]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <Car className="h-6 w-6" />
+              </motion.div>
               <motion.div 
                 className="absolute -bottom-2 h-[2px] w-full bg-white rounded"
                 animate={{
