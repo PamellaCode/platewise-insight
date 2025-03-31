@@ -39,25 +39,25 @@ const HowItWorks = () => {
     title: "Entrez votre immatriculation",
     description: "Saisissez simplement le numéro d'immatriculation de votre véhicule dans notre outil d'estimation.",
     bgColor: "bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200",
-    iconBg: "bg-blue-100/30 group-hover:bg-blue-100/50"
+    iconBg: "bg-blue-100/10 group-hover:bg-blue-100/20"
   }, {
     icon: <Zap className="h-12 w-12 text-purple-500" />,
     title: "Notre IA analyse votre véhicule",
     description: "Notre intelligence artificielle analyse instantanément les données de votre véhicule et compare avec notre base de données.",
     bgColor: "bg-gradient-to-br from-cyan-50 to-cyan-100 border-cyan-200",
-    iconBg: "bg-cyan-100/30 group-hover:bg-cyan-100/50"
+    iconBg: "bg-cyan-100/10 group-hover:bg-cyan-100/20"
   }, {
     icon: <Info className="h-12 w-12 text-blue-500" />,
     title: "Obtenez une estimation détaillée",
     description: "Recevez une estimation précise de la valeur de votre véhicule avec des détails sur les facteurs qui influencent son prix.",
     bgColor: "bg-gradient-to-br from-teal-50 to-teal-100 border-teal-200",
-    iconBg: "bg-teal-100/30 group-hover:bg-teal-100/50"
+    iconBg: "bg-teal-100/10 group-hover:bg-teal-100/20"
   }, {
     icon: <Settings className="h-12 w-12 text-teal-500" />,
     title: "Affinez votre estimation",
     description: "Ajustez les paramètres comme le kilométrage, l'état ou les options pour affiner l'estimation de votre véhicule.",
     bgColor: "bg-gradient-to-br from-green-50 to-green-100 border-green-200", 
-    iconBg: "bg-green-100/30 group-hover:bg-green-100/50"
+    iconBg: "bg-green-100/10 group-hover:bg-green-100/20"
   }];
 
   const features = [{
