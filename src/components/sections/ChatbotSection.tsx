@@ -78,15 +78,43 @@ const ChatbotSection: React.FC = () => {
               {/* Élément décoratif */}
               <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-blue-200/30 to-teal-200/30 rounded-full blur-2xl"></div>
               
-              {/* Conversation image - futuristic design */}
+              {/* Conversation illustration - Automotive themed */}
               <div className="absolute -bottom-24 -left-24 w-56 h-56">
-                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-300/40 to-cyan-300/40 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '4s' }}></div>
-                <div className="absolute left-8 top-8 w-16 h-16 bg-gradient-to-r from-indigo-400/80 to-blue-500/80 rounded-tl-2xl rounded-tr-2xl rounded-br-md rounded-bl-2xl blur-sm transform rotate-12 animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.5s' }}></div>
-                <div className="absolute left-16 top-12 w-24 h-14 bg-gradient-to-r from-cyan-400/70 to-teal-500/70 rounded-tl-md rounded-tr-2xl rounded-br-2xl rounded-bl-2xl blur-sm animate-pulse" style={{ animationDuration: '4s', animationDelay: '1s' }}></div>
-                <div className="absolute left-4 top-20 w-20 h-12 bg-gradient-to-r from-blue-400/60 to-indigo-500/60 rounded-tl-2xl rounded-tr-md rounded-br-2xl rounded-bl-2xl blur-sm transform -rotate-6 animate-pulse" style={{ animationDuration: '3.5s', animationDelay: '0.7s' }}></div>
-                <svg className="absolute left-14 top-16 w-12 h-12 text-white/10 opacity-50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z" stroke="currentColor" strokeWidth="1.5"/>
-                </svg>
+                <div className="absolute inset-0 bg-gradient-to-tr from-argus-blue-300/30 to-auto-gold/20 rounded-full blur-2xl"></div>
+                
+                {/* Car message bubble */}
+                <div className="absolute left-12 top-6 flex items-center">
+                  <div className="bg-argus-blue-500/90 text-white px-4 py-2 rounded-2xl rounded-bl-none max-w-40 text-xs shadow-lg">
+                    Quelle est la cote de ma voiture ?
+                  </div>
+                  <div className="w-3 h-3 -ml-1 -mt-5 bg-argus-blue-500/90 rotate-45"></div>
+                </div>
+                
+                {/* Response message bubble with car icon */}
+                <div className="absolute left-4 top-16 flex items-center space-x-2">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-auto-gold flex items-center justify-center text-xs font-bold text-white shadow-sm">
+                    AC
+                  </div>
+                  <div className="bg-white border border-gray-200 px-3 py-2 rounded-2xl rounded-tl-none shadow-md max-w-36 text-xs">
+                    <div className="font-semibold text-argus-blue-500 mb-1">Assistant AutoCote</div>
+                    <div className="text-gray-700">Je peux vous aider! Veuillez saisir votre plaque d'immatriculation.</div>
+                    <div className="mt-1 flex items-center justify-between">
+                      <div className="h-1.5 w-12 bg-gray-100 rounded-full overflow-hidden">
+                        <div className="h-full w-10 bg-auto-gold rounded-full"></div>
+                      </div>
+                      <svg className="h-3 w-3 text-gray-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" fill="currentColor" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Car icon */}
+                <div className="absolute right-4 top-28 opacity-10">
+                  <svg className="h-14 w-14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 17H5V11.5C5 10.8 5.1 10.1 5.4 9.5L7 6H17L18.6 9.5C18.9 10.1 19 10.8 19 11.5V17ZM7 4C6.7 4 6.4 4.1 6.2 4.3C6 4.5 5.9 4.7 6 5L6.6 7H17.4L18 5C18 4.7 18 4.5 17.8 4.3C17.6 4.1 17.3 4 17 4H7ZM6 19.5C6 20.9 7.1 22 8.5 22C9.9 22 11 20.9 11 19.5V19H13V19.5C13 20.9 14.1 22 15.5 22C16.9 22 18 20.9 18 19.5V18C18.6 18 19 17.6 19 17V11.5C19 10.5 18.8 9.6 18.4 8.7L16.7 5C16.3 4.4 15.6 4 14.9 4H9.1C8.3 4 7.7 4.4 7.3 5L5.6 8.7C5.2 9.6 5 10.5 5 11.5V17C5 17.6 5.4 18 6 18V19.5ZM8.5 20C8.2 20 8 19.8 8 19.5V18H9V19.5C9 19.8 8.8 20 8.5 20ZM15.5 20C15.2 20 15 19.8 15 19.5V18H16V19.5C16 19.8 15.8 20 15.5 20Z" fill="currentColor"/>
+                  </svg>
+                </div>
               </div>
               
               {/* Badge de statut */}
