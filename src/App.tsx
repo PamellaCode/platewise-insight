@@ -14,6 +14,8 @@ import Login from "./pages/Login";
 import Subscription from "./pages/Subscription";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
+import Estimations from "./pages/Estimations";
+import EstimationDetail from "./pages/EstimationDetail";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +37,8 @@ const App = () => (
           <Route path="/dashboard/subscription" element={<Subscription />} />
           <Route path="/dashboard/profile" element={<Profile />} />
           <Route path="/dashboard/settings" element={<Settings />} />
+          <Route path="/dashboard/estimations" element={<Estimations />} />
+          <Route path="/dashboard/estimations/:id" element={<EstimationDetail />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
