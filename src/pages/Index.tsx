@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import LicensePlateSearch from '@/components/LicensePlateSearch';
 import Chatbot from '@/components/Chatbot';
 import MainLayout from '@/components/layouts/MainLayout';
+
 const fadeIn = {
   hidden: {
     opacity: 0,
@@ -20,6 +21,7 @@ const fadeIn = {
     }
   }
 };
+
 const staggerContainer = {
   hidden: {
     opacity: 0
@@ -31,6 +33,7 @@ const staggerContainer = {
     }
   }
 };
+
 const Index = () => {
   const features = [{
     icon: <Zap className="h-12 w-12 text-teal-500" />,
@@ -53,6 +56,7 @@ const Index = () => {
     description: 'Accédez à l\'évolution des prix du marché pour mieux anticiper',
     bgColor: "bg-gradient-to-br from-cyan-50 to-cyan-100 border-cyan-200"
   }];
+
   return <MainLayout>
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white relative overflow-hidden">
@@ -303,4 +307,5 @@ const Index = () => {
       </section>
     </MainLayout>;
 };
+
 export default Index;
