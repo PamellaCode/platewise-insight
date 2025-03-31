@@ -64,30 +64,29 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				// Palette personnalisée pour l'application
-				'auto-blue': {
-					50: '#EEF2FF',
-					100: '#E0E7FF',
-					200: '#C7D2FE',
-					300: '#A5B4FC',
-					400: '#818CF8',
-					500: '#0F172A', // Couleur primaire de l'application
-					600: '#0A0F1D',
-					700: '#050912',
-					800: '#030509',
-					900: '#010203',
+				'argus-blue': {
+					50: '#E6EEF3',
+					100: '#C1D4E2',
+					200: '#9CB8D1',
+					300: '#769DC0',
+					400: '#5A8BB3',
+					500: '#0A3D62', // Couleur primaire de l'application
+					600: '#09375A',
+					700: '#072F4F',
+					800: '#062745',
+					900: '#041C33',
 				},
-				'auto-gold': {
-					DEFAULT: '#F59E0B',
-					50: '#FFFBEB',
-					100: '#FEF3C7',
-					200: '#FDE68A',
-					300: '#FCD34D',
-					400: '#FBBF24',
-					500: '#F59E0B',
-					600: '#D97706',
-					700: '#B45309',
-					800: '#92400E',
-					900: '#78350F',
+				'argus-teal': {
+					50: '#E8F8F5',
+					100: '#C4EDE4',
+					200: '#9EE2D3',
+					300: '#78D7C1',
+					400: '#5DCEB3',
+					500: '#1ABC9C', // Couleur secondaire de l'application
+					600: '#18AB8F',
+					700: '#14957D',
+					800: '#11806B',
+					900: '#0A5C4B',
 				}
 			},
 			borderRadius: {

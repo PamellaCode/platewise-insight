@@ -7,16 +7,16 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-auto-blue-500 text-white">
+    <footer className="bg-argus-blue-500 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Car className="h-6 w-6" />
-              <span className="text-xl font-bold">AutoCote</span>
+              <span className="text-xl font-bold">ArgusAI</span>
             </div>
             <p className="text-sm text-gray-300">
-              Estimez instantanément la valeur de votre véhicule grâce à notre technologie d'intelligence artificielle.
+              L'IA qui calcule la vraie valeur de votre voiture.
             </p>
             <div className="flex space-x-4 pt-2">
               <a href="#" className="text-gray-300 hover:text-white">
@@ -70,8 +70,8 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
-        <div className="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between">
-          <p className="text-sm text-gray-300">&copy; {currentYear} AutoCote. Tous droits réservés.</p>
+        <div className="mt-12 border-t border-argus-blue-700 pt-8 flex flex-col md:flex-row justify-between">
+          <p className="text-sm text-gray-300">&copy; {currentYear} ArgusAI. Tous droits réservés.</p>
           <p className="text-sm text-gray-300 mt-2 md:mt-0">
             Conçu et développé en France avec ❤️
           </p>

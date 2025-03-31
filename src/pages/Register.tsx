@@ -52,7 +52,7 @@ const RegisterPage = () => {
     console.log("Form data:", data);
     toast({
       title: "Inscription réussie!",
-      description: "Bienvenue sur AutoCote",
+      description: "Bienvenue sur ArgusAI",
     });
     // Dans un cas réel, vous appelleriez un service d'authentification ici
     setTimeout(() => {
@@ -62,7 +62,7 @@ const RegisterPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12">
+      <div className="min-h-screen bg-gradient-to-b from-argus-blue-50 to-white py-12">
         <div className="container mx-auto px-4 max-w-4xl">
           <motion.div
             className="bg-white rounded-xl shadow-lg p-6 md:p-10 border border-gray-100"
@@ -75,7 +75,7 @@ const RegisterPage = () => {
                 Créez votre compte
               </h1>
               <p className="text-gray-600">
-                Rejoignez AutoCote pour accéder à tous nos services d'estimation
+                Rejoignez ArgusAI pour accéder à tous nos services d'estimation
                 de véhicule
               </p>
             </div>
@@ -156,7 +156,7 @@ const RegisterPage = () => {
                       <input
                         id="terms"
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-auto-blue-600 focus:ring-auto-blue-500"
+                        className="h-4 w-4 rounded border-gray-300 text-argus-blue-600 focus:ring-argus-blue-500"
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -164,14 +164,14 @@ const RegisterPage = () => {
                         J'accepte les{" "}
                         <a
                           href="#"
-                          className="text-auto-blue-500 hover:underline"
+                          className="text-argus-teal-500 hover:underline"
                         >
                           conditions d'utilisation
                         </a>{" "}
                         et la{" "}
                         <a
                           href="#"
-                          className="text-auto-blue-500 hover:underline"
+                          className="text-argus-teal-500 hover:underline"
                         >
                           politique de confidentialité
                         </a>
@@ -183,7 +183,7 @@ const RegisterPage = () => {
                 <div className="pt-2">
                   <Button
                     type="submit"
-                    className="w-full bg-auto-blue-500 hover:bg-auto-blue-600 text-white py-6"
+                    className="w-full bg-argus-teal-500 hover:bg-argus-teal-600 text-white py-6"
                     size="lg"
                   >
                     Créer mon compte
@@ -195,7 +195,7 @@ const RegisterPage = () => {
                   Vous avez déjà un compte ?{" "}
                   <a
                     href="/login"
-                    className="text-auto-blue-500 hover:underline"
+                    className="text-argus-teal-500 hover:underline"
                   >
                     Connectez-vous
                   </a>
@@ -205,12 +205,12 @@ const RegisterPage = () => {
 
             <div className="mt-10 border-t border-gray-200 pt-8">
               <h3 className="text-lg font-medium text-gray-800 mb-4">
-                Pourquoi s'inscrire sur AutoCote ?
+                Pourquoi s'inscrire sur ArgusAI ?
               </h3>
               <div className="space-y-3">
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
-                    <Check className="h-5 w-5 text-green-500" />
+                    <Check className="h-5 w-5 text-argus-teal-500" />
                   </div>
                   <p className="ml-3 text-gray-600">
                     Estimations illimitées de vos véhicules
@@ -218,7 +218,7 @@ const RegisterPage = () => {
                 </div>
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
-                    <Check className="h-5 w-5 text-green-500" />
+                    <Check className="h-5 w-5 text-argus-teal-500" />
                   </div>
                   <p className="ml-3 text-gray-600">
                     Suivi de l'évolution des prix du marché
@@ -226,7 +226,7 @@ const RegisterPage = () => {
                 </div>
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
-                    <Check className="h-5 w-5 text-green-500" />
+                    <Check className="h-5 w-5 text-argus-teal-500" />
                   </div>
                   <p className="ml-3 text-gray-600">
                     Conseils personnalisés pour optimiser la valeur de votre
