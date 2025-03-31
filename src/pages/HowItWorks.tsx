@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, HelpCircle, ArrowDown, Info, Settings, Zap, ArrowRight, Sparkles, Rocket, Star } from 'lucide-react';
@@ -40,25 +39,25 @@ const HowItWorks = () => {
     title: "Entrez votre immatriculation",
     description: "Saisissez simplement le numéro d'immatriculation de votre véhicule dans notre outil d'estimation.",
     bgColor: "bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200",
-    iconBg: "bg-gradient-to-br from-blue-500 to-cyan-500"
+    iconBg: "bg-blue-100/30 group-hover:bg-blue-100/50"
   }, {
     icon: <Zap className="h-12 w-12 text-purple-500" />,
     title: "Notre IA analyse votre véhicule",
     description: "Notre intelligence artificielle analyse instantanément les données de votre véhicule et compare avec notre base de données.",
     bgColor: "bg-gradient-to-br from-cyan-50 to-cyan-100 border-cyan-200",
-    iconBg: "bg-gradient-to-br from-cyan-500 to-teal-500"
+    iconBg: "bg-cyan-100/30 group-hover:bg-cyan-100/50"
   }, {
     icon: <Info className="h-12 w-12 text-blue-500" />,
     title: "Obtenez une estimation détaillée",
     description: "Recevez une estimation précise de la valeur de votre véhicule avec des détails sur les facteurs qui influencent son prix.",
     bgColor: "bg-gradient-to-br from-teal-50 to-teal-100 border-teal-200",
-    iconBg: "bg-gradient-to-br from-teal-500 to-green-500"
+    iconBg: "bg-teal-100/30 group-hover:bg-teal-100/50"
   }, {
     icon: <Settings className="h-12 w-12 text-teal-500" />,
     title: "Affinez votre estimation",
     description: "Ajustez les paramètres comme le kilométrage, l'état ou les options pour affiner l'estimation de votre véhicule.",
     bgColor: "bg-gradient-to-br from-green-50 to-green-100 border-green-200", 
-    iconBg: "bg-gradient-to-br from-green-500 to-emerald-500"
+    iconBg: "bg-green-100/30 group-hover:bg-green-100/50"
   }];
 
   const features = [{
@@ -248,7 +247,7 @@ const HowItWorks = () => {
             {steps.map((step, index) => (
               <motion.div 
                 key={index} 
-                className={`rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center relative border ${step.bgColor}`} 
+                className={`rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center relative border ${step.bgColor} group`} 
                 variants={fadeIn} 
                 whileHover={{
                   y: -8,
@@ -257,7 +256,7 @@ const HowItWorks = () => {
               >
                 <div className="flex justify-center mb-6">
                   <motion.div 
-                    className={`p-3 rounded-full ${step.iconBg} shadow-lg`}
+                    className={`p-3 rounded-full ${step.iconBg} shadow-lg transition-all`}
                     whileHover={{ 
                       rotate: [0, 10, -10, 0],
                       scale: 1.05 
