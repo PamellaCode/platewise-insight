@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -12,26 +11,34 @@ import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User, Mail, Phone, Lock, Key } from "lucide-react";
 import { toast } from "sonner";
-
 const profileFormSchema = z.object({
-  nom: z.string().min(2, { message: "Le nom doit contenir au moins 2 caractères" }),
-  prenom: z.string().min(2, { message: "Le prénom doit contenir au moins 2 caractères" }),
-  email: z.string().email({ message: "Adresse email invalide" }),
-  telephone: z.string().optional(),
+  nom: z.string().min(2, {
+    message: "Le nom doit contenir au moins 2 caractères"
+  }),
+  prenom: z.string().min(2, {
+    message: "Le prénom doit contenir au moins 2 caractères"
+  }),
+  email: z.string().email({
+    message: "Adresse email invalide"
+  }),
+  telephone: z.string().optional()
 });
-
 const passwordFormSchema = z.object({
-  currentPassword: z.string().min(8, { message: "Le mot de passe doit contenir au moins 8 caractères" }),
-  newPassword: z.string().min(8, { message: "Le nouveau mot de passe doit contenir au moins 8 caractères" }),
-  confirmPassword: z.string().min(8, { message: "Confirmation du mot de passe requise" }),
-}).refine((data) => data.newPassword === data.confirmPassword, {
+  currentPassword: z.string().min(8, {
+    message: "Le mot de passe doit contenir au moins 8 caractères"
+  }),
+  newPassword: z.string().min(8, {
+    message: "Le nouveau mot de passe doit contenir au moins 8 caractères"
+  }),
+  confirmPassword: z.string().min(8, {
+    message: "Confirmation du mot de passe requise"
+  })
+}).refine(data => data.newPassword === data.confirmPassword, {
   message: "Les mots de passe ne correspondent pas",
-  path: ["confirmPassword"],
+  path: ["confirmPassword"]
 });
-
 type ProfileFormValues = z.infer<typeof profileFormSchema>;
 type PasswordFormValues = z.infer<typeof passwordFormSchema>;
-
 const ProfileTab = () => {
   const profileForm = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
@@ -39,31 +46,26 @@ const ProfileTab = () => {
       nom: "Dupont",
       prenom: "Jean",
       email: "jean.dupont@example.com",
-      telephone: "06 12 34 56 78",
-    },
+      telephone: "06 12 34 56 78"
+    }
   });
-
   const passwordForm = useForm<PasswordFormValues>({
     resolver: zodResolver(passwordFormSchema),
     defaultValues: {
       currentPassword: "",
       newPassword: "",
-      confirmPassword: "",
-    },
+      confirmPassword: ""
+    }
   });
-
   function onProfileSubmit(data: ProfileFormValues) {
     toast.success("Profil mis à jour avec succès");
     console.log("Profile form submitted:", data);
   }
-
   function onPasswordSubmit(data: PasswordFormValues) {
     toast.success("Mot de passe mis à jour avec succès");
     console.log("Password form submitted:", data);
   }
-
-  return (
-    <div className="space-y-6">
+  return <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Profil</h1>
         <p className="text-muted-foreground">
@@ -103,7 +105,7 @@ const ProfileTab = () => {
                     Cette photo sera utilisée comme votre avatar
                   </p>
                   <div className="flex gap-2">
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" className="text-gray-700">
                       Changer
                     </Button>
                     <Button variant="outline" size="sm">
@@ -118,82 +120,58 @@ const ProfileTab = () => {
               <Form {...profileForm}>
                 <form onSubmit={profileForm.handleSubmit(onProfileSubmit)} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <FormField
-                      control={profileForm.control}
-                      name="prenom"
-                      render={({ field }) => (
-                        <FormItem>
+                    <FormField control={profileForm.control} name="prenom" render={({
+                    field
+                  }) => <FormItem>
                           <FormLabel>Prénom</FormLabel>
                           <FormControl>
                             <Input placeholder="Jean" {...field} />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={profileForm.control}
-                      name="nom"
-                      render={({ field }) => (
-                        <FormItem>
+                        </FormItem>} />
+                    <FormField control={profileForm.control} name="nom" render={({
+                    field
+                  }) => <FormItem>
                           <FormLabel>Nom</FormLabel>
                           <FormControl>
                             <Input placeholder="Dupont" {...field} />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        </FormItem>} />
                   </div>
                   
-                  <FormField
-                    control={profileForm.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
+                  <FormField control={profileForm.control} name="email" render={({
+                  field
+                }) => <FormItem>
                         <FormLabel>Email</FormLabel>
                         <FormControl>
                           <div className="flex">
                             <span className="inline-flex items-center px-3 bg-muted border border-r-0 border-input rounded-l-md">
                               <Mail className="h-4 w-4 text-muted-foreground" />
                             </span>
-                            <Input 
-                              className="rounded-l-none" 
-                              placeholder="jean.dupont@example.com" 
-                              {...field} 
-                            />
+                            <Input className="rounded-l-none" placeholder="jean.dupont@example.com" {...field} />
                           </div>
                         </FormControl>
                         <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                      </FormItem>} />
                   
-                  <FormField
-                    control={profileForm.control}
-                    name="telephone"
-                    render={({ field }) => (
-                      <FormItem>
+                  <FormField control={profileForm.control} name="telephone" render={({
+                  field
+                }) => <FormItem>
                         <FormLabel>Téléphone</FormLabel>
                         <FormControl>
                           <div className="flex">
                             <span className="inline-flex items-center px-3 bg-muted border border-r-0 border-input rounded-l-md">
                               <Phone className="h-4 w-4 text-muted-foreground" />
                             </span>
-                            <Input 
-                              className="rounded-l-none" 
-                              placeholder="06 12 34 56 78" 
-                              {...field} 
-                            />
+                            <Input className="rounded-l-none" placeholder="06 12 34 56 78" {...field} />
                           </div>
                         </FormControl>
                         <FormDescription>
                           Optionnel - utilisé pour vous contacter en cas de besoin
                         </FormDescription>
                         <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                      </FormItem>} />
 
                   <Button type="submit">Sauvegarder les modifications</Button>
                 </form>
@@ -213,35 +191,24 @@ const ProfileTab = () => {
             <CardContent>
               <Form {...passwordForm}>
                 <form onSubmit={passwordForm.handleSubmit(onPasswordSubmit)} className="space-y-4">
-                  <FormField
-                    control={passwordForm.control}
-                    name="currentPassword"
-                    render={({ field }) => (
-                      <FormItem>
+                  <FormField control={passwordForm.control} name="currentPassword" render={({
+                  field
+                }) => <FormItem>
                         <FormLabel>Mot de passe actuel</FormLabel>
                         <FormControl>
                           <div className="flex">
                             <span className="inline-flex items-center px-3 bg-muted border border-r-0 border-input rounded-l-md">
                               <Key className="h-4 w-4 text-muted-foreground" />
                             </span>
-                            <Input 
-                              className="rounded-l-none" 
-                              type="password" 
-                              placeholder="••••••••" 
-                              {...field} 
-                            />
+                            <Input className="rounded-l-none" type="password" placeholder="••••••••" {...field} />
                           </div>
                         </FormControl>
                         <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                      </FormItem>} />
                   
-                  <FormField
-                    control={passwordForm.control}
-                    name="newPassword"
-                    render={({ field }) => (
-                      <FormItem>
+                  <FormField control={passwordForm.control} name="newPassword" render={({
+                  field
+                }) => <FormItem>
                         <FormLabel>Nouveau mot de passe</FormLabel>
                         <FormControl>
                           <Input type="password" placeholder="••••••••" {...field} />
@@ -250,23 +217,17 @@ const ProfileTab = () => {
                           Au moins 8 caractères
                         </FormDescription>
                         <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                      </FormItem>} />
                   
-                  <FormField
-                    control={passwordForm.control}
-                    name="confirmPassword"
-                    render={({ field }) => (
-                      <FormItem>
+                  <FormField control={passwordForm.control} name="confirmPassword" render={({
+                  field
+                }) => <FormItem>
                         <FormLabel>Confirmer le mot de passe</FormLabel>
                         <FormControl>
                           <Input type="password" placeholder="••••••••" {...field} />
                         </FormControl>
                         <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                      </FormItem>} />
 
                   <Button type="submit">Mettre à jour le mot de passe</Button>
                 </form>
@@ -307,8 +268,6 @@ const ProfileTab = () => {
           </Card>
         </TabsContent>
       </Tabs>
-    </div>
-  );
+    </div>;
 };
-
 export default ProfileTab;
