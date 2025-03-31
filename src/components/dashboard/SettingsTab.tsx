@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,19 +8,17 @@ import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import { Bell, Globe, Moon, Sun, Shield } from "lucide-react";
-
 const SettingsTab = () => {
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const handleSave = (section: string) => {
     toast({
       title: "Paramètres sauvegardés",
-      description: `Les paramètres ${section} ont été mis à jour avec succès.`,
+      description: `Les paramètres ${section} ont été mis à jour avec succès.`
     });
   };
-
-  return (
-    <div className="space-y-6">
+  return <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold tracking-tight">Paramètres</h2>
         <p className="text-muted-foreground">
@@ -48,10 +45,7 @@ const SettingsTab = () => {
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="language">Langue</Label>
-                <select 
-                  id="language" 
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                >
+                <select id="language" className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm">
                   <option value="fr">Français</option>
                   <option value="en">English</option>
                   <option value="es">Español</option>
@@ -61,10 +55,7 @@ const SettingsTab = () => {
               
               <div className="space-y-2">
                 <Label htmlFor="timezone">Fuseau horaire</Label>
-                <select 
-                  id="timezone" 
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                >
+                <select id="timezone" className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm">
                   <option value="Europe/Paris">Europe/Paris (GMT+1)</option>
                   <option value="Europe/London">Europe/London (GMT)</option>
                   <option value="America/New_York">America/New_York (GMT-5)</option>
@@ -98,19 +89,14 @@ const SettingsTab = () => {
               <div className="space-y-2">
                 <Label htmlFor="api-key">Clé API</Label>
                 <div className="flex space-x-2">
-                  <Input 
-                    id="api-key" 
-                    value="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" 
-                    disabled 
-                    className="flex-1" 
-                  />
+                  <Input id="api-key" value="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" disabled className="flex-1" />
                   <Button variant="outline" onClick={() => {
-                    navigator.clipboard.writeText("sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-                    toast({
-                      title: "Clé API copiée",
-                      description: "La clé API a été copiée dans le presse-papier.",
-                    });
-                  }}>
+                  navigator.clipboard.writeText("sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  toast({
+                    title: "Clé API copiée",
+                    description: "La clé API a été copiée dans le presse-papier."
+                  });
+                }}>
                     Copier
                   </Button>
                 </div>
@@ -118,11 +104,11 @@ const SettingsTab = () => {
             </CardContent>
             <CardFooter>
               <Button variant="outline" onClick={() => {
-                toast({
-                  title: "Nouvelle clé API générée",
-                  description: "Votre nouvelle clé API a été générée avec succès.",
-                });
-              }}>
+              toast({
+                title: "Nouvelle clé API générée",
+                description: "Votre nouvelle clé API a été générée avec succès."
+              });
+            }}>
                 Générer une nouvelle clé
               </Button>
             </CardFooter>
@@ -242,7 +228,7 @@ const SettingsTab = () => {
               <div>
                 <h3 className="text-lg font-medium mb-2">Densité d'affichage</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <Button variant="outline" className="justify-start">Compacte</Button>
+                  <Button variant="outline" className="justify-start text-gray-600">Compacte</Button>
                   <Button variant="outline" className="justify-start border-primary">Standard</Button>
                   <Button variant="outline" className="justify-start">Confortable</Button>
                 </div>
@@ -255,14 +241,7 @@ const SettingsTab = () => {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="text-sm">A</span>
-                    <input 
-                      type="range" 
-                      min="1" 
-                      max="3" 
-                      step="1" 
-                      defaultValue="2"
-                      className="w-full mx-4"
-                    />
+                    <input type="range" min="1" max="3" step="1" defaultValue="2" className="w-full mx-4" />
                     <span className="text-lg">A</span>
                   </div>
                 </div>
@@ -315,22 +294,22 @@ const SettingsTab = () => {
                 </p>
                 <div className="flex flex-col space-y-2">
                   <Button variant="outline" className="justify-start" onClick={() => {
-                    toast({
-                      title: "Téléchargement en cours",
-                      description: "La préparation de vos données a commencé. Vous recevrez un email lorsqu'elles seront prêtes.",
-                    });
-                  }}>
+                  toast({
+                    title: "Téléchargement en cours",
+                    description: "La préparation de vos données a commencé. Vous recevrez un email lorsqu'elles seront prêtes."
+                  });
+                }}>
                     <Globe className="mr-2 h-4 w-4" />
                     Télécharger mes données
                   </Button>
                   
                   <Button variant="destructive" className="justify-start" onClick={() => {
-                    toast({
-                      title: "Action requise",
-                      description: "Veuillez consulter votre email pour confirmer la suppression de votre compte.",
-                      variant: "destructive",
-                    });
-                  }}>
+                  toast({
+                    title: "Action requise",
+                    description: "Veuillez consulter votre email pour confirmer la suppression de votre compte.",
+                    variant: "destructive"
+                  });
+                }}>
                     Supprimer mon compte
                   </Button>
                 </div>
@@ -342,8 +321,6 @@ const SettingsTab = () => {
           </Card>
         </TabsContent>
       </Tabs>
-    </div>
-  );
+    </div>;
 };
-
 export default SettingsTab;
