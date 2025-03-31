@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -72,7 +73,7 @@ const LicensePlateSearch: React.FC = () => {
         />
         <Button
           type="submit"
-          className="absolute right-0 top-0 h-full rounded-l-none bg-auto-blue-500 hover:bg-auto-blue-600"
+          className="absolute right-0 top-0 h-full rounded-l-none"
           disabled={isLoading}
         >
           {isLoading ? (

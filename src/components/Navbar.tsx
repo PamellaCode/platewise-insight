@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
             <Button variant="ghost" asChild>
               <Link to="/login">Connexion</Link>
             </Button>
-            <Button className="bg-argus-teal-500 hover:bg-argus-teal-600 text-white" asChild>
+            <Button variant="secondary" asChild>
               <Link to="/register">S'inscrire</Link>
             </Button>
           </div>
@@ -100,13 +100,20 @@ const Navbar: React.FC = () => {
               >
                 Connexion
               </Link>
-              <Link 
-                to="/register" 
-                className="block px-3 py-2 mt-1 rounded-md text-base font-medium bg-argus-teal-500 text-white hover:bg-argus-teal-600" 
-                onClick={() => setIsMenuOpen(false)}
-              >
-                S'inscrire
-              </Link>
+              <div className="mt-1">
+                <Button 
+                  variant="secondary"
+                  className="w-full" 
+                  asChild
+                >
+                  <Link 
+                    to="/register" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    S'inscrire
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
