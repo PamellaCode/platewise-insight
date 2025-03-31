@@ -71,18 +71,19 @@ const PricingPlans: React.FC = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-8 lg:px-16">
       {plans.map((plan) => (
         <div 
           key={plan.name} 
           className={`relative transition-all duration-300 hover:translate-y-[-5px] ${plan.popular ? 'z-10' : 'z-0'}`}
         >
           <Card 
-            className={`h-full flex flex-col border ${
-              plan.popular 
-                ? 'border-2 ' + plan.borderColor + ' shadow-xl' 
-                : 'shadow-md border-gray-200'
-            } rounded-xl overflow-hidden relative`}
+            className={`h-full flex flex-col border-2 rounded-xl overflow-hidden relative 
+              ${
+                plan.popular 
+                  ? plan.borderColor + ' shadow-xl' 
+                  : 'border-gray-200 shadow-md'
+              }`}
           >
             {plan.popular && (
               <div className="absolute -top-4 right-0 left-0 flex justify-center">
