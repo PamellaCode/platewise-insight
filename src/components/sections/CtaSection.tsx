@@ -18,9 +18,7 @@ const CtaSection: React.FC = () => {
         duration: 0.5
       }}>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-improved-dark">Envie de connaître la vraie valeur de votre véhicule ?</h2>
-          <p className="text-xl mb-8 text-white/95 leading-relaxed max-w-2xl mx-auto">
-            Estimez gratuitement votre véhicule en quelques secondes et obtenez une valorisation précise basée sur les données du marché.
-          </p>
+          <p className="text-xl mb-8 text-white/95 leading-relaxed max-w-2xl mx-auto">Obtenez une estimation précise en quelques secondes grâce à notre IA avancée. Accédez à des analyses détaillées et à la valorisation du marché en souscrivant à l’un de nos abonnements.</p>
           <Button className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" size="lg" asChild>
             <Link to="/register" className="flex items-center justify-center">
               Essayer gratuitement
