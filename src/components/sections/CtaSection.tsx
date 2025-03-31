@@ -23,9 +23,9 @@ const CtaSection: React.FC = () => {
             size="lg" 
             asChild
           >
-            <Link to="/register" className="flex items-center justify-center">
+            <Link to="/register" className="flex items-center justify-center text-white">
               Essayer gratuitement
-              <ArrowRight className="ml-2" />
+              <ArrowRight className="ml-2 text-white" />
             </Link>
           </Button>
         </motion.div>
