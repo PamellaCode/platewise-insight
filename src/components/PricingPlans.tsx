@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { CheckCircle2, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -71,19 +70,19 @@ const PricingPlans: React.FC = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-8 lg:px-16">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 px-8 md:px-16 lg:px-24">
       {plans.map((plan) => (
         <div 
           key={plan.name} 
-          className={`relative transition-all duration-300 hover:translate-y-[-5px] ${plan.popular ? 'z-10' : 'z-0'}`}
+          className={`relative transition-all duration-300 hover:translate-y-[-10px] ${plan.popular ? 'z-10' : 'z-0'}`}
         >
           <Card 
-            className={`h-full flex flex-col border-2 rounded-xl overflow-hidden relative 
+            className={`h-full flex flex-col border-2 rounded-2xl overflow-hidden relative 
               ${
                 plan.popular 
-                  ? plan.borderColor + ' shadow-xl' 
-                  : 'border-gray-200 shadow-md'
-              }`}
+                  ? plan.borderColor + ' shadow-2xl' 
+                  : 'border-gray-200 shadow-xl'
+              } w-full min-w-[320px] max-w-[400px] mx-auto`}
           >
             {plan.popular && (
               <div className="absolute -top-4 right-0 left-0 flex justify-center">
@@ -92,7 +91,7 @@ const PricingPlans: React.FC = () => {
                 </div>
               </div>
             )}
-            <div className={`h-2 w-full ${plan.color}`}></div>
+            <div className={`h-3 w-full ${plan.color}`}></div>
             <CardHeader className="pb-2">
               <CardTitle className="text-2xl font-bold flex items-baseline">
                 <span>{plan.name}</span>
