@@ -3,11 +3,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import { useNavigate } from 'react-router-dom';
 
 const LicensePlateSearch: React.FC = () => {
   const [licensePlate, setLicensePlate] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,19 +35,8 @@ const LicensePlateSearch: React.FC = () => {
       return;
     }
     
-    setIsLoading(true);
-    
-    // Simulation d'une requête API
-    setTimeout(() => {
-      setIsLoading(false);
-      toast({
-        title: "Recherche en cours",
-        description: `Recherche de la valeur pour la plaque ${licensePlate}...`,
-      });
-      
-      // Redirection vers les résultats (à implémenter)
-      // navigate(`/results?plate=${licensePlate}`);
-    }, 1500);
+    // Redirect to pricing page instead of simulating API call
+    navigate('/pricing');
   };
 
   // Helper function pour formater la plaque d'immatriculation
