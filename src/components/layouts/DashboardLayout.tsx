@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   BarChart2, 
+  Car, 
   CreditCard, 
   FileText, 
   Home,
@@ -24,7 +25,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   
   const navigation = [
     { name: 'Tableau de bord', path: '/dashboard', icon: Home },
-    { name: 'Mes estimations', path: '/dashboard/estimations', icon: FileText },
+    { name: 'Mes estimations', path: '/dashboard/estimations', icon: Car },
     { name: 'Historique', path: '/dashboard/history', icon: FileText },
     { name: 'Abonnement', path: '/dashboard/subscription', icon: CreditCard },
     { name: 'Statistiques', path: '/dashboard/stats', icon: BarChart2 },
@@ -57,37 +58,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           
           <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
             <div className="flex-shrink-0 flex items-center px-4">
-              <Link to="/dashboard" className="flex items-center">
-                <div className="relative w-40 h-10">
-                  {/* Fond technologique */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-argus-blue-500 to-argus-blue-700 rounded-md overflow-hidden flex items-center justify-center">
-                    <div className="w-full h-3 absolute bottom-0 flex items-center justify-center bg-[#0a3045] overflow-hidden">
-                      {/* Circuit board pattern */}
-                      <svg width="100%" height="100%" className="opacity-40">
-                        <pattern id="circuit-mobile" width="20" height="3" patternUnits="userSpaceOnUse">
-                          <path d="M0,1.5 H20 M5,0 V3 M10,0 V3 M15,0 V3" stroke="white" strokeWidth="0.5" fill="none"/>
-                        </pattern>
-                        <rect width="100%" height="100%" fill="url(#circuit-mobile)" />
-                      </svg>
-                      {/* Logo text */}
-                      <div className="z-10 px-2 bg-white text-center rounded-sm">
-                        <span className="text-sm font-bold tracking-wider text-gray-900">ARGUS AI</span>
-                      </div>
-                    </div>
-                    
-                    {/* Car silhouette */}
-                    <div className="absolute top-0 left-0 w-full h-7 flex items-center justify-center">
-                      <svg viewBox="0 0 100 40" width="90" height="25" className="fill-white">
-                        <path d="M95,20 C95,12 90,10 85,10 L70,10 C65,10 60,15 55,15 L35,15 C30,15 25,10 20,10 L15,10 C10,10 5,12 5,20 L5,25 C5,28 8,30 10,30 L90,30 C92,30 95,28 95,25 L95,20 Z M25,25 C22,25 20,23 20,20 C20,17 22,15 25,15 C28,15 30,17 30,20 C30,23 28,25 25,25 Z M75,25 C72,25 70,23 70,20 C70,17 72,15 75,15 C78,15 80,17 80,20 C80,23 78,25 75,25 Z" />
-                        {/* Wheels with "A" logo */}
-                        <circle cx="25" cy="20" r="7" fill="#0a3045" stroke="white" strokeWidth="1" />
-                        <text x="22" y="23" fontSize="7" fill="white">A</text>
-                        <circle cx="75" cy="20" r="7" fill="#0a3045" stroke="white" strokeWidth="1" />
-                        <text x="72" y="23" fontSize="7" fill="white">A</text>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
+              <Link to="/dashboard" className="flex items-center space-x-2">
+                <Car className="h-8 w-8 text-white" />
+                <span className="text-xl font-bold text-white">ArgusAI</span>
               </Link>
             </div>
             <nav className="mt-5 px-2 space-y-1">
@@ -137,37 +110,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           <div className="flex-1 flex flex-col min-h-0 bg-argus-blue-500">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
               <div className="flex items-center flex-shrink-0 px-4">
-                <Link to="/dashboard" className="flex items-center">
-                  <div className="relative w-40 h-10">
-                    {/* Fond technologique */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-argus-blue-500 to-argus-blue-700 rounded-md overflow-hidden flex items-center justify-center">
-                      <div className="w-full h-3 absolute bottom-0 flex items-center justify-center bg-[#0a3045] overflow-hidden">
-                        {/* Circuit board pattern */}
-                        <svg width="100%" height="100%" className="opacity-40">
-                          <pattern id="circuit-desktop" width="20" height="3" patternUnits="userSpaceOnUse">
-                            <path d="M0,1.5 H20 M5,0 V3 M10,0 V3 M15,0 V3" stroke="white" strokeWidth="0.5" fill="none"/>
-                          </pattern>
-                          <rect width="100%" height="100%" fill="url(#circuit-desktop)" />
-                        </svg>
-                        {/* Logo text */}
-                        <div className="z-10 px-2 bg-white text-center rounded-sm">
-                          <span className="text-sm font-bold tracking-wider text-gray-900">ARGUS AI</span>
-                        </div>
-                      </div>
-                      
-                      {/* Car silhouette */}
-                      <div className="absolute top-0 left-0 w-full h-7 flex items-center justify-center">
-                        <svg viewBox="0 0 100 40" width="90" height="25" className="fill-white">
-                          <path d="M95,20 C95,12 90,10 85,10 L70,10 C65,10 60,15 55,15 L35,15 C30,15 25,10 20,10 L15,10 C10,10 5,12 5,20 L5,25 C5,28 8,30 10,30 L90,30 C92,30 95,28 95,25 L95,20 Z M25,25 C22,25 20,23 20,20 C20,17 22,15 25,15 C28,15 30,17 30,20 C30,23 28,25 25,25 Z M75,25 C72,25 70,23 70,20 C70,17 72,15 75,15 C78,15 80,17 80,20 C80,23 78,25 75,25 Z" />
-                          {/* Wheels with "A" logo */}
-                          <circle cx="25" cy="20" r="7" fill="#0a3045" stroke="white" strokeWidth="1" />
-                          <text x="22" y="23" fontSize="7" fill="white">A</text>
-                          <circle cx="75" cy="20" r="7" fill="#0a3045" stroke="white" strokeWidth="1" />
-                          <text x="72" y="23" fontSize="7" fill="white">A</text>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
+                <Link to="/dashboard" className="flex items-center space-x-2">
+                  <Car className="h-8 w-8 text-white" />
+                  <span className="text-xl font-bold text-white">ArgusAI</span>
                 </Link>
               </div>
               <nav className="mt-5 flex-1 px-2 space-y-1">
