@@ -298,18 +298,18 @@ const HowItWorks = () => {
       <section className="py-16 bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div 
-            className="max-w-3xl mx-auto"
+            className="max-w-3xl mx-auto text-white"
             initial={{opacity: 0, y: 20}}
             whileInView={{opacity: 1, y: 0}}
             viewport={{once: true}}
             transition={{duration: 0.5}}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Prêt à découvrir la valeur de votre véhicule ?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Prêt à découvrir la valeur de votre véhicule ?</h2>
             <p className="text-xl mb-8 text-white/90">
               Estimez gratuitement votre véhicule en quelques secondes et obtenez une valorisation précise basée sur les données du marché.
             </p>
             <Button 
-              className="bg-white text-purple-600 hover:bg-gray-100 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-blue-600"
               size="lg"
             >
               Estimer mon véhicule
