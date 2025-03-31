@@ -16,6 +16,7 @@ import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import Estimations from "./pages/Estimations";
 import EstimationDetail from "./pages/EstimationDetail";
+import Statistics from "./pages/Statistics";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/dashboard/settings" element={<Settings />} />
           <Route path="/dashboard/estimations" element={<Estimations />} />
           <Route path="/dashboard/estimations/:id" element={<EstimationDetail />} />
+          <Route path="/dashboard/stats" element={<Statistics />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

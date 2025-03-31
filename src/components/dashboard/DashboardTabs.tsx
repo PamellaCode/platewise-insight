@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Car, CreditCard, History, MessageCircle } from 'lucide-react';
+import { BarChart2, Car, CreditCard, History, MessageCircle } from 'lucide-react';
 
 interface DashboardTabsProps {
   currentTab: string;
@@ -33,6 +33,12 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({ currentTab }) => {
         <Link to="/dashboard/assistant-ai" className="flex items-center gap-1">
           <MessageCircle className="h-4 w-4" />
           <span>Assistant AI</span>
+        </Link>
+      </TabsTrigger>
+      <TabsTrigger value="stats" asChild>
+        <Link to="/dashboard/stats" className="flex items-center gap-1">
+          <BarChart2 className="h-4 w-4" />
+          <span>Statistiques</span>
         </Link>
       </TabsTrigger>
     </TabsList>
