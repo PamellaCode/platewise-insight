@@ -24,7 +24,7 @@ const CtaSection: React.FC = () => {
             asChild
           >
             <Link to="/register" className="flex items-center justify-center text-white">
-              Essayer gratuitement
+              Découvrez nos abonnements !
               <ArrowRight className="ml-2 text-white" />
             </Link>
           </Button>
