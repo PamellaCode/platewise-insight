@@ -1,10 +1,11 @@
 
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BarChart3, LineChart, PieChart, TrendingUp } from 'lucide-react';
-import { ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-import { Bar, BarChart, CartesianGrid, Cell, Legend, Line, LineChart as RechartsLineChart, Pie, PieChart as RechartsPieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import MonthlyChart from './statistics/MonthlyChart';
+import BrandsChart from './statistics/BrandsChart';
+import PriceRangeChart from './statistics/PriceRangeChart';
+import StatsOverviewCard from './statistics/StatsOverviewCard';
 
 const StatisticsTab = () => {
   // Sample data for the charts
@@ -69,201 +70,44 @@ const StatisticsTab = () => {
 
         <TabsContent value="overview">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle>Estimations totales</CardTitle>
-                <CardDescription>Le nombre total d'estimations réalisées</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold">88</div>
-                <p className="text-xs text-muted-foreground">+12% par rapport au mois dernier</p>
-              </CardContent>
-            </Card>
+            <StatsOverviewCard
+              title="Estimations totales"
+              description="Le nombre total d'estimations réalisées"
+              value="88"
+              change="+12% par rapport au mois dernier"
+            />
             
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle>Moyenne des prix</CardTitle>
-                <CardDescription>Prix moyen des véhicules estimés</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold">12 500 €</div>
-                <p className="text-xs text-muted-foreground">+5% par rapport au mois dernier</p>
-              </CardContent>
-            </Card>
+            <StatsOverviewCard
+              title="Moyenne des prix"
+              description="Prix moyen des véhicules estimés"
+              value="12 500 €"
+              change="+5% par rapport au mois dernier"
+            />
             
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle>Marque la plus estimée</CardTitle>
-                <CardDescription>Marque avec le plus d'estimations</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold">Peugeot</div>
-                <p className="text-xs text-muted-foreground">35% des estimations totales</p>
-              </CardContent>
-            </Card>
+            <StatsOverviewCard
+              title="Marque la plus estimée"
+              description="Marque avec le plus d'estimations"
+              value="Peugeot"
+              change="35% des estimations totales"
+            />
           </div>
           
           <div className="grid gap-4 md:grid-cols-2 mt-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Estimations mensuelles</CardTitle>
-                <CardDescription>Nombre d'estimations par mois</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ChartContainer config={{
-                  estimations: {
-                    label: "Estimations",
-                    color: "#0088FE"
-                  }
-                }} className="h-[300px]">
-                  <RechartsLineChart data={monthlyData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <ChartTooltip content={<ChartTooltipContent />} />
-                    <ChartLegend content={<ChartLegendContent />} />
-                    <Line 
-                      type="monotone" 
-                      dataKey="estimations" 
-                      stroke="#0088FE" 
-                      activeDot={{ r: 8 }} 
-                    />
-                  </RechartsLineChart>
-                </ChartContainer>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader>
-                <CardTitle>Répartition par marque</CardTitle>
-                <CardDescription>Pourcentage d'estimations par marque</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ChartContainer config={{
-                  value: {
-                    label: "Estimations",
-                    color: "#0088FE"
-                  }
-                }} className="h-[300px]">
-                  <RechartsPieChart>
-                    <Pie
-                      data={brandData}
-                      cx="50%"
-                      cy="50%"
-                      labelLine={false}
-                      outerRadius={80}
-                      fill="#8884d8"
-                      dataKey="value"
-                      label={({name, percent}) => `${name} ${(percent * 100).toFixed(0)}%`}
-                    >
-                      {brandData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                      ))}
-                    </Pie>
-                    <ChartTooltip content={<ChartTooltipContent />} />
-                    <Legend />
-                  </RechartsPieChart>
-                </ChartContainer>
-              </CardContent>
-            </Card>
+            <MonthlyChart data={monthlyData} />
+            <BrandsChart data={brandData} colors={COLORS} />
           </div>
         </TabsContent>
 
         <TabsContent value="monthly">
-          <Card>
-            <CardHeader>
-              <CardTitle>Estimation mensuelles</CardTitle>
-              <CardDescription>Évolution du nombre d'estimations au cours de l'année</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ChartContainer config={{
-                estimations: {
-                  label: "Estimations",
-                  color: "#0088FE"
-                }
-              }} className="h-[400px]">
-                <RechartsLineChart data={monthlyData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <ChartTooltip content={<ChartTooltipContent />} />
-                  <ChartLegend content={<ChartLegendContent />} />
-                  <Line 
-                    type="monotone" 
-                    dataKey="estimations" 
-                    stroke="#0088FE" 
-                    activeDot={{ r: 8 }} 
-                  />
-                </RechartsLineChart>
-              </ChartContainer>
-            </CardContent>
-          </Card>
+          <MonthlyChart data={monthlyData} fullSize={true} />
         </TabsContent>
 
         <TabsContent value="brands">
-          <Card>
-            <CardHeader>
-              <CardTitle>Répartition par marque</CardTitle>
-              <CardDescription>Pourcentage d'estimations par marque de véhicule</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ChartContainer config={{
-                value: {
-                  label: "Estimations",
-                  color: "#0088FE"
-                }
-              }} className="h-[400px]">
-                <RechartsPieChart>
-                  <Pie
-                    data={brandData}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    outerRadius={120}
-                    fill="#8884d8"
-                    dataKey="value"
-                    label={({name, percent}) => `${name} ${(percent * 100).toFixed(0)}%`}
-                  >
-                    {brandData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <ChartTooltip content={<ChartTooltipContent />} />
-                  <Legend />
-                </RechartsPieChart>
-              </ChartContainer>
-            </CardContent>
-          </Card>
+          <BrandsChart data={brandData} colors={COLORS} fullSize={true} />
         </TabsContent>
 
         <TabsContent value="prices">
-          <Card>
-            <CardHeader>
-              <CardTitle>Répartition par gamme de prix</CardTitle>
-              <CardDescription>Nombre d'estimations par tranche de prix</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ChartContainer config={{
-                value: {
-                  label: "Estimations",
-                  color: "#0088FE"
-                }
-              }} className="h-[400px]">
-                <BarChart data={priceRangeData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <ChartTooltip content={<ChartTooltipContent />} />
-                  <ChartLegend content={<ChartLegendContent />} />
-                  <Bar dataKey="value" fill="#0088FE">
-                    {priceRangeData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ChartContainer>
-            </CardContent>
-          </Card>
+          <PriceRangeChart data={priceRangeData} colors={COLORS} />
         </TabsContent>
       </Tabs>
     </div>
