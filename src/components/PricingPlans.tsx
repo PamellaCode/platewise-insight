@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { CheckCircle2, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -29,7 +30,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
     color: 'bg-amber-700',
     textColor: 'text-amber-700',
     borderColor: 'border-amber-200',
-    buttonVariant: 'outline' as const,
+    buttonVariant: 'default' as const,
     estimations: 1,
     gradient: 'from-amber-500/20 to-amber-700/20'
   }, {
@@ -37,7 +38,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
     price: getPrice('9,99€'),
     period: isAnnual ? 'par an' : 'par mois',
     description: 'Parfait pour les particuliers avec plusieurs véhicules.',
-    features: ['3 estimations par mois', 'Résultat cote Argus détaillé', 'Annonce visuelle pour Leboncoin', "Courbe d'évolution de la valeur", 'Estimations supplémentaires à 3€ par unité', 'Support prioritaire'],
+    features: ['3 estimations par mois', 'Résultat cote Argus détaillé', 'Annonce visuelle pour Leboncoin', "Graphique d'évolution de la valeur du modèle", 'Estimations supplémentaires à 3€ par unité', 'Annulation à tout moment'],
     popular: true,
     color: 'bg-slate-700',
     textColor: 'text-slate-700',
@@ -50,12 +51,12 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
     price: getPrice('49,99€'),
     period: isAnnual ? 'par an' : 'par mois',
     description: 'Solution complète pour les professionnels de l\'automobile.',
-    features: ['10 estimations par mois', 'Résultat cote Argus détaillé', 'Annonce visuelle pour Leboncoin', "Courbe d'évolution de la valeur", 'Accès aux historiques sur 10 véhicules', "Carte d'évolution de la valeur du modèle", 'Estimations supplémentaires à 10€ par unité', 'Support dédié et prioritaire'],
+    features: ['10 estimations par mois', 'Résultat cote Argus détaillé', 'Annonce visuelle pour Leboncoin', "Graphique d'évolution de la valeur du modèle", 'Accès aux historiques sur 10 véhicules', 'Estimations supplémentaires à 10€ par unité', 'Annulation à tout moment'],
     popular: false,
     color: 'bg-auto-gold',
     textColor: 'text-auto-gold',
     borderColor: 'border-auto-gold-100',
-    buttonVariant: 'outline' as const,
+    buttonVariant: 'default' as const,
     estimations: 10,
     gradient: 'from-amber-500/20 to-auto-gold/20'
   }];
@@ -117,8 +118,8 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
               </div>
             </CardContent>
             <CardFooter className="mt-auto pt-6 relative z-10">
-              <Button variant={plan.buttonVariant === 'outline' ? 'outline' : 'default'} className={`w-full py-6 text-base font-semibold transition-all duration-300 group-hover:scale-105 group-hover:shadow-md`} asChild>
-                <Link to="/register" className=" text-bleu">S'abonner maintenant</Link>
+              <Button variant="default" className="w-full py-6 text-base font-semibold transition-all duration-300 group-hover:scale-105 group-hover:shadow-md text-white" asChild>
+                <Link to="/register">S'abonner maintenant</Link>
               </Button>
             </CardFooter>
           </Card>
@@ -126,3 +127,4 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
     </div>;
 };
 export default PricingPlans;
+
