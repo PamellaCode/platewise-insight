@@ -24,7 +24,7 @@ const MARKET_TRENDS = [
     excerpt: "La Commission européenne a adopté de nouvelles mesures pour réduire les émissions des véhicules particuliers. Quels impacts sur les prix?",
     category: "réglementation",
     date: "3 Juillet 2023",
-    image: "https://images.unsplash.com/photo-1616196334218-11d2fbf84465?w=800&auto=format&fit=crop&q=60"
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=60"
   },
   {
     id: 3,
