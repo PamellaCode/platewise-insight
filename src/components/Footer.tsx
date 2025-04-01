@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 const Footer: React.FC = () => {
@@ -37,7 +36,7 @@ const Footer: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider">Services</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wider">MENU</h3>
             <ul className="mt-4 space-y-2">
               <li><Link to="/pricing" className="text-gray-300 hover:text-white text-sm">Abonnements</Link></li>
               <li><Link to="/how-it-works" className="text-gray-300 hover:text-white text-sm">Comment ça marche</Link></li>
