@@ -19,7 +19,10 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({
         
       </TabsTrigger>
       <TabsTrigger value="subscription" asChild>
-        
+        <Link to="/dashboard/subscription" className="flex items-center gap-1">
+          <CreditCard className="h-4 w-4" />
+          <span>Abonnement</span>
+        </Link>
       </TabsTrigger>
       <TabsTrigger value="assistant-ai" asChild>
         <Link to="/dashboard/assistant-ai" className="flex items-center gap-1">
