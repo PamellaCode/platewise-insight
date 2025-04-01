@@ -1,11 +1,14 @@
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, X, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import PricingPlans from '@/components/PricingPlans';
 import MainLayout from '@/components/layouts/MainLayout';
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+
 const fadeIn = {
   hidden: {
     opacity: 0,
@@ -102,55 +105,73 @@ const Pricing = () => {
             </p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="p-4 text-left text-gray-700 border-b">Fonctionnalité</th>
-                  <th className="p-4 text-center text-gray-700 border-b">Essentiel</th>
-                  <th className="p-4 text-center text-gray-700 border-b">Standard</th>
-                  <th className="p-4 text-center text-gray-700 border-b">Expert</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="hover:bg-gray-50">
-                  <td className="p-4 border-b">Estimation de base</td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="p-4 border-b">Historique des prix</td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="p-4 border-b">Rapports détaillés</td>
-                  <td className="p-4 text-center border-b">-</td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="p-4 border-b">API d'intégration</td>
-                  <td className="p-4 text-center border-b">-</td>
-                  <td className="p-4 text-center border-b">-</td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="p-4 border-b">Support prioritaire</td>
-                  <td className="p-4 text-center border-b">-</td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="p-4 border-b">Estimations illimitées</td>
-                  <td className="p-4 text-center border-b">-</td>
-                  <td className="p-4 text-center border-b">-</td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="overflow-x-auto rounded-xl shadow-lg">
+            <Table className="w-full bg-white">
+              <TableHeader className="bg-gray-100">
+                <TableRow>
+                  <TableHead className="w-[300px] font-bold text-lg text-gray-800">Fonctionnalité</TableHead>
+                  <TableHead className="text-center font-bold text-lg text-gray-800">Essentiel</TableHead>
+                  <TableHead className="text-center font-bold text-lg text-gray-800">Standard</TableHead>
+                  <TableHead className="text-center font-bold text-lg text-gray-800">Expert</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow className="hover:bg-gray-50 border-b">
+                  <TableCell className="font-medium">Estimation de base</TableCell>
+                  <TableCell className="text-center">
+                    <Check className="h-5 w-5 mx-auto text-green-500" />
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <Check className="h-5 w-5 mx-auto text-green-500" />
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <Check className="h-5 w-5 mx-auto text-green-500" />
+                  </TableCell>
+                </TableRow>
+                <TableRow className="hover:bg-gray-50 border-b">
+                  <TableCell className="font-medium">Historique des prix</TableCell>
+                  <TableCell className="text-center">
+                    <Check className="h-5 w-5 mx-auto text-green-500" />
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <Check className="h-5 w-5 mx-auto text-green-500" />
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <Check className="h-5 w-5 mx-auto text-green-500" />
+                  </TableCell>
+                </TableRow>
+                <TableRow className="hover:bg-gray-50 border-b">
+                  <TableCell className="font-medium">Rapports détaillés</TableCell>
+                  <TableCell className="text-center">
+                    <X className="h-5 w-5 mx-auto text-red-500" />
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <Check className="h-5 w-5 mx-auto text-green-500" />
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <Check className="h-5 w-5 mx-auto text-green-500" />
+                  </TableCell>
+                </TableRow>
+                <TableRow className="hover:bg-gray-50 border-b">
+                  <TableCell className="font-medium">Nombre d'estimations/mois</TableCell>
+                  <TableCell className="text-center font-medium">1</TableCell>
+                  <TableCell className="text-center font-medium">3</TableCell>
+                  <TableCell className="text-center font-medium">10</TableCell>
+                </TableRow>
+                <TableRow className="hover:bg-gray-50 border-b">
+                  <TableCell className="font-medium">Export des résultats (PDF/Excel)</TableCell>
+                  <TableCell className="text-center">
+                    <X className="h-5 w-5 mx-auto text-red-500" />
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <Check className="h-5 w-5 mx-auto text-green-500" />
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <Check className="h-5 w-5 mx-auto text-green-500" />
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </div>
         </div>
       </section>
