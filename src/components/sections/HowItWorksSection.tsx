@@ -179,7 +179,7 @@ const HowItWorksSection: React.FC = () => {
                 }} transition={{
                   repeat: Infinity,
                   duration: 1.5
-                }} className="ml-2 group-hover:ml-4 transition-all duration-300 relative z-10 bg-zinc-50">
+                }} className="ml-2 group-hover:ml-4 transition-all duration-300 relative z-10 bg-transparent rounded">
                     <ArrowRight className="h-5 w-5" />
                   </motion.div>
                   <motion.div className="absolute left-0 top-0 h-full w-0 bg-gradient-to-r from-blue-100 to-cyan-100 group-hover:w-full transition-all duration-500" style={{
