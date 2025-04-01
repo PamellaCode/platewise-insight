@@ -143,7 +143,7 @@ const SubscriptionTab = () => {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button variant={plan.current ? "outline" : "default"} className="w-full" disabled={plan.current}>
+                <Button variant={plan.current ? "outline" : "default"} disabled={plan.current} className="w-full text-blue-600">
                   {plan.current ? 'Formule actuelle' : 'Changer de formule'}
                 </Button>
               </CardFooter>
