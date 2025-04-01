@@ -117,7 +117,7 @@ const EstimationsTab = () => {
               <CardDescription>Consultez et gérez vos estimations de prix</CardDescription>
             </div>
             <div className="flex flex-col sm:flex-row gap-2">
-              <Button variant="outline" size="sm" className="flex items-center gap-2">
+              <Button variant="outline" size="sm" className="flex items-center gap-2 text-indigo-600">
                 <Filter className="h-4 w-4" /> Filtrer
               </Button>
               <Button size="sm" asChild>
