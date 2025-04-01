@@ -194,7 +194,7 @@ const SettingsTab = () => {
               <div>
                 <h3 className="text-lg font-medium mb-2">Densité d'affichage</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <Button variant="outline" className="justify-start text-gray-600">Compacte</Button>
+                  <Button variant="outline" className="justify-start text-blue-600">Compacte</Button>
                   <Button variant="outline" className="justify-start border-primary text-blue-600">Standard</Button>
                   <Button variant="outline" className="justify-start text-blue-600">Confortable</Button>
                 </div>
