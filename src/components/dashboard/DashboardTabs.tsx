@@ -1,18 +1,22 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { BarChart2, Car, CreditCard, History, MessageCircle } from 'lucide-react';
+import { BarChart2, Car, CreditCard, History, MessageCircle, Gauge } from 'lucide-react';
+
 interface DashboardTabsProps {
   currentTab: string;
 }
+
 const DashboardTabs: React.FC<DashboardTabsProps> = ({
   currentTab
 }) => {
-  return <TabsList className="mb-4">
+  return (
+    <TabsList className="mb-4 flex flex-wrap">
       <TabsTrigger value="overview" asChild>
         <Link to="/dashboard" className="flex items-center gap-1">
-          <Car className="h-4 w-4" />
-          <span>Aperçu</span>
+          <Gauge className="h-4 w-4" />
+          <span>Tableau de bord</span>
         </Link>
       </TabsTrigger>
       <TabsTrigger value="history" asChild>
@@ -34,8 +38,13 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({
         </Link>
       </TabsTrigger>
       <TabsTrigger value="stats" asChild>
-        
+        <Link to="/dashboard/stats" className="flex items-center gap-1">
+          <BarChart2 className="h-4 w-4" />
+          <span>Statistiques</span>
+        </Link>
       </TabsTrigger>
-    </TabsList>;
+    </TabsList>
+  );
 };
+
 export default DashboardTabs;

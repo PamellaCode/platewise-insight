@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { Plus } from 'lucide-react';
@@ -22,11 +22,12 @@ const Dashboard = () => {
   const subscription = {
     plan: 'bronze' as 'bronze' | 'silver' | 'gold',
     displayName: 'Bronze',
-    creditsTotal: 1,
-    creditsUsed: 1,
-    renewalDate: new Date('2023-12-31'),
+    creditsTotal: 5,
+    creditsUsed: 2,
+    renewalDate: new Date('2024-12-31'),
   };
 
+  // Données d'exemple pour les estimations avec des prix précédents
   const recentEstimations = [
     {
       id: 1,
@@ -35,7 +36,9 @@ const Dashboard = () => {
       model: '308',
       year: 2019,
       estimatedPrice: 15700,
+      previousPrice: 15200, // Ajout du prix précédent
       date: new Date('2023-11-15'),
+      status: 'completed' as const,
     },
   ];
 
@@ -48,7 +51,9 @@ const Dashboard = () => {
       model: 'Clio',
       year: 2018,
       estimatedPrice: 9800,
+      previousPrice: 10200, // Prix en baisse
       date: new Date('2023-10-20'),
+      status: 'completed' as const,
     },
     {
       id: 3,
@@ -57,9 +62,42 @@ const Dashboard = () => {
       model: 'C3',
       year: 2020,
       estimatedPrice: 13200,
+      previousPrice: 12900, // Prix en hausse
       date: new Date('2023-09-05'),
+      status: 'expired' as const,
+    },
+    {
+      id: 4,
+      licensePlate: 'MN-012-OP',
+      brand: 'Volkswagen',
+      model: 'Golf',
+      year: 2021,
+      estimatedPrice: 19500,
+      previousPrice: 19500, // Prix stable
+      date: new Date('2023-08-15'),
+      status: 'completed' as const,
+    },
+    {
+      id: 5,
+      licensePlate: 'QR-345-ST',
+      brand: 'Toyota',
+      model: 'Yaris',
+      year: 2020,
+      estimatedPrice: 12800,
+      previousPrice: 12400, // Prix en hausse
+      date: new Date('2023-07-10'),
+      status: 'completed' as const,
     },
   ];
+
+  // Animation pour les transitions d'onglets
+  const [tabTransition, setTabTransition] = useState(false);
+
+  useEffect(() => {
+    setTabTransition(true);
+    const timer = setTimeout(() => setTabTransition(false), 300);
+    return () => clearTimeout(timer);
+  }, [currentTab]);
 
   return (
     <DashboardLayout>
@@ -76,20 +114,22 @@ const Dashboard = () => {
         <Tabs defaultValue={currentTab} className="w-full">
           <DashboardTabs currentTab={currentTab} />
 
-          <TabsContent value="overview" className="space-y-4">
-            <OverviewTab 
-              subscription={subscription}
-              recentEstimations={recentEstimations}
-            />
-          </TabsContent>
+          <div className={`transition-all duration-300 ${tabTransition ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
+            <TabsContent value="overview" className="space-y-4">
+              <OverviewTab 
+                subscription={subscription}
+                recentEstimations={recentEstimations}
+              />
+            </TabsContent>
 
-          <TabsContent value="history" className="space-y-4">
-            <HistoryTab estimations={allEstimations} />
-          </TabsContent>
+            <TabsContent value="history" className="space-y-4">
+              <HistoryTab estimations={allEstimations} />
+            </TabsContent>
 
-          <TabsContent value="assistant-ai" className="space-y-4">
-            <AssistantAITab />
-          </TabsContent>
+            <TabsContent value="assistant-ai" className="space-y-4">
+              <AssistantAITab />
+            </TabsContent>
+          </div>
         </Tabs>
       </div>
     </DashboardLayout>
