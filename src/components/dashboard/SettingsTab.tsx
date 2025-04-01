@@ -78,41 +78,7 @@ const SettingsTab = () => {
             </CardFooter>
           </Card>
           
-          <Card>
-            <CardHeader>
-              <CardTitle>API Access</CardTitle>
-              <CardDescription>
-                Gérez vos clés d'API pour accéder aux services ArgusAI.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="api-key">Clé API</Label>
-                <div className="flex space-x-2">
-                  <Input id="api-key" value="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" disabled className="flex-1" />
-                  <Button variant="outline" onClick={() => {
-                  navigator.clipboard.writeText("sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-                  toast({
-                    title: "Clé API copiée",
-                    description: "La clé API a été copiée dans le presse-papier."
-                  });
-                }}>
-                    Copier
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button variant="outline" onClick={() => {
-              toast({
-                title: "Nouvelle clé API générée",
-                description: "Votre nouvelle clé API a été générée avec succès."
-              });
-            }}>
-                Générer une nouvelle clé
-              </Button>
-            </CardFooter>
-          </Card>
+          
         </TabsContent>
         
         <TabsContent value="notifications" className="space-y-4">
