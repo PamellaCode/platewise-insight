@@ -167,7 +167,7 @@ const SubscriptionTab = () => {
                     <CardDescription>3,00€</CardDescription>
                   </CardHeader>
                   <CardFooter>
-                    <Button variant="outline" size="sm" className="w-full">Acheter</Button>
+                    <Button variant="outline" size="sm" className="w-full text-blue-600">Acheter</Button>
                   </CardFooter>
                 </Card>
                 
