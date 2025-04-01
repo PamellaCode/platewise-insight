@@ -67,7 +67,7 @@ const ProfileTab = () => {
   }
   return <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Profil</h1>
+        
         <p className="text-muted-foreground">
           Gérez vos informations personnelles et vos paramètres de compte
         </p>
