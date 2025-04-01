@@ -1,4 +1,3 @@
-
 import React from 'react';
 import MainLayout from '@/components/layouts/MainLayout';
 import { motion } from 'framer-motion';
@@ -7,39 +6,32 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-
 const Cookies: React.FC = () => {
   const [essentialCookies, setEssentialCookies] = React.useState(true);
   const [analyticalCookies, setAnalyticalCookies] = React.useState(true);
   const [marketingCookies, setMarketingCookies] = React.useState(false);
-  
-  const cookieTypes = [
-    {
-      id: 'essential',
-      name: 'Cookies essentiels',
-      description: 'Ces cookies sont nécessaires au bon fonctionnement du site. Ils permettent la navigation et l\'utilisation des fonctionnalités de base.',
-      required: true,
-      enabled: essentialCookies,
-      onChange: () => {} // Cannot be disabled
-    },
-    {
-      id: 'analytical',
-      name: 'Cookies analytiques',
-      description: 'Ces cookies nous aident à comprendre comment les visiteurs interagissent avec notre site en collectant et rapportant des informations de manière anonyme.',
-      required: false,
-      enabled: analyticalCookies,
-      onChange: () => setAnalyticalCookies(!analyticalCookies)
-    },
-    {
-      id: 'marketing',
-      name: 'Cookies marketing',
-      description: 'Ces cookies sont utilisés pour suivre les visiteurs sur les sites web. L\'intention est d\'afficher des publicités pertinentes et intéressantes pour l\'utilisateur.',
-      required: false,
-      enabled: marketingCookies,
-      onChange: () => setMarketingCookies(!marketingCookies)
-    }
-  ];
-
+  const cookieTypes = [{
+    id: 'essential',
+    name: 'Cookies essentiels',
+    description: 'Ces cookies sont nécessaires au bon fonctionnement du site. Ils permettent la navigation et l\'utilisation des fonctionnalités de base.',
+    required: true,
+    enabled: essentialCookies,
+    onChange: () => {} // Cannot be disabled
+  }, {
+    id: 'analytical',
+    name: 'Cookies analytiques',
+    description: 'Ces cookies nous aident à comprendre comment les visiteurs interagissent avec notre site en collectant et rapportant des informations de manière anonyme.',
+    required: false,
+    enabled: analyticalCookies,
+    onChange: () => setAnalyticalCookies(!analyticalCookies)
+  }, {
+    id: 'marketing',
+    name: 'Cookies marketing',
+    description: 'Ces cookies sont utilisés pour suivre les visiteurs sur les sites web. L\'intention est d\'afficher des publicités pertinentes et intéressantes pour l\'utilisateur.',
+    required: false,
+    enabled: marketingCookies,
+    onChange: () => setMarketingCookies(!marketingCookies)
+  }];
   const saveCookiePreferences = () => {
     console.log({
       essential: essentialCookies,
@@ -49,16 +41,17 @@ const Cookies: React.FC = () => {
     // Here you would save the preferences to cookies/localStorage
     alert('Vos préférences de cookies ont été enregistrées !');
   };
-
-  return (
-    <MainLayout>
+  return <MainLayout>
       <div className="container mx-auto px-4 py-12">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.5 }} 
-          className="max-w-4xl mx-auto"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 0.5
+      }} className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
               Politique des Cookies
@@ -121,8 +114,7 @@ const Cookies: React.FC = () => {
                 </p>
                 
                 <div className="space-y-6">
-                  {cookieTypes.map(cookie => (
-                    <div key={cookie.id} className="flex items-start justify-between p-4 border rounded-lg">
+                  {cookieTypes.map(cookie => <div key={cookie.id} className="flex items-start justify-between p-4 border rounded-lg">
                       <div className="space-y-1">
                         <div className="font-medium flex items-center">
                           {cookie.name}
@@ -131,28 +123,22 @@ const Cookies: React.FC = () => {
                         <p className="text-sm text-gray-600">{cookie.description}</p>
                       </div>
                       <div className="ml-4">
-                        <Switch 
-                          id={cookie.id} 
-                          checked={cookie.enabled}
-                          onCheckedChange={cookie.onChange}
-                          disabled={cookie.required}
-                        />
+                        <Switch id={cookie.id} checked={cookie.enabled} onCheckedChange={cookie.onChange} disabled={cookie.required} />
                       </div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
 
                 <div className="mt-6 flex justify-end gap-3">
                   <Button variant="outline" onClick={() => {
-                    setAnalyticalCookies(false);
-                    setMarketingCookies(false);
-                  }}>
+                  setAnalyticalCookies(false);
+                  setMarketingCookies(false);
+                }} className="text-blue-600">
                     Tout refuser
                   </Button>
                   <Button variant="outline" onClick={() => {
-                    setAnalyticalCookies(true);
-                    setMarketingCookies(true);
-                  }}>
+                  setAnalyticalCookies(true);
+                  setMarketingCookies(true);
+                }}>
                     Tout accepter
                   </Button>
                   <Button onClick={saveCookiePreferences}>
@@ -180,8 +166,6 @@ const Cookies: React.FC = () => {
           </div>
         </motion.div>
       </div>
-    </MainLayout>
-  );
+    </MainLayout>;
 };
-
 export default Cookies;
