@@ -8,7 +8,6 @@ import ScrollToTopButton from '@/components/ScrollToTopButton';
 import NewsletterSection from '@/components/sections/NewsletterSection';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Link } from 'react-router-dom';
-
 const fadeIn = {
   hidden: {
     opacity: 0,
@@ -583,14 +582,14 @@ const HowItWorks = () => {
           }}>
               <Button className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group" size="lg" asChild>
                 <Link to="/register">
-                  <span className="mr-2">Estimer mon véhicule</span>
+                  <span className="mr-2 text-zinc-50">Estimer mon véhicule</span>
                   <motion.div animate={{
                   x: [0, 5, 0]
                 }} transition={{
                   repeat: Infinity,
                   duration: 1.5,
                   ease: "easeInOut"
-                }} className="inline-block white bg-transparent rounded">
+                }} className="inline-block white bg-transparent rounded-none">
                     <ArrowRight className="inline-block" />
                   </motion.div>
                 </Link>
