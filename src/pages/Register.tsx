@@ -1,5 +1,6 @@
+
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -7,9 +8,10 @@ import MainLayout from "@/components/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { toast } from "@/components/ui/use-toast";
 import { ArrowRight, Check } from "lucide-react";
 import { motion } from "framer-motion";
+import { useAuth } from "@/lib/auth";
+
 const registerSchema = z.object({
   firstName: z.string().min(2, {
     message: "Le prénom doit contenir au moins 2 caractères."
@@ -22,31 +24,31 @@ const registerSchema = z.object({
   }),
   password: z.string().min(8, {
     message: "Le mot de passe doit contenir au moins 8 caractères."
+  }),
+  terms: z.boolean().refine(value => value === true, {
+    message: "Vous devez accepter les conditions d'utilisation."
   })
 });
+
 type RegisterFormValues = z.infer<typeof registerSchema>;
+
 const RegisterPage = () => {
-  const navigate = useNavigate();
+  const { signUp, loading } = useAuth();
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       firstName: "",
       lastName: "",
       email: "",
-      password: ""
+      password: "",
+      terms: false
     }
   });
-  const onSubmit = (data: RegisterFormValues) => {
-    console.log("Form data:", data);
-    toast({
-      title: "Inscription réussie!",
-      description: "Bienvenue sur ArgusAI"
-    });
-    // Dans un cas réel, vous appelleriez un service d'authentification ici
-    setTimeout(() => {
-      navigate("/dashboard");
-    }, 1500);
+
+  const onSubmit = async (data: RegisterFormValues) => {
+    await signUp(data.email, data.password, data.firstName, data.lastName);
   };
+
   return <MainLayout>
       <div className="min-h-screen bg-gradient-to-b from-argus-blue-50 to-white py-12">
         <div className="container mx-auto px-4 max-w-4xl">
@@ -112,38 +114,62 @@ const RegisterPage = () => {
                       <FormMessage />
                     </FormItem>} />
 
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <div className="flex items-center h-5">
-                      <input id="terms" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-argus-blue-600 focus:ring-argus-blue-500" />
-                    </div>
-                    <div className="ml-3 text-sm">
-                      <label htmlFor="terms" className="text-gray-600">
-                        J'accepte les{" "}
-                        <a href="#" className="text-argus-teal-500 hover:underline">
-                          conditions d'utilisation
-                        </a>{" "}
-                        et la{" "}
-                        <a href="#" className="text-argus-teal-500 hover:underline">
-                          politique de confidentialité
-                        </a>
-                      </label>
-                    </div>
-                  </div>
-                </div>
+                <FormField
+                  control={form.control}
+                  name="terms"
+                  render={({ field }) => (
+                    <FormItem className="flex items-start space-x-3 space-y-0">
+                      <FormControl>
+                        <input
+                          type="checkbox"
+                          checked={field.value}
+                          onChange={field.onChange}
+                          className="h-4 w-4 rounded border-gray-300 text-argus-blue-600 focus:ring-argus-blue-500"
+                        />
+                      </FormControl>
+                      <div className="leading-none">
+                        <FormLabel className="text-sm text-gray-600">
+                          J'accepte les{" "}
+                          <Link to="#" className="text-argus-teal-500 hover:underline">
+                            conditions d'utilisation
+                          </Link>{" "}
+                          et la{" "}
+                          <Link to="#" className="text-argus-teal-500 hover:underline">
+                            politique de confidentialité
+                          </Link>
+                        </FormLabel>
+                        <FormMessage />
+                      </div>
+                    </FormItem>
+                  )}
+                />
 
                 <div className="pt-2">
-                  <Button type="submit" className="w-full bg-argus-teal-500 hover:bg-argus-teal-600 text-white py-6" size="lg">
-                    Créer mon compte
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-argus-teal-500 hover:bg-argus-teal-600 text-white py-6" 
+                    size="lg"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <span className="flex items-center">
+                        <span className="animate-spin mr-2 h-4 w-4 border-t-2 border-b-2 border-white rounded-full"></span>
+                        Inscription...
+                      </span>
+                    ) : (
+                      <>
+                        Créer mon compte
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </>
+                    )}
                   </Button>
                 </div>
 
                 <div className="text-center mt-6 text-gray-500 text-sm">
                   Vous avez déjà un compte ?{" "}
-                  <a href="/login" className="text-argus-teal-500 hover:underline">
+                  <Link to="/login" className="text-argus-teal-500 hover:underline">
                     Connectez-vous
-                  </a>
+                  </Link>
                 </div>
               </form>
             </Form>
@@ -183,4 +209,5 @@ const RegisterPage = () => {
       </div>
     </MainLayout>;
 };
+
 export default RegisterPage;

@@ -11,10 +11,12 @@ import {
   Settings, 
   User, 
   X,
-  History
+  History,
+  LogOut
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Toaster } from '@/components/ui/toaster';
+import { useAuth } from '@/lib/auth';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -23,6 +25,7 @@ interface DashboardLayoutProps {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
+  const { user, signOut } = useAuth();
   
   const navigation = [
     { name: 'Tableau de bord', path: '/dashboard', icon: Home },
@@ -36,6 +39,13 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   ];
   
   const isActive = (path: string) => location.pathname === path;
+
+  const handleLogout = async () => {
+    await signOut();
+  };
+
+  // Get first letter of email for avatar
+  const userInitial = user?.email ? user.email[0].toUpperCase() : 'U';
 
   return (
     <div className="h-screen flex overflow-hidden bg-gray-50">
@@ -93,15 +103,15 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
             </nav>
           </div>
           <div className="flex-shrink-0 flex border-t border-argus-blue-700 p-4">
-            <div className="flex items-center">
+            <div className="flex items-center w-full">
               <div>
                 <div className="h-8 w-8 rounded-full bg-argus-teal-300 flex items-center justify-center text-argus-blue-700 font-bold">
-                  U
+                  {userInitial}
                 </div>
               </div>
-              <div className="ml-3">
-                <p className="text-base font-medium text-white">Utilisateur</p>
-                <Button variant="link" className="p-0 h-auto text-xs text-gray-300 hover:text-white">
+              <div className="ml-3 flex-grow">
+                <p className="text-base font-medium text-white">{user?.email}</p>
+                <Button variant="link" className="p-0 h-auto text-xs text-gray-300 hover:text-white" onClick={handleLogout}>
                   Déconnexion
                 </Button>
               </div>
@@ -148,18 +158,23 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               </nav>
             </div>
             <div className="flex-shrink-0 flex border-t border-argus-blue-700 p-4">
-              <div className="flex items-center">
-                <div>
+              <div className="flex items-center w-full justify-between">
+                <div className="flex items-center">
                   <div className="h-8 w-8 rounded-full bg-argus-teal-300 flex items-center justify-center text-argus-blue-700 font-bold">
-                    U
+                    {userInitial}
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-sm font-medium text-white truncate max-w-[120px]">{user?.email}</p>
                   </div>
                 </div>
-                <div className="ml-3">
-                  <p className="text-sm font-medium text-white">Utilisateur</p>
-                  <Button variant="link" className="p-0 h-auto text-xs text-gray-300 hover:text-white">
-                    Déconnexion
-                  </Button>
-                </div>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="text-gray-200 hover:text-white hover:bg-argus-blue-600"
+                  onClick={handleLogout}
+                >
+                  <LogOut className="h-5 w-5" />
+                </Button>
               </div>
             </div>
           </div>

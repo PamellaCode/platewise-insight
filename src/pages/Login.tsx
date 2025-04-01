@@ -1,6 +1,6 @@
 
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,9 +15,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { toast } from "@/components/ui/use-toast";
-import { ArrowRight, LogIn } from "lucide-react";
+import { LogIn } from "lucide-react";
 import { motion } from "framer-motion";
+import { useAuth } from "@/lib/auth";
 
 const loginSchema = z.object({
   email: z.string().email({
@@ -31,7 +31,7 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 const LoginPage = () => {
-  const navigate = useNavigate();
+  const { signIn, loading } = useAuth();
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -40,16 +40,8 @@ const LoginPage = () => {
     },
   });
 
-  const onSubmit = (data: LoginFormValues) => {
-    console.log("Form data:", data);
-    toast({
-      title: "Connexion réussie!",
-      description: "Bienvenue sur ArgusAI",
-    });
-    // Dans un cas réel, vous appelleriez un service d'authentification ici
-    setTimeout(() => {
-      navigate("/dashboard");
-    }, 1500);
+  const onSubmit = async (data: LoginFormValues) => {
+    await signIn(data.email, data.password);
   };
 
   return (
@@ -113,12 +105,12 @@ const LoginPage = () => {
                 />
 
                 <div className="flex justify-end">
-                  <a
-                    href="#"
+                  <Link
+                    to="#"
                     className="text-sm text-argus-teal-500 hover:underline"
                   >
                     Mot de passe oublié?
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="pt-2">
@@ -126,20 +118,30 @@ const LoginPage = () => {
                     type="submit"
                     className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-6"
                     size="lg"
+                    disabled={loading}
                   >
-                    Se connecter
-                    <LogIn className="ml-2 h-5 w-5" />
+                    {loading ? (
+                      <span className="flex items-center">
+                        <span className="animate-spin mr-2 h-4 w-4 border-t-2 border-b-2 border-white rounded-full"></span>
+                        Connexion...
+                      </span>
+                    ) : (
+                      <>
+                        Se connecter
+                        <LogIn className="ml-2 h-5 w-5" />
+                      </>
+                    )}
                   </Button>
                 </div>
 
                 <div className="text-center mt-6 text-gray-500 text-sm">
                   Vous n'avez pas de compte ?{" "}
-                  <a
-                    href="/register"
+                  <Link
+                    to="/register"
                     className="text-argus-teal-500 hover:underline"
                   >
                     Inscrivez-vous
-                  </a>
+                  </Link>
                 </div>
               </form>
             </Form>

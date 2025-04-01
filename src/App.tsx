@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider, RequireAuth } from "@/lib/auth";
 import Index from "./pages/Index";
 import Pricing from "./pages/Pricing";
 import Dashboard from "./pages/Dashboard";
@@ -32,35 +33,101 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/how-it-works" element={<HowItWorks />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/cookies" element={<Cookies />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/news-and-trends" element={<NewsAndTrends />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard/history" element={<History />} />
-          <Route path="/dashboard/assistant-ai" element={<AssistantAI />} />
-          <Route path="/dashboard/subscription" element={<Subscription />} />
-          <Route path="/dashboard/profile" element={<Profile />} />
-          <Route path="/dashboard/settings" element={<Settings />} />
-          <Route path="/dashboard/estimations" element={<Estimations />} />
-          <Route path="/dashboard/estimations/:id" element={<EstimationDetail />} />
-          <Route path="/dashboard/stats" element={<Statistics />} />
-          <Route path="/dashboard/*" element={<Dashboard />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AuthProvider>
+          <Toaster />
+          <Sonner />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/cookies" element={<Cookies />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/news-and-trends" element={<NewsAndTrends />} />
+            {/* Protected routes */}
+            <Route
+              path="/dashboard"
+              element={
+                <RequireAuth>
+                  <Dashboard />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/dashboard/history"
+              element={
+                <RequireAuth>
+                  <History />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/dashboard/assistant-ai"
+              element={
+                <RequireAuth>
+                  <AssistantAI />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/dashboard/subscription"
+              element={
+                <RequireAuth>
+                  <Subscription />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/dashboard/profile"
+              element={
+                <RequireAuth>
+                  <Profile />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/dashboard/settings"
+              element={
+                <RequireAuth>
+                  <Settings />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/dashboard/estimations"
+              element={
+                <RequireAuth>
+                  <Estimations />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/dashboard/estimations/:id"
+              element={
+                <RequireAuth>
+                  <EstimationDetail />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/dashboard/stats"
+              element={
+                <RequireAuth>
+                  <Statistics />
+                </RequireAuth>
+              }
+            />
+            <Route path="/dashboard/*" element={<Dashboard />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
