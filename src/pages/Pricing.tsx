@@ -139,9 +139,9 @@ const Pricing = () => {
                 </tr>
                 <tr className="hover:bg-gray-50">
                   <td className="p-4 border-b">Support prioritaire</td>
-                  
-                  
-                  
+                  <td className="p-4 text-center border-b">-</td>
+                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
+                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
                 </tr>
                 <tr className="hover:bg-gray-50">
                   <td className="p-4 border-b">Estimations illimitées</td>
