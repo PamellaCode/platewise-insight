@@ -1,11 +1,9 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import { CheckCircle2, CreditCard, AlertCircle } from 'lucide-react';
-
 const SubscriptionTab = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annually'>('monthly');
 
@@ -27,47 +25,39 @@ const SubscriptionTab = () => {
       brand: 'Visa'
     }
   };
-
   const formatDate = (date: Date) => {
     return new Intl.DateTimeFormat('fr-FR', {
       day: '2-digit',
       month: '2-digit',
-      year: 'numeric',
+      year: 'numeric'
     }).format(date);
   };
 
   // Calculer le % d'utilisation des crédits
-  const usagePercentage = (subscription.creditsUsed / subscription.creditsTotal) * 100;
-
-  const plans = [
-    {
-      name: 'Bronze',
-      price: billingCycle === 'monthly' ? '5,99€' : '57,50€',
-      period: billingCycle === 'monthly' ? 'par mois' : 'par an',
-      features: ['1 estimation par mois', 'Résultat cote Argus uniquement', 'Accès au chatbot assistant'],
-      popular: false,
-      current: subscription.plan === 'bronze'
-    }, 
-    {
-      name: 'Argent',
-      price: billingCycle === 'monthly' ? '9,99€' : '95,90€',
-      period: billingCycle === 'monthly' ? 'par mois' : 'par an',
-      features: ['3 estimations par mois', 'Résultat cote Argus détaillé', 'Annonce visuelle pour Leboncoin', "Courbe d'évolution de la valeur"],
-      popular: true,
-      current: subscription.plan === 'silver'
-    }, 
-    {
-      name: 'Or',
-      price: billingCycle === 'monthly' ? '49,99€' : '479,90€',
-      period: billingCycle === 'monthly' ? 'par mois' : 'par an',
-      features: ['10 estimations par mois', 'Résultat cote Argus détaillé', 'Annonce visuelle pour Leboncoin', "Courbe d'évolution de la valeur", 'Accès aux historiques sur 10 véhicules'],
-      popular: false,
-      current: subscription.plan === 'gold'
-    }
-  ];
-
-  return (
-    <div className="space-y-8">
+  const usagePercentage = subscription.creditsUsed / subscription.creditsTotal * 100;
+  const plans = [{
+    name: 'Bronze',
+    price: billingCycle === 'monthly' ? '5,99€' : '57,50€',
+    period: billingCycle === 'monthly' ? 'par mois' : 'par an',
+    features: ['1 estimation par mois', 'Résultat cote Argus uniquement', 'Accès au chatbot assistant'],
+    popular: false,
+    current: subscription.plan === 'bronze'
+  }, {
+    name: 'Argent',
+    price: billingCycle === 'monthly' ? '9,99€' : '95,90€',
+    period: billingCycle === 'monthly' ? 'par mois' : 'par an',
+    features: ['3 estimations par mois', 'Résultat cote Argus détaillé', 'Annonce visuelle pour Leboncoin', "Courbe d'évolution de la valeur"],
+    popular: true,
+    current: subscription.plan === 'silver'
+  }, {
+    name: 'Or',
+    price: billingCycle === 'monthly' ? '49,99€' : '479,90€',
+    period: billingCycle === 'monthly' ? 'par mois' : 'par an',
+    features: ['10 estimations par mois', 'Résultat cote Argus détaillé', 'Annonce visuelle pour Leboncoin', "Courbe d'évolution de la valeur", 'Accès aux historiques sur 10 véhicules'],
+    popular: false,
+    current: subscription.plan === 'gold'
+  }];
+  return <div className="space-y-8">
       <h1 className="text-2xl font-bold">Mon abonnement</h1>
       
       {/* Carte d'information sur l'abonnement actuel */}
@@ -112,7 +102,7 @@ const SubscriptionTab = () => {
           </div>
         </CardContent>
         <CardFooter className="flex flex-wrap justify-between gap-2">
-          <Button variant="outline" size="sm">Modifier le mode de paiement</Button>
+          <Button variant="outline" size="sm" className="text-indigo-600">Modifier le mode de paiement</Button>
           <Button variant="destructive" size="sm">Annuler l'abonnement</Button>
         </CardFooter>
       </Card>
@@ -133,14 +123,11 @@ const SubscriptionTab = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {plans.map((plan) => (
-            <Card key={plan.name} className={`border-2 ${plan.current ? 'border-blue-500 shadow-md' : 'border-gray-200'}`}>
+          {plans.map(plan => <Card key={plan.name} className={`border-2 ${plan.current ? 'border-blue-500 shadow-md' : 'border-gray-200'}`}>
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <CardTitle>{plan.name}</CardTitle>
-                  {plan.current && (
-                    <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded">Actuel</span>
-                  )}
+                  {plan.current && <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded">Actuel</span>}
                 </div>
                 <div className="mt-2">
                   <span className="text-2xl font-bold">{plan.price}</span>
@@ -149,25 +136,18 @@ const SubscriptionTab = () => {
               </CardHeader>
               <CardContent className="pt-0">
                 <ul className="space-y-2">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start">
+                  {plan.features.map((feature, idx) => <li key={idx} className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-green-500 mr-2" />
                       <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
+                    </li>)}
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button 
-                  variant={plan.current ? "outline" : "default"} 
-                  className="w-full" 
-                  disabled={plan.current}
-                >
+                <Button variant={plan.current ? "outline" : "default"} className="w-full" disabled={plan.current}>
                   {plan.current ? 'Formule actuelle' : 'Changer de formule'}
                 </Button>
               </CardFooter>
-            </Card>
-          ))}
+            </Card>)}
         </div>
       </div>
       
@@ -263,9 +243,6 @@ const SubscriptionTab = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default SubscriptionTab;
-
