@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -7,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import PricingPlans from '@/components/PricingPlans';
 import MainLayout from '@/components/layouts/MainLayout';
-
 const fadeIn = {
   hidden: {
     opacity: 0,
@@ -21,7 +19,6 @@ const fadeIn = {
     }
   }
 };
-
 const staggerContainer = {
   hidden: {
     opacity: 0
@@ -33,35 +30,25 @@ const staggerContainer = {
     }
   }
 };
-
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(true);
-  
   const toggleBilling = () => {
     setIsAnnual(!isAnnual);
   };
-
-  const faqs = [
-    {
-      question: "Quelle est la différence entre les différentes formules ?",
-      answer: "Nos différentes formules offrent des niveaux de services adaptés à vos besoins. Le plan Essentiel est parfait pour une utilisation occasionnelle, le plan Pro pour les professionnels qui ont besoin d'estimations régulières, et le plan Entreprise pour les sociétés avec des besoins avancés."
-    },
-    {
-      question: "Puis-je changer de formule à tout moment ?",
-      answer: "Oui, vous pouvez passer à une formule supérieure à tout moment. Si vous souhaitez passer à une formule inférieure, le changement sera effectif à la fin de votre période de facturation."
-    },
-    {
-      question: "Comment puis-je annuler mon abonnement ?",
-      answer: "Vous pouvez annuler votre abonnement à tout moment depuis votre espace client. L'annulation sera effective à la fin de votre période de facturation en cours."
-    },
-    {
-      question: "Proposez-vous une garantie de remboursement ?",
-      answer: "Oui, nous proposons une garantie de remboursement de 14 jours si vous n'êtes pas satisfait de nos services. Contactez notre support client pour en savoir plus."
-    }
-  ];
-
-  return (
-    <MainLayout>
+  const faqs = [{
+    question: "Quelle est la différence entre les différentes formules ?",
+    answer: "Nos différentes formules offrent des niveaux de services adaptés à vos besoins. Le plan Essentiel est parfait pour une utilisation occasionnelle, le plan Pro pour les professionnels qui ont besoin d'estimations régulières, et le plan Entreprise pour les sociétés avec des besoins avancés."
+  }, {
+    question: "Puis-je changer de formule à tout moment ?",
+    answer: "Oui, vous pouvez passer à une formule supérieure à tout moment. Si vous souhaitez passer à une formule inférieure, le changement sera effectif à la fin de votre période de facturation."
+  }, {
+    question: "Comment puis-je annuler mon abonnement ?",
+    answer: "Vous pouvez annuler votre abonnement à tout moment depuis votre espace client. L'annulation sera effective à la fin de votre période de facturation en cours."
+  }, {
+    question: "Proposez-vous une garantie de remboursement ?",
+    answer: "Oui, nous proposons une garantie de remboursement de 14 jours si vous n'êtes pas satisfait de nos services. Contactez notre support client pour en savoir plus."
+  }];
+  return <MainLayout>
       {/* Header Section */}
       <section className="bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -70,12 +57,15 @@ const Pricing = () => {
           <div className="absolute top-1/2 left-1/4 w-20 h-20 rounded-full bg-white/20"></div>
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: -20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.5
+        }} className="max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
               Abonnements adaptés à vos besoins
             </h1>
@@ -180,25 +170,16 @@ const Pricing = () => {
             </p>
           </div>
 
-          <motion.div 
-            className="max-w-3xl mx-auto grid gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{once: true, amount: 0.2}}
-          >
-            {faqs.map((faq, index) => (
-              <motion.div 
-                key={index}
-                variants={fadeIn}
-                className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100"
-              >
+          <motion.div className="max-w-3xl mx-auto grid gap-6" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{
+          once: true,
+          amount: 0.2
+        }}>
+            {faqs.map((faq, index) => <motion.div key={index} variants={fadeIn} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100">
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-3 text-gray-800">{faq.question}</h3>
                   <p className="text-gray-600">{faq.answer}</p>
                 </div>
-              </motion.div>
-            ))}
+              </motion.div>)}
           </motion.div>
         </div>
       </section>
@@ -206,23 +187,23 @@ const Pricing = () => {
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white">
         <div className="container mx-auto px-4 text-center">
-          <motion.div 
-            className="max-w-3xl mx-auto"
-            initial={{opacity: 0, y: 20}}
-            whileInView={{opacity: 1, y: 0}}
-            viewport={{once: true}}
-            transition={{duration: 0.5}}
-          >
+          <motion.div className="max-w-3xl mx-auto" initial={{
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.5
+        }}>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Prêt à commencer ?</h2>
             <p className="text-xl mb-8 text-white/90">
               Rejoignez des milliers d'utilisateurs satisfaits et commencez à estimer vos véhicules dès aujourd'hui.
             </p>
-            <Button 
-              className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-              size="lg"
-              asChild
-            >
-              <Link to="/register">
+            <Button className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" size="lg" asChild>
+              <Link to="/register" className=" text-white">
                 S'inscrire maintenant
                 <ArrowRight className="ml-2" />
               </Link>
@@ -230,8 +211,6 @@ const Pricing = () => {
           </motion.div>
         </div>
       </section>
-    </MainLayout>
-  );
+    </MainLayout>;
 };
-
 export default Pricing;
