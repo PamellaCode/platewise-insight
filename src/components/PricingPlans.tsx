@@ -20,7 +20,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
     return `${annualPrice}€`;
   };
   const plans = [{
-    name: 'Bronze',
+    name: 'Essentiel',
     price: getPrice('5,99€'),
     period: isAnnual ? 'par an' : 'par mois',
     description: 'Idéal pour les particuliers avec un usage occasionnel.',
@@ -33,7 +33,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
     estimations: 1,
     gradient: 'from-amber-500/20 to-amber-700/20'
   }, {
-    name: 'Argent',
+    name: 'Standard',
     price: getPrice('9,99€'),
     period: isAnnual ? 'par an' : 'par mois',
     description: 'Parfait pour les particuliers avec plusieurs véhicules.',
@@ -46,7 +46,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
     estimations: 3,
     gradient: 'from-slate-500/20 to-slate-700/20'
   }, {
-    name: 'Or',
+    name: 'Expert',
     price: getPrice('49,99€'),
     period: isAnnual ? 'par an' : 'par mois',
     description: 'Solution complète pour les professionnels de l\'automobile.',

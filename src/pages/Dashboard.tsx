@@ -1,3 +1,4 @@
+
 import React from 'react';
 import DashboardLayout from '@/components/layouts/DashboardLayout';
 import OverviewTab from '@/components/dashboard/OverviewTab';
@@ -12,7 +13,7 @@ interface EstimationItem {
   date: Date;
 }
 interface SubscriptionProps {
-  plan: 'bronze' | 'silver' | 'gold';
+  plan: 'essentiel' | 'standard' | 'expert';
   displayName: string;
   creditsTotal: number;
   creditsUsed: number;
@@ -21,8 +22,8 @@ interface SubscriptionProps {
 const Dashboard = () => {
   // Mock data for subscription
   const subscription: SubscriptionProps = {
-    plan: 'silver',
-    displayName: 'Argent',
+    plan: 'standard',
+    displayName: 'Standard',
     creditsTotal: 50,
     creditsUsed: 12,
     renewalDate: new Date('2023-12-31')

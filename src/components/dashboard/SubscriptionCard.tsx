@@ -7,7 +7,7 @@ import { CreditCard } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface SubscriptionProps {
-  plan: 'bronze' | 'silver' | 'gold';
+  plan: 'essentiel' | 'standard' | 'expert';
   displayName: string;
   creditsTotal: number;
   creditsUsed: number;

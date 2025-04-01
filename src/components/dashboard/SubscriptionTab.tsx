@@ -4,13 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import { CheckCircle2, CreditCard, AlertCircle } from 'lucide-react';
+
 const SubscriptionTab = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annually'>('monthly');
 
   // Exemple de données d'abonnement (à remplacer par des données réelles)
   const subscription = {
-    plan: 'bronze' as 'bronze' | 'silver' | 'gold',
-    displayName: 'Bronze',
+    plan: 'essentiel' as 'essentiel' | 'standard' | 'expert',
+    displayName: 'Essentiel',
     creditsTotal: 1,
     creditsUsed: 1,
     renewalDate: new Date('2023-12-31'),
@@ -36,27 +37,28 @@ const SubscriptionTab = () => {
   // Calculer le % d'utilisation des crédits
   const usagePercentage = subscription.creditsUsed / subscription.creditsTotal * 100;
   const plans = [{
-    name: 'Bronze',
+    name: 'Essentiel',
     price: billingCycle === 'monthly' ? '5,99€' : '57,50€',
     period: billingCycle === 'monthly' ? 'par mois' : 'par an',
     features: ['1 estimation par mois', 'Résultat cote Argus uniquement', 'Accès au chatbot assistant'],
     popular: false,
-    current: subscription.plan === 'bronze'
+    current: subscription.plan === 'essentiel'
   }, {
-    name: 'Argent',
+    name: 'Standard',
     price: billingCycle === 'monthly' ? '9,99€' : '95,90€',
     period: billingCycle === 'monthly' ? 'par mois' : 'par an',
     features: ['3 estimations par mois', 'Résultat cote Argus détaillé', 'Annonce visuelle pour Leboncoin', "Courbe d'évolution de la valeur"],
     popular: true,
-    current: subscription.plan === 'silver'
+    current: subscription.plan === 'standard'
   }, {
-    name: 'Or',
+    name: 'Expert',
     price: billingCycle === 'monthly' ? '49,99€' : '479,90€',
     period: billingCycle === 'monthly' ? 'par mois' : 'par an',
     features: ['10 estimations par mois', 'Résultat cote Argus détaillé', 'Annonce visuelle pour Leboncoin', "Courbe d'évolution de la valeur", 'Accès aux historiques sur 10 véhicules'],
     popular: false,
-    current: subscription.plan === 'gold'
+    current: subscription.plan === 'expert'
   }];
+
   return <div className="space-y-8">
       <h1 className="text-2xl font-bold">Mon abonnement</h1>
       
@@ -220,14 +222,14 @@ const SubscriptionTab = () => {
                 <div className="px-4 py-3">
                   <div className="grid grid-cols-3 gap-4 text-sm">
                     <div>01/11/2023</div>
-                    <div>Abonnement Bronze - Mensuel</div>
+                    <div>Abonnement Essentiel - Mensuel</div>
                     <div className="text-right">5,99€</div>
                   </div>
                 </div>
                 <div className="px-4 py-3">
                   <div className="grid grid-cols-3 gap-4 text-sm">
                     <div>01/10/2023</div>
-                    <div>Abonnement Bronze - Mensuel</div>
+                    <div>Abonnement Essentiel - Mensuel</div>
                     <div className="text-right">5,99€</div>
                   </div>
                 </div>
@@ -245,4 +247,5 @@ const SubscriptionTab = () => {
       </div>
     </div>;
 };
+
 export default SubscriptionTab;

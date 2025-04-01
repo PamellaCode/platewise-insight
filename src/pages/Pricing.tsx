@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import PricingPlans from '@/components/PricingPlans';
 import MainLayout from '@/components/layouts/MainLayout';
+
 const fadeIn = {
   hidden: {
     opacity: 0,
@@ -19,6 +20,7 @@ const fadeIn = {
     }
   }
 };
+
 const staggerContainer = {
   hidden: {
     opacity: 0
@@ -30,14 +32,16 @@ const staggerContainer = {
     }
   }
 };
+
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(true);
   const toggleBilling = () => {
     setIsAnnual(!isAnnual);
   };
+
   const faqs = [{
     question: "Quelle est la différence entre les différentes formules ?",
-    answer: "Nos différentes formules offrent des niveaux de services adaptés à vos besoins. Le plan Essentiel est parfait pour une utilisation occasionnelle, le plan Pro pour les professionnels qui ont besoin d'estimations régulières, et le plan Entreprise pour les sociétés avec des besoins avancés."
+    answer: "Nos différentes formules offrent des niveaux de services adaptés à vos besoins. Le plan Essentiel est parfait pour une utilisation occasionnelle, le plan Standard pour les professionnels qui ont besoin d'estimations régulières, et le plan Expert pour les sociétés avec des besoins avancés."
   }, {
     question: "Puis-je changer de formule à tout moment ?",
     answer: "Oui, vous pouvez passer à une formule supérieure à tout moment. Si vous souhaitez passer à une formule inférieure, le changement sera effectif à la fin de votre période de facturation."
@@ -48,8 +52,8 @@ const Pricing = () => {
     question: "Proposez-vous une garantie de remboursement ?",
     answer: "Oui, nous proposons une garantie de remboursement de 14 jours si vous n'êtes pas satisfait de nos services. Contactez notre support client pour en savoir plus."
   }];
+
   return <MainLayout>
-      {/* Header Section */}
       <section className="bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-40 h-40 rounded-full bg-white/20 -translate-x-1/2 -translate-y-1/2"></div>
@@ -87,15 +91,12 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* Pricing Plans Section */}
       <section className="py-20 bg-gradient-to-b from-blue-50 to-cyan-100">
         <div className="container mx-auto px-4">
-          {/* Pass isAnnual prop to PricingPlans */}
           <PricingPlans isAnnual={isAnnual} />
         </div>
       </section>
 
-      {/* Features Comparison Section */}
       <section className="py-20 bg-gradient-to-b from-cyan-50 to-blue-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -112,8 +113,8 @@ const Pricing = () => {
                 <tr className="bg-gray-100">
                   <th className="p-4 text-left text-gray-700 border-b">Fonctionnalité</th>
                   <th className="p-4 text-center text-gray-700 border-b">Essentiel</th>
-                  <th className="p-4 text-center text-gray-700 border-b">Pro</th>
-                  <th className="p-4 text-center text-gray-700 border-b">Entreprise</th>
+                  <th className="p-4 text-center text-gray-700 border-b">Standard</th>
+                  <th className="p-4 text-center text-gray-700 border-b">Expert</th>
                 </tr>
               </thead>
               <tbody>
@@ -159,7 +160,6 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section className="py-20 bg-gradient-to-r from-blue-50 to-teal-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -184,7 +184,6 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div className="max-w-3xl mx-auto" initial={{
@@ -213,4 +212,5 @@ const Pricing = () => {
       </section>
     </MainLayout>;
 };
+
 export default Pricing;
