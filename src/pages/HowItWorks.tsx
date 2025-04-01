@@ -585,7 +585,7 @@ const HowItWorks = () => {
             scale: 0.95
           }}>
               <Button className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group" size="lg">
-                <span className="mr-2">Estimer mon véhicule</span>
+                <span className="mr-2  text-white">Estimer mon véhicule</span>
                 <motion.div animate={{
                 x: [0, 5, 0]
               }} transition={{
