@@ -259,12 +259,12 @@ const SettingsTab = () => {
                   Vous pouvez télécharger toutes vos données ou supprimer entièrement votre compte ArgusAI.
                 </p>
                 <div className="flex flex-col space-y-2">
-                  <Button variant="outline" className="justify-start" onClick={() => {
+                  <Button variant="outline" onClick={() => {
                   toast({
                     title: "Téléchargement en cours",
                     description: "La préparation de vos données a commencé. Vous recevrez un email lorsqu'elles seront prêtes."
                   });
-                }}>
+                }} className="justify-start text-blue-600">
                     <Globe className="mr-2 h-4 w-4" />
                     Télécharger mes données
                   </Button>
