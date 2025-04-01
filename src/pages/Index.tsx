@@ -6,6 +6,7 @@ import FeaturesSection from '@/components/sections/FeaturesSection';
 import HowItWorksSection from '@/components/sections/HowItWorksSection';
 import ChatbotSection from '@/components/sections/ChatbotSection';
 import CtaSection from '@/components/sections/CtaSection';
+import NewsletterSection from '@/components/sections/NewsletterSection';
 
 const Index = () => {
   return (
@@ -15,6 +16,9 @@ const Index = () => {
       <HowItWorksSection />
       <ChatbotSection />
       <CtaSection />
+      <div className="container mx-auto px-4 py-12">
+        <NewsletterSection />
+      </div>
     </MainLayout>
   );
 };

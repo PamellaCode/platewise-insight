@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -7,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import PricingPlans from '@/components/PricingPlans';
 import MainLayout from '@/components/layouts/MainLayout';
+import NewsletterSection from '@/components/sections/NewsletterSection';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const fadeIn = {
@@ -176,8 +176,6 @@ const Pricing = () => {
         </div>
       </section>
 
-      
-
       <section className="py-16 bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div className="max-w-3xl mx-auto" initial={{
@@ -204,6 +202,10 @@ const Pricing = () => {
           </motion.div>
         </div>
       </section>
+      
+      <div className="container mx-auto px-4 py-12">
+        <NewsletterSection />
+      </div>
     </MainLayout>;
 };
 export default Pricing;
