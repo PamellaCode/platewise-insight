@@ -70,11 +70,11 @@ const HistoryTab: React.FC<HistoryTabProps> = ({ estimations }) => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="mt-2"
+                    className="mt-2 text-blue-600"
                     asChild
                   >
                     <Link to={`/dashboard/estimations/${estimation.id}`}>
-                      <FileText className="h-4 w-4 mr-1" /> Détails
+                      <FileText className="h-4 w-4 mr-1 text-blue-600" /> Détails
                     </Link>
                   </Button>
                 </div>

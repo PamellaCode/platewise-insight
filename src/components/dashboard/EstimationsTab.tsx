@@ -6,6 +6,7 @@ import { Car, Download, FileText, Filter, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+
 interface EstimationItem {
   id: number;
   licensePlate: string;
@@ -16,13 +17,13 @@ interface EstimationItem {
   date: Date;
   status: 'completed' | 'in_progress' | 'expired';
 }
+
 const EstimationsTab = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const {
     toast
   } = useToast();
 
-  // Example data - in a real app this would come from an API
   const allEstimations: EstimationItem[] = [{
     id: 1,
     licensePlate: 'AB-123-CD',
@@ -70,11 +71,11 @@ const EstimationsTab = () => {
     status: 'completed'
   }];
 
-  // Filter estimations based on search query
   const filteredEstimations = allEstimations.filter(estimation => {
     const searchLower = searchQuery.toLowerCase();
     return estimation.licensePlate.toLowerCase().includes(searchLower) || estimation.brand.toLowerCase().includes(searchLower) || estimation.model.toLowerCase().includes(searchLower) || estimation.year.toString().includes(searchLower);
   });
+
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('fr-FR', {
       style: 'currency',
@@ -82,6 +83,7 @@ const EstimationsTab = () => {
       maximumFractionDigits: 0
     }).format(price);
   };
+
   const formatDate = (date: Date) => {
     return new Intl.DateTimeFormat('fr-FR', {
       day: '2-digit',
@@ -89,6 +91,7 @@ const EstimationsTab = () => {
       year: 'numeric'
     }).format(date);
   };
+
   const getStatusBadge = (status: EstimationItem['status']) => {
     switch (status) {
       case 'completed':
@@ -101,13 +104,14 @@ const EstimationsTab = () => {
         return null;
     }
   };
+
   const handleDownloadReport = (id: number) => {
-    // In a real app, this would generate and download a PDF
     toast({
       title: "Rapport téléchargé",
       description: `Le rapport pour l'estimation #${id} a été téléchargé.`
     });
   };
+
   return <div className="space-y-6">
       <Card>
         <CardHeader>
@@ -117,10 +121,10 @@ const EstimationsTab = () => {
               <CardDescription>Consultez et gérez vos estimations de prix</CardDescription>
             </div>
             <div className="flex flex-col sm:flex-row gap-2">
-              <Button variant="outline" size="sm" className="flex items-center gap-2 text-indigo-600">
-                <Filter className="h-4 w-4" /> Filtrer
+              <Button variant="outline" size="sm" className="flex items-center gap-2 text-blue-600">
+                <Filter className="h-4 w-4 text-blue-600" /> Filtrer
               </Button>
-              <Button size="sm" asChild>
+              <Button variant="default" size="sm" className="text-white" asChild>
                 <Link to="/dashboard/new-estimation" className="flex items-center gap-2">
                   <Car className="h-4 w-4" /> Nouvelle estimation
                 </Link>
@@ -161,12 +165,12 @@ const EstimationsTab = () => {
                       </TableCell>
                       <TableCell className="text-right">
                         <div className="flex justify-end gap-2">
-                          <Button variant="outline" size="sm" onClick={() => handleDownloadReport(estimation.id)} className="text-indigo-600">
-                            <Download className="h-4 w-4" />
+                          <Button variant="outline" size="sm" onClick={() => handleDownloadReport(estimation.id)} className="text-blue-600">
+                            <Download className="h-4 w-4 text-blue-600" />
                           </Button>
                           <Button variant="outline" size="sm" asChild>
-                            <Link to={`/dashboard/estimations/${estimation.id}`} className="Transforme cet \xE9l\xE9ment en bouton">
-                              <FileText className="h-4 w-4" />
+                            <Link to={`/dashboard/estimations/${estimation.id}`} className="text-blue-600">
+                              <FileText className="h-4 w-4 text-blue-600" />
                             </Link>
                           </Button>
                         </div>
@@ -186,4 +190,5 @@ const EstimationsTab = () => {
       </Card>
     </div>;
 };
+
 export default EstimationsTab;

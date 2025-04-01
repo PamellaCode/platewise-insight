@@ -1,10 +1,17 @@
-
 import React from 'react';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import VehicleEstimationResult from '@/components/VehicleEstimationResult';
-import SubscriptionCard from './SubscriptionCard';
-import RecentEstimations from './RecentEstimations';
-import AssistantAIPromo from './AssistantAIPromo';
+import { Link } from 'react-router-dom';
+import { Plus } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
+
+interface SubscriptionProps {
+  plan: 'essentiel' | 'standard' | 'expert';
+  displayName: string;
+  creditsTotal: number;
+  creditsUsed: number;
+  renewalDate: Date;
+}
 
 interface EstimationItem {
   id: number;
@@ -16,56 +23,128 @@ interface EstimationItem {
   date: Date;
 }
 
-interface SubscriptionProps {
-  plan: 'essentiel' | 'standard' | 'expert';
-  displayName: string;
-  creditsTotal: number;
-  creditsUsed: number;
-  renewalDate: Date;
-}
-
 interface OverviewTabProps {
   subscription: SubscriptionProps;
   recentEstimations: EstimationItem[];
 }
 
-const OverviewTab: React.FC<OverviewTabProps> = ({ subscription, recentEstimations }) => {
-  // Map the internal subscription plan names to the ones expected by VehicleEstimationResult
-  const mapSubscriptionPlan = (plan: 'essentiel' | 'standard' | 'expert'): 'bronze' | 'silver' | 'gold' => {
-    switch(plan) {
-      case 'essentiel': return 'bronze';
-      case 'standard': return 'silver';
-      case 'expert': return 'gold';
-      default: return 'bronze' as any;
-    }
+const SubscriptionCard: React.FC<{ subscription: SubscriptionProps, className?: string }> = ({ subscription, className }) => {
+  const usagePercentage = (subscription.creditsUsed / subscription.creditsTotal) * 100;
+  const formatDate = (date: Date) => {
+    return new Intl.DateTimeFormat('fr-FR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    }).format(date);
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-      {/* Left Column */}
-      <div className="lg:col-span-7 space-y-6">
-        {/* Subscription Info */}
-        <SubscriptionCard subscription={subscription} />
-
-        {/* Recent Activity */}
-        <RecentEstimations estimations={recentEstimations} />
-
-        {/* Recent Estimation */}
-        {recentEstimations.length > 0 && (
-          <div className="mt-6">
-            <h2 className="text-xl font-semibold mb-4">Dernière estimation</h2>
-            <VehicleEstimationResult
-              licensePlate={recentEstimations[0].licensePlate}
-              subscription={mapSubscriptionPlan(subscription.plan)}
-            />
+    <Card className={className}>
+      <CardHeader>
+        <CardTitle>Votre abonnement</CardTitle>
+        <CardDescription>Formule {subscription.displayName}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <span>Crédits utilisés</span>
+            <span>{subscription.creditsUsed} / {subscription.creditsTotal}</span>
           </div>
-        )}
+          <Progress value={usagePercentage} />
+          <div className="text-sm text-gray-500">
+            Renouvellement le {formatDate(subscription.renewalDate)}
+          </div>
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button variant="default" className="w-full text-white" asChild>
+          <Link to="/dashboard/subscription">Gérer l'abonnement</Link>
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+};
+
+const RecentEstimations: React.FC<{ estimations: EstimationItem[] }> = ({ estimations }) => {
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('fr-FR', {
+      style: 'currency',
+      currency: 'EUR',
+      maximumFractionDigits: 0,
+    }).format(price);
+  };
+
+  return (
+    <div className="divide-y divide-gray-200">
+      {estimations.map((estimation) => (
+        <div key={estimation.id} className="py-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="font-medium">{estimation.brand} {estimation.model}</div>
+              <div className="text-sm text-gray-500">Plaque: {estimation.licensePlate}</div>
+            </div>
+            <div className="font-bold">{formatPrice(estimation.estimatedPrice)}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const AssistantAIPromo: React.FC = () => (
+  <Card>
+    <CardHeader>
+      <CardTitle>Besoin d'aide ?</CardTitle>
+      <CardDescription>Essayez notre assistant IA</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <p className="text-sm text-gray-500">
+        Notre assistant IA peut vous aider à estimer la valeur de votre véhicule.
+      </p>
+    </CardContent>
+    <CardFooter>
+      <Button variant="default" className="w-full text-white" asChild>
+        <Link to="/dashboard/assistant-ai">Parler à l'assistant IA</Link>
+      </Button>
+    </CardFooter>
+  </Card>
+);
+
+const OverviewTab = ({ subscription, recentEstimations }: OverviewTabProps) => {
+
+  return (
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <SubscriptionCard 
+        subscription={subscription} 
+        className="col-span-full lg:col-span-1"
+      />
+      
+      <div className="col-span-full lg:col-span-2">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <div>
+              <CardTitle>Estimations récentes</CardTitle>
+              <CardDescription>Vos dernières estimations de véhicules</CardDescription>
+            </div>
+            <Button variant="default" className="text-white" asChild>
+              <Link to="/dashboard/new-estimation">
+                <Plus className="mr-2 h-4 w-4" />
+                Nouvelle estimation
+              </Link>
+            </Button>
+          </CardHeader>
+          <CardContent>
+            <RecentEstimations estimations={recentEstimations} />
+          </CardContent>
+          <CardFooter>
+            <Button variant="default" className="w-full text-white" asChild>
+              <Link to="/dashboard/estimations">Voir toutes les estimations</Link>
+            </Button>
+          </CardFooter>
+        </Card>
       </div>
       
-      {/* Right Column - Image and Banner */}
-      <div className="lg:col-span-5 space-y-6">
-        <AssistantAIPromo />
-      </div>
+      <AssistantAIPromo />
     </div>
   );
 };

@@ -8,7 +8,6 @@ import { CheckCircle2, CreditCard, AlertCircle } from 'lucide-react';
 const SubscriptionTab = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annually'>('monthly');
 
-  // Exemple de données d'abonnement (à remplacer par des données réelles)
   const subscription = {
     plan: 'essentiel' as 'essentiel' | 'standard' | 'expert',
     displayName: 'Essentiel',
@@ -34,7 +33,6 @@ const SubscriptionTab = () => {
     }).format(date);
   };
 
-  // Calculer le % d'utilisation des crédits
   const usagePercentage = subscription.creditsUsed / subscription.creditsTotal * 100;
   const plans = [{
     name: 'Essentiel',
@@ -62,7 +60,6 @@ const SubscriptionTab = () => {
   return <div className="space-y-8">
       <h1 className="text-2xl font-bold">Mon abonnement</h1>
       
-      {/* Carte d'information sur l'abonnement actuel */}
       <Card className="border-2 border-gray-200">
         <CardHeader>
           <div className="flex items-center justify-between">
@@ -109,7 +106,6 @@ const SubscriptionTab = () => {
         </CardFooter>
       </Card>
 
-      {/* Section pour changer de formule */}
       <div className="space-y-4">
         <h2 className="text-xl font-bold">Changer de formule</h2>
         
@@ -145,7 +141,7 @@ const SubscriptionTab = () => {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button variant={plan.current ? "outline" : "default"} disabled={plan.current} className="w-full text-zinc-50">
+                <Button variant={plan.current ? "outline" : "default"} disabled={plan.current} className={plan.current ? "w-full text-blue-600" : "w-full text-white"}>
                   {plan.current ? 'Formule actuelle' : 'Changer de formule'}
                 </Button>
               </CardFooter>
@@ -153,7 +149,6 @@ const SubscriptionTab = () => {
         </div>
       </div>
       
-      {/* Section d'achat de crédits */}
       <div className="space-y-4">
         <h2 className="text-xl font-bold">Acheter des crédits supplémentaires</h2>
         
@@ -182,7 +177,7 @@ const SubscriptionTab = () => {
                     <CardDescription>13,50€</CardDescription>
                   </CardHeader>
                   <CardFooter>
-                    <Button size="sm" className="w-full">Acheter</Button>
+                    <Button variant="default" size="sm" className="w-full text-white">Acheter</Button>
                   </CardFooter>
                 </Card>
                 
@@ -204,7 +199,6 @@ const SubscriptionTab = () => {
         </Card>
       </div>
       
-      {/* Historique des factures */}
       <div className="space-y-4">
         <h2 className="text-xl font-bold">Historique de facturation</h2>
         
