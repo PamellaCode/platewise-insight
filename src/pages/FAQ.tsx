@@ -8,6 +8,8 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import NewsletterSection from '@/components/sections/NewsletterSection';
 
 const FAQ: React.FC = () => {
   const faqItems = [
@@ -82,12 +84,16 @@ const FAQ: React.FC = () => {
             <p className="text-gray-600 mb-4">
               Vous n'avez pas trouvé la réponse à votre question ?
             </p>
-            <a 
-              href="mailto:contact@estimauto.fr"
+            <Link 
+              to="/contact"
               className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold py-3 px-8 rounded-lg shadow hover:shadow-lg hover:-translate-y-0.5 transition-all inline-flex items-center"
             >
               Contactez-nous
-            </a>
+            </Link>
+          </div>
+          
+          <div className="mt-16">
+            <NewsletterSection />
           </div>
         </motion.div>
       </div>

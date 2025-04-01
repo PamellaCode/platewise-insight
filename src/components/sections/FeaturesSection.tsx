@@ -34,22 +34,22 @@ const FeaturesSection: React.FC = () => {
     icon: <Zap className="h-12 w-12 text-teal-500" />,
     title: 'Estimation instantanée',
     description: 'Obtenez une estimation de la valeur de votre véhicule en quelques secondes',
-    bgColor: "bg-gradient-to-br from-blue-100 to-blue-200 border-blue-300"
+    bgColor: "bg-gradient-to-br from-blue-50 to-blue-200 border-blue-200"
   }, {
     icon: <BarChart className="h-12 w-12 text-blue-500" />,
     title: 'Analyse précise',
     description: 'Notre algorithme analyse des millions de données pour une estimation au plus juste',
-    bgColor: "bg-gradient-to-br from-blue-200 to-blue-300 border-blue-400"
+    bgColor: "bg-gradient-to-br from-blue-100 to-blue-300 border-blue-300"
   }, {
     icon: <Shield className="h-12 w-12 text-indigo-500" />,
     title: 'Données sécurisées',
     description: 'Vos informations personnelles sont protégées et jamais partagées',
-    bgColor: "bg-gradient-to-br from-blue-300 to-blue-400 border-blue-500"
+    bgColor: "bg-gradient-to-br from-blue-200 to-blue-400 border-blue-400"
   }, {
     icon: <Clock className="h-12 w-12 text-cyan-500" />,
     title: 'Historique des prix',
     description: 'Accédez à l\'évolution des prix du marché pour mieux anticiper',
-    bgColor: "bg-gradient-to-br from-blue-400 to-blue-500 border-blue-600"
+    bgColor: "bg-gradient-to-br from-blue-300 to-blue-500 border-blue-500"
   }];
 
   return (

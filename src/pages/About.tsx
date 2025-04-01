@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import NewsletterSection from '@/components/sections/NewsletterSection';
 
 const About: React.FC = () => {
   const teamMembers = [
@@ -203,12 +204,16 @@ const About: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button variant="secondary" size="lg" asChild>
-                <a href="/register">S'inscrire gratuitement</a>
+                <a href="/register">S'inscrire maintenant</a>
               </Button>
               <Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-blue-600" asChild>
                 <a href="/contact">Nous contacter</a>
               </Button>
             </div>
+          </div>
+          
+          <div className="mt-16">
+            <NewsletterSection />
           </div>
         </motion.div>
       </div>

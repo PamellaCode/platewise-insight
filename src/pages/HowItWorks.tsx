@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, HelpCircle, ArrowDown, Info, Settings, Zap, ArrowRight, Sparkles, Rocket, Star } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -7,6 +7,7 @@ import MainLayout from '@/components/layouts/MainLayout';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 import NewsletterSection from '@/components/sections/NewsletterSection';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Link } from 'react-router-dom';
 
 const fadeIn = {
   hidden: {
@@ -37,46 +38,46 @@ const HowItWorks = () => {
     icon: <HelpCircle className="h-12 w-12 text-pink-500" />,
     title: "Entrez votre immatriculation",
     description: "Saisissez simplement le numéro d'immatriculation de votre véhicule dans notre outil d'estimation.",
-    bgColor: "bg-gradient-to-br from-blue-100 to-blue-200 border-blue-300",
+    bgColor: "bg-gradient-to-br from-blue-50 to-blue-200 border-blue-200",
     iconBg: "bg-blue-100/10 group-hover:bg-blue-100/20"
   }, {
     icon: <Zap className="h-12 w-12 text-purple-500" />,
     title: "Notre IA analyse votre véhicule",
     description: "Notre intelligence artificielle analyse instantanément les données de votre véhicule et compare avec notre base de données.",
-    bgColor: "bg-gradient-to-br from-blue-200 to-blue-300 border-blue-400",
+    bgColor: "bg-gradient-to-br from-blue-100 to-blue-300 border-blue-300",
     iconBg: "bg-cyan-100/10 group-hover:bg-cyan-100/20"
   }, {
     icon: <Info className="h-12 w-12 text-blue-500" />,
     title: "Obtenez une estimation détaillée",
     description: "Recevez une estimation précise de la valeur de votre véhicule avec des détails sur les facteurs qui influencent son prix.",
-    bgColor: "bg-gradient-to-br from-blue-300 to-blue-400 border-blue-500",
+    bgColor: "bg-gradient-to-br from-blue-200 to-blue-400 border-blue-400",
     iconBg: "bg-teal-100/10 group-hover:bg-teal-100/20"
   }, {
     icon: <Settings className="h-12 w-12 text-teal-500" />,
     title: "Affinez votre estimation",
     description: "Ajustez les paramètres comme le kilométrage, l'état ou les options pour affiner l'estimation de votre véhicule.",
-    bgColor: "bg-gradient-to-br from-blue-400 to-blue-500 border-blue-600",
+    bgColor: "bg-gradient-to-br from-blue-300 to-blue-500 border-blue-500",
     iconBg: "bg-green-100/10 group-hover:bg-green-100/20"
   }];
   const features = [{
     title: "IA de pointe",
     description: "Notre technologie d'intelligence artificielle analyse des millions de données pour une estimation précise.",
-    bgColor: "bg-gradient-to-br from-blue-100 to-blue-200 border-blue-300",
+    bgColor: "bg-gradient-to-br from-blue-50 to-blue-200 border-blue-200",
     icon: <Sparkles className="h-5 w-5 text-blue-500" />
   }, {
     title: "Base de données complète",
     description: "Accès à une base de données de véhicules constamment mise à jour avec les dernières tendances du marché.",
-    bgColor: "bg-gradient-to-br from-blue-200 to-blue-300 border-blue-400",
+    bgColor: "bg-gradient-to-br from-blue-100 to-blue-300 border-blue-300",
     icon: <Rocket className="h-5 w-5 text-cyan-500" />
   }, {
     title: "Rapports détaillés",
     description: "Obtenez des rapports complets sur l'historique, la valeur et les perspectives de revente de votre véhicule.",
-    bgColor: "bg-gradient-to-br from-blue-300 to-blue-400 border-blue-500",
+    bgColor: "bg-gradient-to-br from-blue-200 to-blue-400 border-blue-400",
     icon: <Info className="h-5 w-5 text-teal-500" />
   }, {
     title: "Interface intuitive",
     description: "Une expérience utilisateur simplifiée pour obtenir rapidement et facilement l'information dont vous avez besoin.",
-    bgColor: "bg-gradient-to-br from-blue-400 to-blue-500 border-blue-600",
+    bgColor: "bg-gradient-to-br from-blue-300 to-blue-500 border-blue-500",
     icon: <Star className="h-5 w-5 text-green-500" />
   }];
   const testimonials = [{
@@ -573,24 +574,26 @@ const HowItWorks = () => {
           duration: 0.5
         }}>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Prêt à connaître la vraie valeur de votre véhicule ?</h2>
-            <p className="text-xl mb-8 text-white/90">Accédez à une estimation précise en quelques secondes grâce à notre IA. Souscrivez à un abonnement et profitez d’une analyse détaillée basée sur les tendances du marché.</p>
+            <p className="text-xl mb-8 text-white/90">Accédez à une estimation précise en quelques secondes grâce à notre IA. Souscrivez à un abonnement et profitez d'une analyse détaillée basée sur les tendances du marché.</p>
             
             <motion.div whileHover={{
             scale: 1.05
           }} whileTap={{
             scale: 0.95
           }}>
-              <Button className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group" size="lg">
-                <span className="mr-2  text-white">Estimer mon véhicule</span>
-                <motion.div animate={{
-                x: [0, 5, 0]
-              }} transition={{
-                repeat: Infinity,
-                duration: 1.5,
-                ease: "easeInOut"
-              }} className="inline-block white\\n bg-transparent rounded">
-                  <ArrowRight className="inline-block" />
-                </motion.div>
+              <Button className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group" size="lg" asChild>
+                <Link to="/register">
+                  <span className="mr-2">Estimer mon véhicule</span>
+                  <motion.div animate={{
+                  x: [0, 5, 0]
+                }} transition={{
+                  repeat: Infinity,
+                  duration: 1.5,
+                  ease: "easeInOut"
+                }} className="inline-block white bg-transparent rounded">
+                    <ArrowRight className="inline-block" />
+                  </motion.div>
+                </Link>
               </Button>
             </motion.div>
           </motion.div>
