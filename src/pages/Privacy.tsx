@@ -1,3 +1,4 @@
+
 import React from 'react';
 import MainLayout from '@/components/layouts/MainLayout';
 import { motion } from 'framer-motion';
@@ -6,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+
 const Privacy: React.FC = () => {
   const privacyPolicySections = [{
     id: "collecte",
@@ -85,7 +87,7 @@ const Privacy: React.FC = () => {
             <li>Droit d'opposition au traitement</li>
           </ul>
           <p>
-            Pour exercer l'un de ces droits, veuillez nous contacter à l'adresse privacy@estimauto.fr.
+            Pour exercer l'un de ces droits, veuillez nous contacter à l'adresse <span className="text-blue-600 font-medium">privacy@argusia.fr</span>.
           </p>
         </div>
   }, {
@@ -111,23 +113,22 @@ const Privacy: React.FC = () => {
           </div>
         </div>
   }];
-  return <MainLayout>
+  
+  return (
+    <MainLayout>
       <div className="container mx-auto px-4 py-12">
-        <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.5
-      }} className="max-w-4xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.5 }} 
+          className="max-w-4xl mx-auto"
+        >
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
               Politique de confidentialité
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Nous accordons une grande importance à la protection de vos données personnelles.
+              Chez ArgusIA, nous accordons une grande importance à la protection de vos données personnelles.
               Découvrez comment nous collectons, utilisons et protégeons vos informations.
             </p>
           </div>
@@ -144,22 +145,25 @@ const Privacy: React.FC = () => {
             </CardHeader>
             <CardContent className="pt-6">
               <p className="text-gray-700">
-                Chez EstimAuto, nous nous engageons à protéger votre vie privée et à assurer la sécurité de vos données personnelles.
+                Chez ArgusIA, nous nous engageons à protéger votre vie privée et à assurer la sécurité de vos données personnelles.
                 Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos informations
-                lorsque vous utilisez notre service d'estimation de véhicules.
+                lorsque vous utilisez notre service d'estimation de véhicules alimenté par l'intelligence artificielle.
               </p>
             </CardContent>
           </Card>
 
           <Tabs defaultValue="collecte" className="space-y-8">
             <TabsList className="grid grid-cols-2 md:grid-cols-5 gap-2">
-              {privacyPolicySections.map(section => <TabsTrigger key={section.id} value={section.id} className="flex items-center space-x-2">
+              {privacyPolicySections.map(section => (
+                <TabsTrigger key={section.id} value={section.id} className="flex items-center space-x-2">
                   <span className="hidden md:inline-block">{section.icon}</span>
                   <span>{section.title}</span>
-                </TabsTrigger>)}
+                </TabsTrigger>
+              ))}
             </TabsList>
 
-            {privacyPolicySections.map(section => <TabsContent key={section.id} value={section.id}>
+            {privacyPolicySections.map(section => (
+              <TabsContent key={section.id} value={section.id}>
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center">
@@ -171,26 +175,29 @@ const Privacy: React.FC = () => {
                     {section.content}
                   </CardContent>
                 </Card>
-              </TabsContent>)}
+              </TabsContent>
+            ))}
           </Tabs>
 
-          <div className="mt-12 p-6 bg-gray-50 rounded-lg">
+          <div className="mt-12 p-6 bg-gray-50 rounded-lg shadow-sm border border-gray-100">
             <h2 className="text-2xl font-semibold mb-4">Des questions sur notre politique de confidentialité ?</h2>
             <p className="mb-6">
               Si vous avez des questions concernant notre politique de confidentialité ou la façon dont nous traitons vos données,
-              n'hésitez pas à nous contacter.
+              n'hésitez pas à nous contacter via notre page dédiée.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-gradient-to-r from-blue-600 to-teal-500 text-white">
-                Nous contacter
+              <Button className="bg-gradient-to-r from-blue-600 to-teal-500 text-white" asChild>
+                <a href="/contact">Nous contacter</a>
               </Button>
-              <Button variant="outline" className="border-blue-500 text-blue-600">
-                FAQ sur la confidentialité
+              <Button variant="outline" className="border-blue-500 text-blue-600" asChild>
+                <a href="/faq">FAQ sur la confidentialité</a>
               </Button>
             </div>
           </div>
         </motion.div>
       </div>
-    </MainLayout>;
+    </MainLayout>
+  );
 };
+
 export default Privacy;
