@@ -128,9 +128,7 @@ const HowItWorks = () => {
           y: 0
         }} transition={{
           duration: 0.5
-        }}>
-            Comment fonctionne AutoCote ?
-          </motion.h1>
+        }}>Comment fonctionne ArgusAI ?</motion.h1>
           
           <motion.p className="text-xl max-w-3xl mx-auto mb-8 text-white/90" initial={{
           opacity: 0
