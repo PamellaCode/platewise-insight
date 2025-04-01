@@ -16,10 +16,7 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({
         </Link>
       </TabsTrigger>
       <TabsTrigger value="history" asChild>
-        <Link to="/dashboard/history" className="flex items-center gap-1">
-          <History className="h-4 w-4" />
-          <span>Historique</span>
-        </Link>
+        
       </TabsTrigger>
       <TabsTrigger value="subscription" asChild>
         <Link to="/dashboard/subscription" className="flex items-center gap-1">
