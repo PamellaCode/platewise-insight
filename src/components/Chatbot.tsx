@@ -8,6 +8,8 @@ import ChatMessage from './chat/ChatMessage';
 import ChatTypingIndicator from './chat/ChatTypingIndicator';
 import ChatInput from './chat/ChatInput';
 import { ChatService } from './chat/ChatService';
+import { toast } from '@/components/ui/use-toast';
+import { useAuth } from '@/lib/auth';
 
 const Chatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
@@ -20,6 +22,7 @@ const Chatbot: React.FC = () => {
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const { user } = useAuth();
   
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({
@@ -31,7 +34,8 @@ const Chatbot: React.FC = () => {
     scrollToBottom();
   }, [messages]);
   
-  const handleSend = (input: string) => {
+  const handleSend = async (input: string) => {
+    // Add user message
     const newUserMessage: Message = {
       id: messages.length + 1,
       text: input,
@@ -42,8 +46,21 @@ const Chatbot: React.FC = () => {
     setMessages(prev => [...prev, newUserMessage]);
     setIsTyping(true);
     
-    // Simulate bot response
-    ChatService.simulateResponse(input).then(response => {
+    try {
+      // Use n8n integration if available, fallback to simulation
+      const userId = user?.id || 'anonymous';
+      let response;
+      
+      try {
+        // Try with n8n first
+        response = await ChatService.processMessageWithN8n(input, userId);
+      } catch (error) {
+        console.error('N8n processing failed, falling back to simulation:', error);
+        // Fallback to simulated response
+        response = await ChatService.simulateResponse(input);
+      }
+      
+      // Simulate typing effect with the received text
       ChatService.simulateTyping(response.text, (text) => {
         const botMessage: Message = {
           id: messages.length + 2,
@@ -56,7 +73,26 @@ const Chatbot: React.FC = () => {
         setMessages(prev => [...prev, botMessage]);
         setIsTyping(false);
       });
-    });
+    } catch (error) {
+      console.error('Error processing message:', error);
+      setIsTyping(false);
+      
+      // Add error message
+      const errorMessage: Message = {
+        id: messages.length + 2,
+        text: "Une erreur est survenue, veuillez réessayer.",
+        sender: 'bot',
+        timestamp: new Date()
+      };
+      
+      setMessages(prev => [...prev, errorMessage]);
+      
+      toast({
+        title: "Erreur",
+        description: "Impossible de traiter votre message pour le moment.",
+        variant: "destructive",
+      });
+    }
   };
   
   return (

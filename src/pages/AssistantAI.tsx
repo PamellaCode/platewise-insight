@@ -1,7 +1,10 @@
+
 import React from 'react';
 import DashboardLayout from '@/components/layouts/DashboardLayout';
 import AssistantAITab from '@/components/dashboard/AssistantAITab';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Toaster } from '@/components/ui/toaster';
+
 const AssistantAI = () => {
   return <DashboardLayout>
       <div className="animate-fade-in h-full">
@@ -11,12 +14,16 @@ const AssistantAI = () => {
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent animate-fade-in">
                 Assistant IA
               </h1>
-              
+              <div className="text-sm text-gray-500">
+                Alimenté par n8n
+              </div>
             </div>
             <AssistantAITab />
           </div>
         </ScrollArea>
       </div>
+      <Toaster />
     </DashboardLayout>;
 };
+
 export default AssistantAI;

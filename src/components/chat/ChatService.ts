@@ -36,6 +36,46 @@ export class ChatService {
     });
   }
 
+  static async processMessageWithN8n(
+    input: string, 
+    userId: string
+  ): Promise<{text: string, hasCarInfo?: boolean, carInfo?: CarInfo}> {
+    try {
+      // Send message to n8n webhook
+      const response = await fetch('https://pamella.app.n8n.cloud/webhook-test/ArgusAI', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user_message: input,
+          user_id: userId,
+          timestamp: new Date().toISOString()
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      
+      // Check if n8n returned a response_message
+      if (data && data.response_message) {
+        return {
+          text: data.response_message,
+          hasCarInfo: data.hasCarInfo || false,
+          carInfo: data.carInfo || undefined
+        };
+      } else {
+        throw new Error('Invalid response format from n8n');
+      }
+    } catch (error) {
+      console.error('Error processing message with n8n:', error);
+      throw error;
+    }
+  }
+
   static simulateTyping(text: string, callback: (text: string) => void): void {
     let i = 0;
     const typingSpeed = 30; // ms per character
