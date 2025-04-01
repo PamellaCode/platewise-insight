@@ -1,11 +1,13 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import VehicleValueGauge from './VehicleValueGauge';
 import UserMetrics from './UserMetrics';
 import MarketListings from './MarketListings';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Car } from 'lucide-react';
 
 interface EstimationItem {
   id: number;
@@ -170,13 +172,13 @@ const OverviewTab: React.FC<OverviewTabProps> = ({ subscription, recentEstimatio
               </Button>
               <Button className="w-full justify-start" variant="outline" asChild>
                 <Link to="/dashboard/history">
-                  <Card className="mr-2 h-4 w-4" />
+                  <Car className="mr-2 h-4 w-4" />
                   Voir l'historique complet
                 </Link>
               </Button>
               <Button className="w-full justify-start" variant="outline" asChild>
                 <Link to="/dashboard/stats">
-                  <Card className="mr-2 h-4 w-4" />
+                  <Car className="mr-2 h-4 w-4" />
                   Statistiques détaillées
                 </Link>
               </Button>
