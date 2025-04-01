@@ -30,6 +30,16 @@ interface OverviewTabProps {
 }
 
 const OverviewTab: React.FC<OverviewTabProps> = ({ subscription, recentEstimations }) => {
+  // Map the internal subscription plan names to the ones expected by VehicleEstimationResult
+  const mapSubscriptionPlan = (plan: 'essentiel' | 'standard' | 'expert'): 'bronze' | 'silver' | 'gold' => {
+    switch(plan) {
+      case 'essentiel': return 'bronze';
+      case 'standard': return 'silver';
+      case 'expert': return 'gold';
+      default: return 'bronze' as any;
+    }
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
       {/* Left Column */}
@@ -46,7 +56,7 @@ const OverviewTab: React.FC<OverviewTabProps> = ({ subscription, recentEstimatio
             <h2 className="text-xl font-semibold mb-4">Dernière estimation</h2>
             <VehicleEstimationResult
               licensePlate={recentEstimations[0].licensePlate}
-              subscription={subscription.plan}
+              subscription={mapSubscriptionPlan(subscription.plan)}
             />
           </div>
         )}

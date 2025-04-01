@@ -21,6 +21,10 @@ const Navbar: React.FC = () => {
     {
       name: 'Comment ça marche',
       path: '/how-it-works'
+    },
+    {
+      name: 'Actualités & Tendances',
+      path: '/news-and-trends'
     }
   ];
 

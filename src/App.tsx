@@ -25,6 +25,7 @@ import Terms from "./pages/Terms";
 import Cookies from "./pages/Cookies";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import NewsAndTrends from "./pages/NewsAndTrends";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/cookies" element={<Cookies />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/news-and-trends" element={<NewsAndTrends />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/history" element={<History />} />
           <Route path="/dashboard/assistant-ai" element={<AssistantAI />} />

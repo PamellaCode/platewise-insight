@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 const Footer: React.FC = () => {
@@ -40,7 +41,7 @@ const Footer: React.FC = () => {
             <ul className="mt-4 space-y-2">
               <li><Link to="/pricing" className="text-gray-300 hover:text-white text-sm">Abonnements</Link></li>
               <li><Link to="/how-it-works" className="text-gray-300 hover:text-white text-sm">Comment ça marche</Link></li>
-              
+              <li><Link to="/news-and-trends" className="text-gray-300 hover:text-white text-sm">Actualités & Tendances</Link></li>
               <li><Link to="/faq" className="text-gray-300 hover:text-white text-sm">FAQ</Link></li>
             </ul>
           </div>
@@ -49,8 +50,7 @@ const Footer: React.FC = () => {
             <h3 className="text-sm font-semibold uppercase tracking-wider">Société</h3>
             <ul className="mt-4 space-y-2">
               <li><Link to="/about" className="text-gray-300 hover:text-white text-sm">À propos</Link></li>
-              <li><Link to="/blog" className="text-gray-300 hover:text-white text-sm">Blog</Link></li>
-              
+              <li><Link to="/news-and-trends" className="text-gray-300 hover:text-white text-sm">Actualités</Link></li>
               <li><Link to="/contact" className="text-gray-300 hover:text-white text-sm">Contact</Link></li>
             </ul>
           </div>
