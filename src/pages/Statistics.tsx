@@ -6,7 +6,7 @@ import StatisticsTab from '@/components/dashboard/StatisticsTab';
 const Statistics = () => {
   return (
     <DashboardLayout>
-      <div className="animate-fade-in">
+      <div className="animate-fade-in h-full">
         <StatisticsTab />
       </div>
     </DashboardLayout>

@@ -21,31 +21,34 @@ const MonthlyChart: React.FC<MonthlyChartProps> = ({ data, fullSize = false }) =
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer 
-          config={{
-            estimations: {
-              label: "Estimations",
-              color: "#0EA5E9"
-            }
-          }} 
-          className={fullSize ? "h-[450px]" : "h-[300px]"}
-        >
-          <RechartsLineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-            <XAxis dataKey="name" tickLine={false} axisLine={{ stroke: '#e5e7eb' }} />
-            <YAxis tickLine={false} axisLine={{ stroke: '#e5e7eb' }} />
-            <ChartTooltip content={<ChartTooltipContent />} />
-            <ChartLegend content={<ChartLegendContent />} verticalAlign="top" />
-            <Line 
-              type="monotone" 
-              dataKey="estimations" 
-              stroke="#0EA5E9" 
-              strokeWidth={2}
-              activeDot={{ r: 8, fill: "#0EA5E9", stroke: "white", strokeWidth: 2 }} 
-              dot={{ r: 3, fill: "white", stroke: "#0EA5E9", strokeWidth: 2 }}
-            />
-          </RechartsLineChart>
-        </ChartContainer>
+        <div className="w-full" style={{ height: fullSize ? '450px' : '300px' }}>
+          <ResponsiveContainer width="100%" height="100%">
+            <ChartContainer 
+              config={{
+                estimations: {
+                  label: "Estimations",
+                  color: "#0EA5E9"
+                }
+              }}
+            >
+              <RechartsLineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                <XAxis dataKey="name" tickLine={false} axisLine={{ stroke: '#e5e7eb' }} />
+                <YAxis tickLine={false} axisLine={{ stroke: '#e5e7eb' }} />
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <ChartLegend content={<ChartLegendContent />} verticalAlign="top" />
+                <Line 
+                  type="monotone" 
+                  dataKey="estimations" 
+                  stroke="#0EA5E9" 
+                  strokeWidth={2}
+                  activeDot={{ r: 8, fill: "#0EA5E9", stroke: "white", strokeWidth: 2 }} 
+                  dot={{ r: 3, fill: "white", stroke: "#0EA5E9", strokeWidth: 2 }}
+                />
+              </RechartsLineChart>
+            </ChartContainer>
+          </ResponsiveContainer>
+        </div>
       </CardContent>
     </Card>
   );
