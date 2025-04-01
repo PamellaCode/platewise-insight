@@ -1,8 +1,33 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, MessageCircle } from 'lucide-react';
-import Chatbot from '@/components/Chatbot';
+import ChatMessage from '@/components/chat/ChatMessage';
+import { Card } from '@/components/ui/card';
+
 const ChatbotSection: React.FC = () => {
+  // Mock messages for the illustration
+  const mockMessages = [
+    {
+      id: 1,
+      text: "Bonjour ! Je suis votre assistant AutoCote. Comment puis-je vous aider aujourd'hui ?",
+      sender: 'bot',
+      timestamp: new Date()
+    },
+    {
+      id: 2,
+      text: "Bonjour, je voudrais estimer la valeur de ma voiture.",
+      sender: 'user',
+      timestamp: new Date()
+    },
+    {
+      id: 3,
+      text: "Avec plaisir ! Pouvez-vous me communiquer la plaque d'immatriculation de votre véhicule ?",
+      sender: 'bot',
+      timestamp: new Date()
+    }
+  ];
+
   return <section className="py-24 bg-gradient-to-r from-blue-50 to-teal-100">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center gap-16">
@@ -59,7 +84,44 @@ const ChatbotSection: React.FC = () => {
           duration: 0.6,
           delay: 0.2
         }}>
-            
+            {/* Chatbot Illustration */}
+            <Card className="flex flex-col h-[500px] w-full bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
+              {/* Header */}
+              <div className="flex items-center p-4 border-b bg-gradient-to-r from-argus-blue-500 to-argus-teal-500 text-white">
+                <div className="bg-white rounded-full p-2 mr-3">
+                  <div className="flex items-center justify-center h-8 w-8 rounded-full bg-argus-blue-500">
+                    <MessageCircle className="h-5 w-5 text-white" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg mb-0">AssistantAI</h3>
+                  <p className="text-xs opacity-80 mb-0">En ligne</p>
+                </div>
+              </div>
+              
+              {/* Messages Container */}
+              <div className="flex-grow p-4 bg-gradient-to-br from-gray-50 to-blue-50">
+                <div className="space-y-4">
+                  {mockMessages.map((message) => (
+                    <ChatMessage key={message.id} message={message as any} />
+                  ))}
+                </div>
+              </div>
+              
+              {/* Input Area */}
+              <div className="p-4 border-t border-gray-100 bg-white">
+                <div className="flex space-x-2">
+                  <input 
+                    className="flex-grow px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-argus-blue-400" 
+                    placeholder="Écrivez votre message ici..."
+                    readOnly
+                  />
+                  <button className="bg-gradient-to-r from-argus-blue-500 to-argus-teal-500 text-white p-2 rounded-md">
+                    <MessageCircle className="h-5 w-5" />
+                  </button>
+                </div>
+              </div>
+            </Card>
           </motion.div>
         </div>
       </div>
