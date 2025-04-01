@@ -118,7 +118,7 @@ const PricingPlans: React.FC<PricingPlansProps> = ({
             </CardContent>
             <CardFooter className="mt-auto pt-6 relative z-10">
               <Button variant={plan.buttonVariant === 'outline' ? 'outline' : 'default'} className={`w-full py-6 text-base font-semibold transition-all duration-300 group-hover:scale-105 group-hover:shadow-md`} asChild>
-                <Link to="/register" className=" text-blue">S'abonner maintenant</Link>
+                <Link to="/register" className=" text-bleu">S'abonner maintenant</Link>
               </Button>
             </CardFooter>
           </Card>
