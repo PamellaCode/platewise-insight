@@ -18,17 +18,8 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({
           <span>Aperçu</span>
         </Link>
       </TabsTrigger>
-      <TabsTrigger value="history" asChild>
-        
-      </TabsTrigger>
       <TabsTrigger value="subscription" asChild>
         
-      </TabsTrigger>
-      <TabsTrigger value="assistant-ai" asChild>
-        <Link to="/dashboard/assistant-ai" className="flex items-center gap-1">
-          <MessageCircle className="h-4 w-4" />
-          <span>Assistant IA</span>
-        </Link>
       </TabsTrigger>
       <TabsTrigger value="stats" asChild>
         
