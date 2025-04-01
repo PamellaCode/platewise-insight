@@ -138,7 +138,7 @@ const Cookies: React.FC = () => {
                   <Button variant="outline" onClick={() => {
                   setAnalyticalCookies(true);
                   setMarketingCookies(true);
-                }}>
+                }} className="text-blue-600">
                     Tout accepter
                   </Button>
                   <Button onClick={saveCookiePreferences}>
