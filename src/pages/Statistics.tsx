@@ -6,7 +6,9 @@ import StatisticsTab from '@/components/dashboard/StatisticsTab';
 const Statistics = () => {
   return (
     <DashboardLayout>
-      <StatisticsTab />
+      <div className="animate-fade-in">
+        <StatisticsTab />
+      </div>
     </DashboardLayout>
   );
 };

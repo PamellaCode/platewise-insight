@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BarChart3, LineChart, PieChart, TrendingUp } from 'lucide-react';
 import MonthlyChart from './statistics/MonthlyChart';
@@ -40,41 +40,66 @@ const StatisticsTab = () => {
     { name: '+20k€', value: 7 },
   ];
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
+  const COLORS = ['#0EA5E9', '#F97316', '#8B5CF6', '#10B981', '#F43F5E'];
+  const [activeTab, setActiveTab] = useState('overview');
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between mb-4">
-        <h1 className="text-2xl font-bold">Statistiques</h1>
+    <div className="space-y-6 max-w-7xl mx-auto pb-8">
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+          Statistiques
+        </h1>
+        <div className="text-sm text-muted-foreground">
+          Dernière mise à jour: {new Date().toLocaleDateString('fr-FR')}
+        </div>
       </div>
 
-      <Tabs defaultValue="overview" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-4 md:w-auto md:grid-cols-4">
-          <TabsTrigger value="overview" className="flex gap-2 items-center">
+      <Tabs defaultValue="overview" className="space-y-6" onValueChange={setActiveTab} value={activeTab}>
+        <TabsList className="grid w-full grid-cols-4 md:w-auto md:inline-flex rounded-lg p-1 bg-muted/30 shadow-sm">
+          <TabsTrigger 
+            value="overview" 
+            className="flex gap-2 items-center data-[state=active]:bg-white data-[state=active]:shadow-sm"
+            onClick={() => setActiveTab('overview')}
+          >
             <TrendingUp className="h-4 w-4" />
             <span className="hidden sm:inline">Aperçu</span>
           </TabsTrigger>
-          <TabsTrigger value="monthly" className="flex gap-2 items-center">
+          <TabsTrigger 
+            value="monthly" 
+            className="flex gap-2 items-center data-[state=active]:bg-white data-[state=active]:shadow-sm"
+            onClick={() => setActiveTab('monthly')}
+          >
             <LineChart className="h-4 w-4" />
             <span className="hidden sm:inline">Mensuel</span>
           </TabsTrigger>
-          <TabsTrigger value="brands" className="flex gap-2 items-center">
+          <TabsTrigger 
+            value="brands" 
+            className="flex gap-2 items-center data-[state=active]:bg-white data-[state=active]:shadow-sm"
+            onClick={() => setActiveTab('brands')}
+          >
             <PieChart className="h-4 w-4" />
             <span className="hidden sm:inline">Marques</span>
           </TabsTrigger>
-          <TabsTrigger value="prices" className="flex gap-2 items-center">
+          <TabsTrigger 
+            value="prices" 
+            className="flex gap-2 items-center data-[state=active]:bg-white data-[state=active]:shadow-sm"
+            onClick={() => setActiveTab('prices')}
+          >
             <BarChart3 className="h-4 w-4" />
             <span className="hidden sm:inline">Prix</span>
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="overview">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <StatsOverviewCard
               title="Estimations totales"
               description="Le nombre total d'estimations réalisées"
               value="88"
               change="+12% par rapport au mois dernier"
+              trend="up"
+              icon={<TrendingUp className="h-5 w-5" />}
+              color="#0EA5E9"
             />
             
             <StatsOverviewCard
@@ -82,6 +107,9 @@ const StatisticsTab = () => {
               description="Prix moyen des véhicules estimés"
               value="12 500 €"
               change="+5% par rapport au mois dernier"
+              trend="up"
+              icon={<BarChart3 className="h-5 w-5" />}
+              color="#F97316"
             />
             
             <StatsOverviewCard
@@ -89,10 +117,12 @@ const StatisticsTab = () => {
               description="Marque avec le plus d'estimations"
               value="Peugeot"
               change="35% des estimations totales"
+              icon={<PieChart className="h-5 w-5" />}
+              color="#8B5CF6"
             />
           </div>
           
-          <div className="grid gap-4 md:grid-cols-2 mt-4">
+          <div className="grid gap-6 md:grid-cols-2 mt-6">
             <MonthlyChart data={monthlyData} />
             <BrandsChart data={brandData} colors={COLORS} />
           </div>
