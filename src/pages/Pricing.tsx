@@ -6,6 +6,16 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import PricingPlans from '@/components/PricingPlans';
 import MainLayout from '@/components/layouts/MainLayout';
+import { 
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow 
+} from '@/components/ui/table';
+import { Separator } from '@/components/ui/separator';
+
 const fadeIn = {
   hidden: {
     opacity: 0,
@@ -19,6 +29,7 @@ const fadeIn = {
     }
   }
 };
+
 const staggerContainer = {
   hidden: {
     opacity: 0
@@ -30,11 +41,13 @@ const staggerContainer = {
     }
   }
 };
+
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(true);
   const toggleBilling = () => {
     setIsAnnual(!isAnnual);
   };
+
   const faqs = [{
     question: "Quelle est la différence entre les différentes formules ?",
     answer: "Nos différentes formules offrent des niveaux de services adaptés à vos besoins. Le plan Essentiel est parfait pour une utilisation occasionnelle, le plan Standard pour les professionnels qui ont besoin d'estimations régulières, et le plan Expert pour les sociétés avec des besoins avancés."
@@ -48,6 +61,7 @@ const Pricing = () => {
     question: "Proposez-vous une garantie de remboursement ?",
     answer: "Oui, nous proposons une garantie de remboursement de 14 jours si vous n'êtes pas satisfait de nos services. Contactez notre support client pour en savoir plus."
   }];
+
   return <MainLayout>
       <section className="bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -102,60 +116,82 @@ const Pricing = () => {
             </p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="p-4 text-left text-gray-700 border-b">Fonctionnalité</th>
-                  <th className="p-4 text-center text-gray-700 border-b">Essentiel</th>
-                  <th className="p-4 text-center text-gray-700 border-b">Standard</th>
-                  <th className="p-4 text-center text-gray-700 border-b">Expert</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="hover:bg-gray-50">
-                  <td className="p-4 border-b">Estimation de base</td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="p-4 border-b">Historique des prix</td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="p-4 border-b">Rapports détaillés</td>
-                  <td className="p-4 text-center border-b">-</td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="p-4 border-b">Nombre d'estimations/mois</td>
-                  <td className="p-4 text-center border-b">Export des résultats (PDF/Excel)</td>
-                  <td className="p-4 text-center border-b">3</td>
-                  <td className="p-4 text-center border-b "><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="p-4 border-b">Support prioritaire</td>
-                  
-                  
-                  
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="p-4 border-b">Estimations illimitées</td>
-                  <td className="p-4 text-center border-b">-</td>
-                  <td className="p-4 text-center border-b">-</td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="rounded-xl overflow-hidden shadow-lg bg-white border border-gray-100 max-w-4xl mx-auto">
+            <Table>
+              <TableHeader className="bg-gradient-to-r from-blue-50 to-cyan-50">
+                <TableRow className="hover:bg-transparent">
+                  <TableHead className="w-[40%] py-4 text-lg font-bold text-blue-800">Fonctionnalité</TableHead>
+                  <TableHead className="text-center py-4 text-blue-800">Essentiel</TableHead>
+                  <TableHead className="text-center py-4 text-blue-800">Standard</TableHead>
+                  <TableHead className="text-center py-4 text-blue-800">Expert</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow className="border-b hover:bg-blue-50/30">
+                  <TableCell className="font-medium">Estimation de base</TableCell>
+                  <TableCell className="text-center"><Check className="h-5 w-5 mx-auto text-green-500" /></TableCell>
+                  <TableCell className="text-center"><Check className="h-5 w-5 mx-auto text-green-500" /></TableCell>
+                  <TableCell className="text-center"><Check className="h-5 w-5 mx-auto text-green-500" /></TableCell>
+                </TableRow>
+                <TableRow className="border-b hover:bg-blue-50/30">
+                  <TableCell className="font-medium">Historique des prix</TableCell>
+                  <TableCell className="text-center"><Check className="h-5 w-5 mx-auto text-green-500" /></TableCell>
+                  <TableCell className="text-center"><Check className="h-5 w-5 mx-auto text-green-500" /></TableCell>
+                  <TableCell className="text-center"><Check className="h-5 w-5 mx-auto text-green-500" /></TableCell>
+                </TableRow>
+                <TableRow className="border-b hover:bg-blue-50/30">
+                  <TableCell className="font-medium">Rapports détaillés</TableCell>
+                  <TableCell className="text-center"><span className="text-gray-400">-</span></TableCell>
+                  <TableCell className="text-center"><Check className="h-5 w-5 mx-auto text-green-500" /></TableCell>
+                  <TableCell className="text-center"><Check className="h-5 w-5 mx-auto text-green-500" /></TableCell>
+                </TableRow>
+                <TableRow className="border-b hover:bg-blue-50/30">
+                  <TableCell className="font-medium">Nombre d'estimations/mois</TableCell>
+                  <TableCell className="text-center font-semibold">1</TableCell>
+                  <TableCell className="text-center font-semibold">3</TableCell>
+                  <TableCell className="text-center font-semibold text-auto-gold">10</TableCell>
+                </TableRow>
+                <TableRow className="border-b hover:bg-blue-50/30">
+                  <TableCell className="font-medium">Support prioritaire</TableCell>
+                  <TableCell className="text-center"><span className="text-gray-400">-</span></TableCell>
+                  <TableCell className="text-center"><Check className="h-5 w-5 mx-auto text-green-500" /></TableCell>
+                  <TableCell className="text-center"><Check className="h-5 w-5 mx-auto text-green-500" /></TableCell>
+                </TableRow>
+                <TableRow className="hover:bg-blue-50/30">
+                  <TableCell className="font-medium">Estimations illimitées</TableCell>
+                  <TableCell className="text-center"><span className="text-gray-400">-</span></TableCell>
+                  <TableCell className="text-center"><span className="text-gray-400">-</span></TableCell>
+                  <TableCell className="text-center"><Check className="h-5 w-5 mx-auto text-green-500" /></TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </div>
         </div>
       </section>
 
-      
+      <section className="py-20 bg-gradient-to-r from-blue-50 to-teal-100">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 rounded-full bg-teal-100 text-teal-800 font-medium text-sm mb-4">FAQ</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">Questions fréquentes</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Retrouvez les réponses aux questions les plus posées sur nos abonnements.
+            </p>
+          </div>
+
+          <motion.div className="max-w-3xl mx-auto grid gap-6" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{
+          once: true,
+          amount: 0.2
+        }}>
+            {faqs.map((faq, index) => <motion.div key={index} variants={fadeIn} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100">
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-3 text-gray-800">{faq.question}</h3>
+                  <p className="text-gray-600">{faq.answer}</p>
+                </div>
+              </motion.div>)}
+          </motion.div>
+        </div>
+      </section>
 
       <section className="py-16 bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white">
         <div className="container mx-auto px-4 text-center">
@@ -185,4 +221,5 @@ const Pricing = () => {
       </section>
     </MainLayout>;
 };
+
 export default Pricing;
