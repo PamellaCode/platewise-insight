@@ -102,7 +102,7 @@ const SubscriptionTab = () => {
           </div>
         </CardContent>
         <CardFooter className="flex flex-wrap justify-between gap-2">
-          <Button variant="outline" size="sm" className="text-indigo-600">Modifier le mode de paiement</Button>
+          <Button variant="outline" size="sm" className="text-blue-600">Modifier le mode de paiement</Button>
           <Button variant="destructive" size="sm">Annuler l'abonnement</Button>
         </CardFooter>
       </Card>
