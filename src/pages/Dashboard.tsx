@@ -3,6 +3,7 @@ import React from 'react';
 import DashboardLayout from '@/components/layouts/DashboardLayout';
 import OverviewTab from '@/components/dashboard/OverviewTab';
 import { ScrollArea } from '@/components/ui/scroll-area';
+
 interface EstimationItem {
   id: number;
   licensePlate: string;
@@ -12,6 +13,7 @@ interface EstimationItem {
   estimatedPrice: number;
   date: Date;
 }
+
 interface SubscriptionProps {
   plan: 'essentiel' | 'standard' | 'expert';
   displayName: string;
@@ -19,6 +21,7 @@ interface SubscriptionProps {
   creditsUsed: number;
   renewalDate: Date;
 }
+
 const Dashboard = () => {
   // Mock data for subscription
   const subscription: SubscriptionProps = {
@@ -47,6 +50,7 @@ const Dashboard = () => {
     estimatedPrice: 9800,
     date: new Date('2023-10-20')
   }];
+  
   return <DashboardLayout>
       <div className="animate-fade-in h-full">
         <ScrollArea className="h-[calc(100vh-120px)]">
@@ -63,4 +67,5 @@ const Dashboard = () => {
       </div>
     </DashboardLayout>;
 };
+
 export default Dashboard;

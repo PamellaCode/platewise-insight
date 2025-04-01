@@ -17,7 +17,7 @@ interface EstimationItem {
 }
 
 interface SubscriptionProps {
-  plan: 'bronze' | 'silver' | 'gold';
+  plan: 'essentiel' | 'standard' | 'expert';
   displayName: string;
   creditsTotal: number;
   creditsUsed: number;
