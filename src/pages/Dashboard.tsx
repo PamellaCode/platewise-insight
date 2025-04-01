@@ -64,14 +64,16 @@ const Dashboard = () => {
   return (
     <DashboardLayout>
       <div className="flex flex-col space-y-8">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Tableau de bord</h1>
-          <Button size="sm" asChild>
-            <Link to="/dashboard/new-estimation">
-              <Plus className="h-4 w-4 mr-2" /> Nouvelle estimation
-            </Link>
-          </Button>
-        </div>
+        {currentTab === "overview" && (
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-bold">Tableau de bord</h1>
+            <Button size="sm" asChild>
+              <Link to="/dashboard/new-estimation">
+                <Plus className="h-4 w-4 mr-2" /> Nouvelle estimation
+              </Link>
+            </Button>
+          </div>
+        )}
 
         <Tabs defaultValue={currentTab} className="w-full">
           <DashboardTabs currentTab={currentTab} />
