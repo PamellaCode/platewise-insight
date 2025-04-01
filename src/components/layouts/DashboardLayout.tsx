@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -25,7 +24,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const navigation = [
     { name: 'Tableau de bord', path: '/dashboard', icon: Home },
     { name: 'Mes estimations', path: '/dashboard/estimations', icon: FileText },
-    { name: 'Historique', path: '/dashboard/history', icon: FileText },
     { name: 'Statistiques', path: '/dashboard/stats', icon: BarChart2 },
     { name: 'Abonnement', path: '/dashboard/subscription', icon: CreditCard },
     { name: 'Profil', path: '/dashboard/profile', icon: User },
