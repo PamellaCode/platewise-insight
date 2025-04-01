@@ -18,6 +18,7 @@ import Estimations from "./pages/Estimations";
 import EstimationDetail from "./pages/EstimationDetail";
 import Statistics from "./pages/Statistics";
 import History from "./pages/History";
+import AssistantAI from "./pages/AssistantAI";
 
 const queryClient = new QueryClient();
 
@@ -35,7 +36,7 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/history" element={<History />} />
-          <Route path="/dashboard/assistant-ai" element={<Dashboard />} />
+          <Route path="/dashboard/assistant-ai" element={<AssistantAI />} />
           <Route path="/dashboard/subscription" element={<Subscription />} />
           <Route path="/dashboard/profile" element={<Profile />} />
           <Route path="/dashboard/settings" element={<Settings />} />
