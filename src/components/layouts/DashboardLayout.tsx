@@ -10,7 +10,8 @@ import {
   MessageCircle,
   Settings, 
   User, 
-  X
+  X,
+  History
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Toaster } from '@/components/ui/toaster';
@@ -25,6 +26,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   
   const navigation = [
     { name: 'Tableau de bord', path: '/dashboard', icon: Home },
+    { name: 'Historique', path: '/dashboard/history', icon: History },
     { name: 'Mes estimations', path: '/dashboard/estimations', icon: FileText },
     { name: 'Assistant IA', path: '/dashboard/assistant-ai', icon: MessageCircle },
     { name: 'Statistiques', path: '/dashboard/stats', icon: BarChart2 },

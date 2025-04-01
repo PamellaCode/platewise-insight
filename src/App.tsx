@@ -17,6 +17,7 @@ import Settings from "./pages/Settings";
 import Estimations from "./pages/Estimations";
 import EstimationDetail from "./pages/EstimationDetail";
 import Statistics from "./pages/Statistics";
+import History from "./pages/History";
 
 const queryClient = new QueryClient();
 
@@ -33,7 +34,7 @@ const App = () => (
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard/history" element={<Dashboard />} />
+          <Route path="/dashboard/history" element={<History />} />
           <Route path="/dashboard/assistant-ai" element={<Dashboard />} />
           <Route path="/dashboard/subscription" element={<Subscription />} />
           <Route path="/dashboard/profile" element={<Profile />} />
