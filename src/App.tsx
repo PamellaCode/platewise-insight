@@ -19,6 +19,7 @@ import EstimationDetail from "./pages/EstimationDetail";
 import Statistics from "./pages/Statistics";
 import History from "./pages/History";
 import AssistantAI from "./pages/AssistantAI";
+import FAQ from "./pages/FAQ";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/history" element={<History />} />
           <Route path="/dashboard/assistant-ai" element={<AssistantAI />} />
