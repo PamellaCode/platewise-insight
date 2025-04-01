@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import PricingPlans from '@/components/PricingPlans';
 import MainLayout from '@/components/layouts/MainLayout';
-
 const fadeIn = {
   hidden: {
     opacity: 0,
@@ -20,7 +19,6 @@ const fadeIn = {
     }
   }
 };
-
 const staggerContainer = {
   hidden: {
     opacity: 0
@@ -32,13 +30,11 @@ const staggerContainer = {
     }
   }
 };
-
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(true);
   const toggleBilling = () => {
     setIsAnnual(!isAnnual);
   };
-
   const faqs = [{
     question: "Quelle est la différence entre les différentes formules ?",
     answer: "Nos différentes formules offrent des niveaux de services adaptés à vos besoins. Le plan Essentiel est parfait pour une utilisation occasionnelle, le plan Standard pour les professionnels qui ont besoin d'estimations régulières, et le plan Expert pour les sociétés avec des besoins avancés."
@@ -52,7 +48,6 @@ const Pricing = () => {
     question: "Proposez-vous une garantie de remboursement ?",
     answer: "Oui, nous proposons une garantie de remboursement de 14 jours si vous n'êtes pas satisfait de nos services. Contactez notre support client pour en savoir plus."
   }];
-
   return <MainLayout>
       <section className="bg-gradient-to-r from-blue-600 via-teal-500 to-cyan-500 text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -137,10 +132,10 @@ const Pricing = () => {
                   <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
                 </tr>
                 <tr className="hover:bg-gray-50">
-                  <td className="p-4 border-b">API d'intégration</td>
-                  <td className="p-4 text-center border-b">-</td>
-                  <td className="p-4 text-center border-b">-</td>
-                  <td className="p-4 text-center border-b"><Check className="h-5 w-5 mx-auto text-green-500" /></td>
+                  <td className="p-4 border-b">Nombre d'estimations/mois</td>
+                  <td className="p-4 text-center border-b">1</td>
+                  <td className="p-4 text-center border-b">3</td>
+                  <td className="p-4 text-center border-b "><Check className="h-5 w-5 mx-auto text-green-500" /></td>
                 </tr>
                 <tr className="hover:bg-gray-50">
                   <td className="p-4 border-b">Support prioritaire</td>
@@ -212,5 +207,4 @@ const Pricing = () => {
       </section>
     </MainLayout>;
 };
-
 export default Pricing;
