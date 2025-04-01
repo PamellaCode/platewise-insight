@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { CheckCircle2, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,17 +9,16 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/h
 interface PricingPlansProps {
   isAnnual: boolean;
 }
-
-const PricingPlans: React.FC<PricingPlansProps> = ({ isAnnual }) => {
+const PricingPlans: React.FC<PricingPlansProps> = ({
+  isAnnual
+}) => {
   // Calculate price based on billing cycle
   const getPrice = (monthlyPrice: string, discount: number = 20) => {
     if (!isAnnual) return monthlyPrice;
-    
     const numericPrice = parseFloat(monthlyPrice.replace(',', '.').replace('€', ''));
     const annualPrice = (numericPrice * 12 * (1 - discount / 100)).toFixed(2).replace('.', ',');
     return `${annualPrice}€`;
   };
-  
   const plans = [{
     name: 'Bronze',
     price: getPrice('5,99€'),
@@ -61,7 +59,6 @@ const PricingPlans: React.FC<PricingPlansProps> = ({ isAnnual }) => {
     estimations: 10,
     gradient: 'from-amber-500/20 to-auto-gold/20'
   }];
-  
   return <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-8 px-4">
       {plans.map((plan, index) => <div key={plan.name} className="relative w-full">
           <Card className={`h-full flex flex-col border-2 rounded-2xl overflow-hidden relative group
@@ -120,17 +117,12 @@ const PricingPlans: React.FC<PricingPlansProps> = ({ isAnnual }) => {
               </div>
             </CardContent>
             <CardFooter className="mt-auto pt-6 relative z-10">
-              <Button 
-                variant={plan.buttonVariant === 'outline' ? 'outline' : 'default'} 
-                className={`w-full py-6 text-base font-semibold transition-all duration-300 group-hover:scale-105 group-hover:shadow-md`} 
-                asChild
-              >
-                <Link to="/register">S'abonner maintenant</Link>
+              <Button variant={plan.buttonVariant === 'outline' ? 'outline' : 'default'} className={`w-full py-6 text-base font-semibold transition-all duration-300 group-hover:scale-105 group-hover:shadow-md`} asChild>
+                <Link to="/register" className=" text-blue">S'abonner maintenant</Link>
               </Button>
             </CardFooter>
           </Card>
         </div>)}
     </div>;
 };
-
 export default PricingPlans;
