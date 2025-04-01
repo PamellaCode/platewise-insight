@@ -248,7 +248,7 @@ const ProfileTab = () => {
                   <p className="font-medium">Cet appareil</p>
                   <p className="text-sm text-muted-foreground">Paris, France · Chrome · Dernière activité il y a 2 minutes</p>
                 </div>
-                <Button variant="outline" size="sm" disabled>
+                <Button variant="outline" size="sm" disabled className="text-blue-600">
                   Session actuelle
                 </Button>
               </div>
