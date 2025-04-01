@@ -592,7 +592,7 @@ const HowItWorks = () => {
                 repeat: Infinity,
                 duration: 1.5,
                 ease: "easeInOut"
-              }} className="inline-block">
+              }} className="inline-block white\n">
                   <ArrowRight className="inline-block" />
                 </motion.div>
               </Button>
