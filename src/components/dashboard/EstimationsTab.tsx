@@ -165,7 +165,7 @@ const EstimationsTab = () => {
                             <Download className="h-4 w-4" />
                           </Button>
                           <Button variant="outline" size="sm" asChild>
-                            <Link to={`/dashboard/estimations/${estimation.id}`}>
+                            <Link to={`/dashboard/estimations/${estimation.id}`} className="indigo\n">
                               <FileText className="h-4 w-4" />
                             </Link>
                           </Button>
