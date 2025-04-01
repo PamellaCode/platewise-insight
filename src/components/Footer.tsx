@@ -1,7 +1,12 @@
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
 const Footer: React.FC = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
   const currentYear = new Date().getFullYear();
+
   return <footer className="bg-argus-blue-500 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -38,28 +43,84 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider">MENU</h3>
             <ul className="mt-4 space-y-2">
-              <li><Link to="/pricing" className="text-gray-300 hover:text-white text-sm">Abonnements</Link></li>
-              <li><Link to="/how-it-works" className="text-gray-300 hover:text-white text-sm">Comment ça marche</Link></li>
-              <li><Link to="/news-and-trends" className="text-gray-300 hover:text-white text-sm">Actualités & Tendances</Link></li>
-              <li><Link to="/faq" className="text-gray-300 hover:text-white text-sm">FAQ</Link></li>
+              <li>
+                <Link to="/" 
+                  className={`text-sm ${currentPath === "/" ? "text-white font-semibold" : "text-gray-300 hover:text-white"}`}>
+                  Accueil
+                </Link>
+              </li>
+              <li>
+                <Link to="/pricing" 
+                  className={`text-sm ${currentPath === "/pricing" ? "text-white font-semibold" : "text-gray-300 hover:text-white"}`}>
+                  Abonnements
+                </Link>
+              </li>
+              <li>
+                <Link to="/how-it-works" 
+                  className={`text-sm ${currentPath === "/how-it-works" ? "text-white font-semibold" : "text-gray-300 hover:text-white"}`}>
+                  Comment ça marche
+                </Link>
+              </li>
+              <li>
+                <Link to="/news-and-trends" 
+                  className={`text-sm ${currentPath === "/news-and-trends" ? "text-white font-semibold" : "text-gray-300 hover:text-white"}`}>
+                  Actualités & Tendances
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" 
+                  className={`text-sm ${currentPath === "/faq" ? "text-white font-semibold" : "text-gray-300 hover:text-white"}`}>
+                  FAQ
+                </Link>
+              </li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider">Société</h3>
             <ul className="mt-4 space-y-2">
-              <li><Link to="/about" className="text-gray-300 hover:text-white text-sm">À propos</Link></li>
-              <li><Link to="/news-and-trends" className="text-gray-300 hover:text-white text-sm">Actualités</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-white text-sm">Contact</Link></li>
+              <li>
+                <Link to="/about" 
+                  className={`text-sm ${currentPath === "/about" ? "text-white font-semibold" : "text-gray-300 hover:text-white"}`}>
+                  À propos
+                </Link>
+              </li>
+              <li>
+                <Link to="/news-and-trends" 
+                  className={`text-sm ${currentPath === "/news-and-trends" ? "text-white font-semibold" : "text-gray-300 hover:text-white"}`}>
+                  Actualités
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" 
+                  className={`text-sm ${currentPath === "/contact" ? "text-white font-semibold" : "text-gray-300 hover:text-white"}`}>
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider">Légal</h3>
             <ul className="mt-4 space-y-2">
-              <li><Link to="/privacy" className="text-gray-300 hover:text-white text-sm">Confidentialité</Link></li>
-              <li><Link to="/terms" className="text-gray-300 hover:text-white text-sm">Conditions d'utilisation</Link></li>
-              <li><Link to="/cookies" className="text-gray-300 hover:text-white text-sm">Politique des cookies</Link></li>
+              <li>
+                <Link to="/privacy" 
+                  className={`text-sm ${currentPath === "/privacy" ? "text-white font-semibold" : "text-gray-300 hover:text-white"}`}>
+                  Confidentialité
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms" 
+                  className={`text-sm ${currentPath === "/terms" ? "text-white font-semibold" : "text-gray-300 hover:text-white"}`}>
+                  Conditions d'utilisation
+                </Link>
+              </li>
+              <li>
+                <Link to="/cookies" 
+                  className={`text-sm ${currentPath === "/cookies" ? "text-white font-semibold" : "text-gray-300 hover:text-white"}`}>
+                  Politique des cookies
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -73,4 +134,5 @@ const Footer: React.FC = () => {
       </div>
     </footer>;
 };
+
 export default Footer;

@@ -1,11 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Car } from 'lucide-react';
+import { Car, ArrowUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const ScrollToTopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Fonction pour détecter quand afficher le bouton
   useEffect(() => {
@@ -42,6 +43,8 @@ const ScrollToTopButton: React.FC = () => {
           className="fixed right-6 bottom-6 z-50"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           <button
             onClick={scrollToTop}
@@ -54,19 +57,41 @@ const ScrollToTopButton: React.FC = () => {
             aria-label="Remonter en haut"
           >
             <div className="relative">
-              <motion.div
-                animate={{
-                  x: [0, -2, 2, 0],
-                  rotate: [-2, 2, -2]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <Car className="h-6 w-6" />
-              </motion.div>
+              <AnimatePresence mode="wait">
+                {isHovered ? (
+                  <motion.div
+                    key="arrow"
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ArrowUp className="h-6 w-6" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="car"
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <motion.div
+                      animate={{
+                        x: [0, -2, 2, 0],
+                        rotate: [-2, 2, -2]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <Car className="h-6 w-6" />
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
               <motion.div 
                 className="absolute -bottom-2 h-[2px] w-full bg-white rounded"
                 animate={{
