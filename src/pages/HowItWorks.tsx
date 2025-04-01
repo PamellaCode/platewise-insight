@@ -278,9 +278,7 @@ const HowItWorks = () => {
           }} transition={{
             duration: 0.5,
             delay: 0.1
-          }}>
-              Pourquoi choisir AutoCote ?
-            </motion.h2>
+          }}>Pourquoi choisir ArgusAI ?</motion.h2>
             
             <motion.p className="text-lg text-gray-600 max-w-3xl mx-auto" initial={{
             opacity: 0
@@ -487,9 +485,7 @@ const HowItWorks = () => {
           }} transition={{
             duration: 0.5,
             delay: 0.2
-          }}>
-              Découvrez les témoignages de personnes qui ont utilisé AutoCote pour estimer leur véhicule.
-            </motion.p>
+          }}>Découvrez les témoignages de personnes qui ont utilisé ArgusAI pour estimer leur véhicule.</motion.p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
