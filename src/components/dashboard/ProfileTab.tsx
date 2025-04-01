@@ -257,7 +257,7 @@ const ProfileTab = () => {
                   <p className="font-medium">iPhone X</p>
                   <p className="text-sm text-muted-foreground">Lyon, France · Safari Mobile · Dernière activité hier</p>
                 </div>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" className="text-blue-600">
                   Déconnecter
                 </Button>
               </div>
