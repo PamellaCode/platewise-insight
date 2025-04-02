@@ -170,3 +170,43 @@
   @apply text-lg mb-8 max-w-3xl mx-auto text-gray-700;
   text-wrap: pretty;
 }
+
+/* Styles pour les messages de chat */
+.message-content {
+  @apply space-y-1;
+}
+
+.message-content p {
+  @apply mb-2 last:mb-0;
+}
+
+/* Animation pour les nouveaux messages */
+.new-message {
+  animation: slide-in 0.3s ease-out forwards;
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Styles pour les messages formatés */
+.message-content ul {
+  @apply pl-5 space-y-1 my-2;
+}
+
+.message-content li {
+  @apply flex items-start;
+}
+
+.message-content li:before {
+  content: "•";
+  @apply text-argus-blue-500 mr-2 flex-shrink-0;
+}
+

@@ -1,12 +1,13 @@
 
 import React from 'react';
-import { User, Car, Calendar, Gauge, Fuel, Clock, Banknote, ArrowRight } from 'lucide-react';
+import { User, Car, Calendar, Gauge, Fuel, Clock, Banknote, Info, ArrowRight, Shield, Award, MessageCircle } from 'lucide-react';
 import { Avatar } from '@/components/ui/avatar';
 import { AvatarFallback } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 import { Message } from './types';
 import ChatCarInfo from './ChatCarInfo';
 import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 
 interface ChatMessageProps {
   message: Message;
@@ -18,6 +19,47 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
       hour: '2-digit',
       minute: '2-digit'
     });
+  };
+
+  // Fonction pour formater le texte avec une mise en page améliorée
+  const formatMessageText = (text: string) => {
+    if (!text) return null;
+    
+    // Traitement des titres (texte entre ** ou en début de ligne suivi de :)
+    const titleRegex = /\*\*(.*?)\*\*|^([^:]+):/gm;
+    let formattedText = text.replace(titleRegex, (match, p1, p2) => {
+      const title = p1 || p2;
+      return `<div class="font-bold text-base mt-2 mb-1">${title}</div>`;
+    });
+    
+    // Traitement des listes (lignes commençant par - ou •)
+    const listItemRegex = /^[•\-]\s(.*?)$/gm;
+    formattedText = formattedText.replace(listItemRegex, '<div class="flex items-start mt-1"><span class="text-argus-blue-500 mr-2">•</span>$1</div>');
+
+    // Mise en évidence des valeurs importantes (texte entre ` `)
+    const highlightRegex = /`(.*?)`/g;
+    formattedText = formattedText.replace(highlightRegex, '<span class="font-medium text-argus-teal-600">$1</span>');
+
+    return <div className="message-content" dangerouslySetInnerHTML={{ __html: formattedText }} />;
+  };
+
+  // Fonction pour détecter le type de message et afficher l'icône appropriée
+  const getMessageIcon = () => {
+    const text = message.text.toLowerCase();
+    
+    if (message.hasCarInfo || message.carInfo) {
+      return <Car className="h-5 w-5" />;
+    } else if (text.includes('prix') || text.includes('estimation') || text.includes('valeur') || text.includes('€')) {
+      return <Banknote className="h-5 w-5" />;
+    } else if (text.includes('bienvenue') || text.includes('bonjour') || text.includes('salut')) {
+      return <MessageCircle className="h-5 w-5" />;
+    } else if (text.includes('sécurité') || text.includes('fiable') || text.includes('garantie')) {
+      return <Shield className="h-5 w-5" />;
+    } else if (text.includes('avantage') || text.includes('bénéfice') || text.includes('meilleur')) {
+      return <Award className="h-5 w-5" />;
+    } else {
+      return <Info className="h-5 w-5" />;
+    }
   };
 
   // Function to extract and format vehicle information from the text response
@@ -149,48 +191,56 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
   return (
     <div
       className={cn(
-        "flex",
+        "flex mb-6", // Added more bottom margin for better separation
         message.sender === "user" ? "justify-end" : "justify-start"
       )}
     >
-      <div className="flex items-end gap-2 max-w-[80%]">
-        {message.sender === "bot" && (
-          <Avatar className="h-8 w-8 border-2 border-argus-teal-500">
+      <div className={cn(
+        "flex items-end gap-2 max-w-[85%]", // Increased max-width for better readability
+        message.sender === "user" ? "flex-row-reverse" : "flex-row"
+      )}>
+        {message.sender === "bot" ? (
+          <Avatar className="h-9 w-9 border-2 border-argus-teal-500 shadow-sm">
             <AvatarFallback className="bg-argus-blue-500 text-white">
-              <Car className="h-5 w-5" />
+              {getMessageIcon()}
+            </AvatarFallback>
+          </Avatar>
+        ) : (
+          <Avatar className="h-9 w-9 border-2 border-argus-blue-400 shadow-sm">
+            <AvatarFallback className="bg-argus-blue-400 text-white">
+              <User className="h-5 w-5" />
             </AvatarFallback>
           </Avatar>
         )}
         
         <div
           className={cn(
-            "px-4 py-3 rounded-2xl shadow-sm text-sm",
+            "px-5 py-4 rounded-2xl shadow-sm text-sm",
             message.sender === "user"
               ? "bg-gradient-to-r from-argus-blue-500 to-argus-blue-600 text-white rounded-br-none"
               : "bg-white border border-gray-100 text-gray-800 rounded-bl-none"
           )}
         >
-          <div className="whitespace-pre-wrap">{message.text}</div>
+          {formatMessageText(message.text)}
           
           {/* Enhanced Vehicle Info Display */}
           {message.sender === 'bot' && extractVehicleInfo(message.text)}
           
           {/* Car Information Display (from previous implementation) */}
           {message.hasCarInfo && message.carInfo && (
-            <ChatCarInfo carInfo={message.carInfo} />
+            <>
+              <Separator className="my-3" />
+              <ChatCarInfo carInfo={message.carInfo} />
+            </>
           )}
           
-          <span className="block mt-1 text-xs opacity-70">
+          <span className={cn(
+            "block mt-2 text-xs",
+            message.sender === "user" ? "opacity-70" : "text-gray-500"
+          )}>
             {formatTime(message.timestamp)}
           </span>
         </div>
-        
-        {message.sender === "user" && (
-          <Avatar className="h-8 w-8 border-2 border-argus-blue-400">
-            <AvatarFallback className="bg-argus-blue-400 text-white">
-              <User className="h-5 w-5" /></AvatarFallback>
-          </Avatar>
-        )}
       </div>
     </div>
   );
