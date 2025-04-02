@@ -19,6 +19,36 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
     });
   };
 
+  // Function to format text with vehicle characteristics
+  const formatVehicleInfo = (text: string) => {
+    if (text.includes("caractéristiques suivantes") || text.includes("Marque") || text.includes("Modèle")) {
+      const lines = text.split('-').filter(line => line.trim() !== '');
+      
+      if (lines.length <= 1) return text;
+      
+      const introText = lines[0];
+      const characteristics = lines.slice(1);
+      
+      return (
+        <div className="vehicle-info">
+          <p className="mb-2">{introText}</p>
+          <div className="mt-3 pt-3 border-t border-gray-200 space-y-2 animate-fade-in">
+            {characteristics.map((item, index) => {
+              const [label, value] = item.split(':').map(s => s.trim());
+              return (
+                <div key={index} className="flex items-center gap-1.5 text-sm">
+                  <span className="font-bold">{label} :</span>
+                  <span>{value}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+    return text;
+  };
+
   return (
     <div
       className={cn(
@@ -43,7 +73,9 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
               : "bg-white border border-gray-100 text-gray-800 rounded-bl-none"
           )}
         >
-          {message.text}
+          {typeof message.text === 'string' && message.text.includes("caractéristiques suivantes") 
+            ? formatVehicleInfo(message.text)
+            : message.text}
           
           {/* Car Information Display */}
           {message.hasCarInfo && message.carInfo && (
@@ -58,8 +90,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
         {message.sender === "user" && (
           <Avatar className="h-8 w-8 border-2 border-argus-blue-400">
             <AvatarFallback className="bg-argus-blue-400 text-white">
-              <User className="h-5 w-5" />
-            </AvatarFallback>
+              <User className="h-5 w-5" /></AvatarFallback>
           </Avatar>
         )}
       </div>
