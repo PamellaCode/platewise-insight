@@ -74,8 +74,7 @@ export const useChatMessages = () => {
           hasCarInfo: response.hasCarInfo || hasVehicleInfo,
           carInfo: response.carInfo,
           showPrompts: hasVehicleInfo, // Afficher les prompts uniquement après avoir montré les infos du véhicule
-          sessionId: sessionId,
-          imageUrl: response.imageUrl // Include the image URL if present
+          sessionId: sessionId
         };
         
         setMessages(prev => [...prev, botMessage]);
