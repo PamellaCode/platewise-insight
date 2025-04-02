@@ -124,9 +124,18 @@ export const useChatMessages = () => {
     setIsTyping(true);
     
     try {
-      // En mode test, toujours utiliser la simulation
+      // Use n8n integration if available, fallback to simulation
       const userId = user?.id || 'anonymous';
-      const response = await ChatService.simulateResponse(input);
+      let response;
+      
+      try {
+        // Try with n8n first
+        response = await ChatService.processMessageWithN8n(input, userId, sessionId);
+      } catch (error) {
+        console.error('N8n processing failed, falling back to simulation:', error);
+        // Fallback to simulated response
+        response = await ChatService.simulateResponse(input);
+      }
 
       // Simuler le délai de frappe
       ChatService.simulateTyping(response.text, (text) => {

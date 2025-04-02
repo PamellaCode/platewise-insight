@@ -15,8 +15,10 @@ interface MessageContentProps {
  */
 const MessageContent: React.FC<MessageContentProps> = ({ message }) => {
   return (
-    <>
-      {formatMessageText(message.text)}
+    <div className="message-container">
+      <div className="message-text-content">
+        {formatMessageText(message.text)}
+      </div>
       
       {/* Affichage des informations de véhicule détectées */}
       {message.sender === 'bot' && extractVehicleInfo(message.text)}
@@ -24,11 +26,13 @@ const MessageContent: React.FC<MessageContentProps> = ({ message }) => {
       {/* Affichage des informations de véhicule (implémentation précédente) */}
       {message.hasCarInfo && message.carInfo && (
         <>
-          <Separator className="my-3" />
-          <ChatCarInfo carInfo={message.carInfo} />
+          <Separator className="my-4" />
+          <div className="vehicle-info-container">
+            <ChatCarInfo carInfo={message.carInfo} />
+          </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

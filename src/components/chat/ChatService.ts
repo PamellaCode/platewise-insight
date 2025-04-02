@@ -1,3 +1,4 @@
+
 import { Message, CarInfo } from './types';
 
 export class ChatService {
@@ -40,8 +41,57 @@ export class ChatService {
     userId: string,
     sessionId: string
   ): Promise<{text: string, hasCarInfo?: boolean, carInfo?: CarInfo}> {
-    console.log("Mode test activé : utilisation de la réponse simulée au lieu du webhook");
-    return this.simulateResponse(input);
+    try {
+      const response = await fetch('https://pamella.app.n8n.cloud/webhook-test/ArgusAI2.0', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user_message: input,
+          user_id: userId,
+          session_id: sessionId,
+          timestamp: new Date().toISOString()
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      console.log("N8n response:", data);
+      
+      if (data && data.output) {
+        const text = data.output;
+        const hasVehicleInfo = this.checkIfHasVehicleInfo(text);
+        return {
+          text: text,
+          hasCarInfo: hasVehicleInfo
+        };
+      } 
+      else if (Array.isArray(data) && data.length > 0 && data[0].output) {
+        const text = data[0].output;
+        const hasVehicleInfo = this.checkIfHasVehicleInfo(text);
+        return {
+          text: text,
+          hasCarInfo: hasVehicleInfo
+        };
+      }
+      else if (data && data.response_message) {
+        const hasVehicleInfo = this.checkIfHasVehicleInfo(data.response_message);
+        return {
+          text: data.response_message,
+          hasCarInfo: data.hasCarInfo || hasVehicleInfo,
+          carInfo: data.carInfo || undefined
+        };
+      } else {
+        throw new Error('Invalid response format from n8n');
+      }
+    } catch (error) {
+      console.error('Error processing message with n8n:', error);
+      throw error;
+    }
   }
 
   static checkIfHasVehicleInfo(text: string): boolean {

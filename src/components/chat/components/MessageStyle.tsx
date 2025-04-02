@@ -22,12 +22,12 @@ export const MessageStyle: React.FC<MessageStyleProps> = ({
   return (
     <div
       className={cn(
-        "flex mb-6", 
+        "flex mb-8", 
         sender === "user" ? "justify-end" : "justify-start"
       )}
     >
       <div className={cn(
-        "flex items-end gap-2 max-w-[85%]", 
+        "flex items-end gap-2.5 max-w-[85%]", 
         sender === "user" ? "flex-row-reverse" : "flex-row"
       )}>
         {children}
@@ -46,7 +46,7 @@ export const MessageBubble: React.FC<{
   return (
     <div
       className={cn(
-        "px-5 py-4 rounded-2xl shadow-sm text-sm",
+        "px-6 py-4 rounded-2xl shadow-md text-sm",
         sender === "user"
           ? "bg-gradient-to-r from-argus-blue-500 to-argus-blue-600 text-white rounded-br-none"
           : "bg-white border border-gray-100 text-gray-800 rounded-bl-none"
@@ -60,7 +60,7 @@ export const MessageBubble: React.FC<{
       </div>
       
       <span className={cn(
-        "block mt-2 text-xs",
+        "block mt-3 text-xs",
         sender === "user" ? "opacity-70" : "text-gray-500"
       )}>
         {formattedTime}

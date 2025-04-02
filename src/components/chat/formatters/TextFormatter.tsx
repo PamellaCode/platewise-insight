@@ -36,10 +36,15 @@ export const formatMessageText = (text: string) => {
   formattedText = replaceEmojis(formattedText);
   
   // Ajout d'espacement entre les paragraphes
-  formattedText = formattedText.replace(/\n\n/g, '<div class="my-3"></div>');
+  formattedText = formattedText.replace(/\n\n/g, '<div class="my-4"></div>');
   
-  // Conversion des sauts de ligne simples en balises <br>
-  formattedText = formattedText.replace(/\n/g, '<br>');
+  // Conversion des sauts de ligne simples en balises <br> avec plus d'espace
+  formattedText = formattedText.replace(/\n/g, '<br class="my-2">');
 
-  return <div className="message-content leading-relaxed text-normal" dangerouslySetInnerHTML={{ __html: formattedText }} />;
+  return (
+    <div 
+      className="message-content leading-relaxed text-normal tracking-normal" 
+      dangerouslySetInnerHTML={{ __html: formattedText }} 
+    />
+  );
 };
