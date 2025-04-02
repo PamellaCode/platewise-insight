@@ -39,20 +39,24 @@ const ChatMessagesList: React.FC<ChatMessagesListProps> = ({
   // Animation pour le dernier message ajouté
   const lastMessageIndex = messages.length - 1;
 
+  const EmptyState = () => (
+    <div className="flex flex-col items-center justify-center h-full text-center p-6">
+      <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+        <Bot className="h-8 w-8 text-argus-blue-500" />
+      </div>
+      <h3 className="text-lg font-medium text-gray-800 mb-2">
+        Commencez une nouvelle conversation
+      </h3>
+      <p className="text-sm text-gray-500 max-w-sm">
+        Posez une question à notre assistant pour estimer la valeur de votre véhicule.
+      </p>
+    </div>
+  );
+
   return (
     <ScrollArea className="flex-grow p-4 bg-gradient-to-br from-gray-50 to-blue-50">
       {messages.length === 0 ? (
-        <div className="flex flex-col items-center justify-center h-full text-center p-6">
-          <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-            <Bot className="h-8 w-8 text-argus-blue-500" />
-          </div>
-          <h3 className="text-lg font-medium text-gray-800 mb-2">
-            Commencez une nouvelle conversation
-          </h3>
-          <p className="text-sm text-gray-500 max-w-sm">
-            Posez une question à notre assistant pour estimer la valeur de votre véhicule.
-          </p>
-        </div>
+        <EmptyState />
       ) : (
         <div className="space-y-2">
           {messages.map((message, index) => (
