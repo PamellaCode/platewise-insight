@@ -210,3 +210,35 @@
   @apply text-argus-blue-500 mr-2 flex-shrink-0;
 }
 
+/* Styles améliorés pour les messages formatés */
+.message-content a {
+  @apply text-argus-blue-600 hover:text-argus-blue-800 transition-colors underline font-medium;
+}
+
+.message-content a:hover {
+  @apply text-argus-blue-800;
+}
+
+/* Style pour les sections de titre dans les messages */
+.message-content .message-section-title {
+  @apply text-argus-blue-700 font-bold text-base mt-3 mb-2;
+}
+
+/* Style pour les éléments mis en évidence dans les messages */
+.message-content .highlight {
+  @apply font-medium text-argus-teal-600 bg-argus-teal-50 px-1.5 py-0.5 rounded;
+}
+
+/* Style pour les listes à puces dans les messages */
+.message-content .list-item {
+  @apply flex items-start mt-1.5 mb-1.5;
+}
+
+.message-content .list-item-icon {
+  @apply text-argus-teal-500 mr-2;
+}
+
+/* Style pour les séparateurs dans les messages */
+.message-content .separator {
+  @apply my-2 border-t border-gray-100;
+}

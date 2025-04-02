@@ -36,7 +36,7 @@ const ChatMessagesList: React.FC<ChatMessagesListProps> = ({
     scrollToBottom();
   }, [messages]);
 
-  // Ajoute une animation pour le dernier message ajouté
+  // Animation pour le dernier message ajouté
   const lastMessageIndex = messages.length - 1;
 
   return (

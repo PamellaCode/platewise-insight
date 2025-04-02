@@ -1,6 +1,11 @@
 
 import React from 'react';
-import { User, Car, Calendar, Gauge, Fuel, Clock, Banknote, Info, ArrowRight, Shield, Award, MessageCircle } from 'lucide-react';
+import { 
+  User, Car, Calendar, Gauge, Fuel, Clock, Banknote, Info, 
+  ArrowRight, Shield, Award, MessageCircle, CheckCircle2, 
+  AlertTriangle, ThumbsUp, Package, Heart, Star, PiggyBank,
+  Trophy, Sparkles, HelpCircle
+} from 'lucide-react';
 import { Avatar } from '@/components/ui/avatar';
 import { AvatarFallback } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
@@ -21,42 +26,112 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
     });
   };
 
-  // Fonction pour formater le texte avec une mise en page améliorée
+  // Fonction améliorée pour formater le texte avec une mise en page structurée
   const formatMessageText = (text: string) => {
     if (!text) return null;
     
+    // Remplacer les liens avec des ancres cliquables
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    let formattedText = text.replace(urlRegex, (url) => {
+      // Détermine un texte descriptif pour le lien
+      let linkText = "Plus d'informations";
+      
+      if (url.includes("voiture") || url.includes("auto")) linkText = "📊 Voir les détails du véhicule";
+      else if (url.includes("prix") || url.includes("estimation")) linkText = "💰 Voir l'estimation";
+      else if (url.includes("contact")) linkText = "📞 Contact";
+      
+      return `<a href="${url}" target="_blank" class="text-argus-blue-500 hover:text-argus-blue-700 underline font-medium inline-flex items-center gap-1">${linkText}</a>`;
+    });
+    
     // Traitement des titres (texte entre ** ou en début de ligne suivi de :)
     const titleRegex = /\*\*(.*?)\*\*|^([^:]+):/gm;
-    let formattedText = text.replace(titleRegex, (match, p1, p2) => {
+    formattedText = formattedText.replace(titleRegex, (match, p1, p2) => {
       const title = p1 || p2;
-      return `<div class="font-bold text-base mt-2 mb-1">${title}</div>`;
+      return `<div class="font-bold text-base mt-3 mb-2 text-argus-blue-700 flex items-center gap-1">
+        <span class="text-argus-blue-500">✦</span> ${title}
+      </div>`;
     });
     
     // Traitement des listes (lignes commençant par - ou •)
     const listItemRegex = /^[•\-]\s(.*?)$/gm;
-    formattedText = formattedText.replace(listItemRegex, '<div class="flex items-start mt-1"><span class="text-argus-blue-500 mr-2">•</span>$1</div>');
+    formattedText = formattedText.replace(listItemRegex, 
+      '<div class="flex items-start mt-1.5 mb-1.5">' +
+      '<span class="text-argus-teal-500 mr-2 mt-0.5">•</span>' +
+      '<span>$1</span>' +
+      '</div>'
+    );
 
     // Mise en évidence des valeurs importantes (texte entre ` `)
     const highlightRegex = /`(.*?)`/g;
-    formattedText = formattedText.replace(highlightRegex, '<span class="font-medium text-argus-teal-600">$1</span>');
+    formattedText = formattedText.replace(highlightRegex, '<span class="font-medium text-argus-teal-600 bg-argus-teal-50 px-1.5 py-0.5 rounded">$1</span>');
 
-    return <div className="message-content" dangerouslySetInnerHTML={{ __html: formattedText }} />;
+    // Formatage des émojis (texte entre : :)
+    const emojiRegex = /:([\w+-]+):/g;
+    formattedText = formattedText.replace(emojiRegex, (match, emoji) => {
+      const emojiMap: {[key: string]: string} = {
+        'check': '✅', 
+        'warning': '⚠️',
+        'info': 'ℹ️',
+        'star': '⭐',
+        'sparkles': '✨',
+        'thumbsup': '👍',
+        'car': '🚗',
+        'money': '💰',
+        'euro': '€',
+        'calendar': '📅',
+        'gauge': '🏁',
+        'fuel': '⛽',
+        'ok': '✓',
+        'note': '📝',
+        'tip': '💡',
+        'important': '❗',
+      };
+      
+      return emojiMap[emoji] || match;
+    });
+
+    // Ajout d'espacement entre les paragraphes
+    formattedText = formattedText.replace(/\n\n/g, '<div class="my-2"></div>');
+
+    return <div className="message-content leading-relaxed" dangerouslySetInnerHTML={{ __html: formattedText }} />;
   };
 
-  // Fonction pour détecter le type de message et afficher l'icône appropriée
+  // Fonction améliorée pour détecter le type de message et afficher l'icône appropriée
   const getMessageIcon = () => {
+    if (!message.text) return <MessageCircle className="h-5 w-5" />;
+    
     const text = message.text.toLowerCase();
     
-    if (message.hasCarInfo || message.carInfo) {
+    if (message.hasCarInfo || message.carInfo || text.includes('véhicule') || text.includes('voiture') || text.includes('auto')) {
       return <Car className="h-5 w-5" />;
-    } else if (text.includes('prix') || text.includes('estimation') || text.includes('valeur') || text.includes('€')) {
+    } else if (text.includes('prix') || text.includes('estimation') || text.includes('valeur') || text.includes('€') || text.includes('euro')) {
       return <Banknote className="h-5 w-5" />;
-    } else if (text.includes('bienvenue') || text.includes('bonjour') || text.includes('salut')) {
+    } else if (text.includes('bienvenue') || text.includes('bonjour') || text.includes('salut') || text.includes('merci')) {
       return <MessageCircle className="h-5 w-5" />;
-    } else if (text.includes('sécurité') || text.includes('fiable') || text.includes('garantie')) {
+    } else if (text.includes('sécurité') || text.includes('fiable') || text.includes('garantie') || text.includes('assurance')) {
       return <Shield className="h-5 w-5" />;
-    } else if (text.includes('avantage') || text.includes('bénéfice') || text.includes('meilleur')) {
+    } else if (text.includes('avantage') || text.includes('bénéfice') || text.includes('meilleur') || text.includes('excellent')) {
       return <Award className="h-5 w-5" />;
+    } else if (text.includes('succès') || text.includes('félicitation') || text.includes('bravo')) {
+      return <CheckCircle2 className="h-5 w-5" />;
+    } else if (text.includes('attention') || text.includes('alerte') || text.includes('important')) {
+      return <AlertTriangle className="h-5 w-5" />;
+    } else if (text.includes('aime') || text.includes('préfère')) {
+      return <Heart className="h-5 w-5" />;
+    } else if (text.includes('offre') || text.includes('promotion') || text.includes('réduction')) {
+      return <Package className="h-5 w-5" />;
+    } else if (text.includes('économie') || text.includes('épargne')) {
+      return <PiggyBank className="h-5 w-5" />;
+    } else if (text.includes('meilleur') || text.includes('gagné') || text.includes('vainqueur')) {
+      return <Trophy className="h-5 w-5" />;
+    } else if (text.includes('nouveau') || text.includes('innovation')) {
+      return <Sparkles className="h-5 w-5" />;
+    } else if (text.includes('question') || text.includes('demande') || text.includes('comment')) {
+      return <HelpCircle className="h-5 w-5" />;
+    } else if (text.includes('avis') || text.includes('évaluation') || text.includes('note')) {
+      return <Star className="h-5 w-5" />;
+    } else if (text.includes('bien') || text.includes('excellent') || text.includes('super')) {
+      return <ThumbsUp className="h-5 w-5" />;
     } else {
       return <Info className="h-5 w-5" />;
     }
@@ -191,12 +266,12 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
   return (
     <div
       className={cn(
-        "flex mb-6", // Added more bottom margin for better separation
+        "flex mb-6", 
         message.sender === "user" ? "justify-end" : "justify-start"
       )}
     >
       <div className={cn(
-        "flex items-end gap-2 max-w-[85%]", // Increased max-width for better readability
+        "flex items-end gap-2 max-w-[85%]", 
         message.sender === "user" ? "flex-row-reverse" : "flex-row"
       )}>
         {message.sender === "bot" ? (
