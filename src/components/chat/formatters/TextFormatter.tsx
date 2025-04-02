@@ -16,6 +16,12 @@ export const formatMessageText = (text: string) => {
   // Traitement des listes
   formattedText = formatListItems(formattedText);
   
+  // Traitement des blockquotes
+  formattedText = formatBlockquotes(formattedText);
+  
+  // Traitement des boîtes d'information
+  formattedText = formatInfoBoxes(formattedText);
+  
   // Mise en évidence des valeurs importantes
   formattedText = highlightValues(formattedText);
   
@@ -82,6 +88,47 @@ const highlightValues = (text: string): string => {
 };
 
 /**
+ * Formate les citations en bloc (lignes commençant par >)
+ */
+const formatBlockquotes = (text: string): string => {
+  const blockquoteRegex = /^>\s(.*?)$/gm;
+  return text.replace(blockquoteRegex,
+    '<blockquote class="pl-4 border-l-4 border-argus-teal-200 bg-argus-teal-50/50 py-2 px-3 rounded-r my-3 text-gray-700 italic">$1</blockquote>'
+  );
+};
+
+/**
+ * Formate les boîtes d'information spéciales (avec préfixes spécifiques)
+ */
+const formatInfoBoxes = (text: string): string => {
+  // Boîte d'information
+  text = text.replace(/!INFO:(.*?)(?:\n|$)/g, 
+    '<div class="info-box flex items-start gap-2 bg-blue-50 border-l-4 border-blue-300 p-3 rounded-r my-3">' +
+    '<span class="text-blue-500">ℹ️</span>' +
+    '<div>$1</div>' +
+    '</div>'
+  );
+  
+  // Boîte d'avertissement
+  text = text.replace(/!ATTENTION:(.*?)(?:\n|$)/g, 
+    '<div class="warning-box flex items-start gap-2 bg-amber-50 border-l-4 border-amber-300 p-3 rounded-r my-3">' +
+    '<span class="text-amber-500">⚠️</span>' +
+    '<div>$1</div>' +
+    '</div>'
+  );
+  
+  // Boîte de conseil
+  text = text.replace(/!CONSEIL:(.*?)(?:\n|$)/g, 
+    '<div class="tip-box flex items-start gap-2 bg-teal-50 border-l-4 border-teal-300 p-3 rounded-r my-3">' +
+    '<span class="text-teal-500">💡</span>' +
+    '<div>$1</div>' +
+    '</div>'
+  );
+
+  return text;
+};
+
+/**
  * Remplace les codes d'emoji (texte entre : :) par leurs représentations visuelles
  */
 const replaceEmojis = (text: string): string => {
@@ -144,6 +191,13 @@ const replaceEmojis = (text: string): string => {
       'eyes': '👀',
       'clap': '👏',
       'think': '🤔',
+      'laugh': '😄',
+      'cry': '😢',
+      'wink': '😉',
+      'cool': '😎',
+      'wow': '😮',
+      'confused': '😕',
+      'angry': '😠',
       
       // Objets & outils
       'key': '🔑',
@@ -161,9 +215,37 @@ const replaceEmojis = (text: string): string => {
       'cloud': '☁️',
       'rain': '🌧️',
       'snow': '❄️',
-      'earth': '🌍'
+      'earth': '🌍',
+      
+      // Compléments d'émojis
+      'rocket': '🚀',
+      'idea': '💡',
+      'heart': '❤️',
+      'gift': '🎁',
+      'trophy': '🏆',
+      'medal': '🏅',
+      'crown': '👑',
+      'diamond': '💎',
+      'megaphone': '📢',
+      'lightbulb': '💡',
+      'book': '📚',
+      'bookmark': '🔖',
+      'glasses': '👓',
+      'hammer': '🔨',
+      'wrench': '🔧',
+      'gear': '⚙️',
+      'flag': '🚩',
+      'pin': '📌',
+      'link': '🔗',
+      'clock': '🕒',
+      'hourglass': '⏳',
+      'camera': '📷',
+      'video': '📹',
+      'music': '🎵',
+      'headphones': '🎧'
     };
     
     return emojiMap[emoji] || match;
   });
 };
+

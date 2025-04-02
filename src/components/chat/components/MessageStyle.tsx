@@ -52,7 +52,12 @@ export const MessageBubble: React.FC<{
           : "bg-white border border-gray-100 text-gray-800 rounded-bl-none"
       )}
     >
-      {children}
+      <div className={cn(
+        "message-wrapper",
+        sender === "user" ? "message-user" : "message-bot"
+      )}>
+        {children}
+      </div>
       
       <span className={cn(
         "block mt-2 text-xs",
