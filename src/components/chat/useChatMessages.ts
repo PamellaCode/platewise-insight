@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Message } from './types';
 import { ChatService } from './ChatService';
@@ -125,18 +124,9 @@ export const useChatMessages = () => {
     setIsTyping(true);
     
     try {
-      // Use n8n integration if available, fallback to simulation
+      // En mode test, toujours utiliser la simulation
       const userId = user?.id || 'anonymous';
-      let response;
-      
-      try {
-        // Try with n8n first
-        response = await ChatService.processMessageWithN8n(input, userId, sessionId);
-      } catch (error) {
-        console.error('N8n processing failed, falling back to simulation:', error);
-        // Fallback to simulated response
-        response = await ChatService.simulateResponse(input);
-      }
+      const response = await ChatService.simulateResponse(input);
 
       // Simuler le délai de frappe
       ChatService.simulateTyping(response.text, (text) => {
