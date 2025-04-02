@@ -219,7 +219,7 @@ const replaceEmojis = (text: string): string => {
       
       // Compléments d'émojis
       'rocket': '🚀',
-      'idea': '💡',
+      // 'idea' est le même que 'tip' donc nous le supprimons
       'heart': '❤️',
       'gift': '🎁',
       'trophy': '🏆',
@@ -227,7 +227,7 @@ const replaceEmojis = (text: string): string => {
       'crown': '👑',
       'diamond': '💎',
       'megaphone': '📢',
-      'lightbulb': '💡',
+      // 'lightbulb' est le même que 'tip' donc nous le supprimons
       'book': '📚',
       'bookmark': '🔖',
       'glasses': '👓',
@@ -237,8 +237,8 @@ const replaceEmojis = (text: string): string => {
       'flag': '🚩',
       'pin': '📌',
       'link': '🔗',
-      'clock': '🕒',
-      'hourglass': '⏳',
+      // 'clock' est déjà défini plus haut, donc nous le supprimons ici
+      'timer': '⏲️',  // Alternative pour éviter la duplication
       'camera': '📷',
       'video': '📹',
       'music': '🎵',
