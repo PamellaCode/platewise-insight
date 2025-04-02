@@ -49,7 +49,7 @@ export const useChatMessages = () => {
         setMessages([{
           id: 1,
           text: "Bienvenue sur ArgusAI ! Pour estimer la valeur de votre véhicule, nous avons besoin de sa plaque d'immatriculation.",
-          sender: 'bot',
+          sender: 'bot' as const,
           timestamp: new Date(),
           showLicensePlateInput: true
         }]);
@@ -60,7 +60,7 @@ export const useChatMessages = () => {
       setMessages([{
         id: 1,
         text: "Bienvenue sur ArgusAI ! Pour estimer la valeur de votre véhicule, nous avons besoin de sa plaque d'immatriculation.",
-        sender: 'bot',
+        sender: 'bot' as const,
         timestamp: new Date(),
         showLicensePlateInput: true
       }]);
@@ -74,7 +74,7 @@ export const useChatMessages = () => {
       Cookies.remove(CHAT_HISTORY_COOKIE);
       
       // Réinitialiser les messages
-      const initialMessage = {
+      const initialMessage: Message = {
         id: 1,
         text: "Bienvenue sur ArgusAI ! Pour estimer la valeur de votre véhicule, nous avons besoin de sa plaque d'immatriculation.",
         sender: 'bot',
