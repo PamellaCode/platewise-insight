@@ -110,6 +110,18 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
         >
           {typeof message.text === 'string' ? formatVehicleInfo(message.text) : message.text}
           
+          {/* Image Display */}
+          {message.imageUrl && (
+            <div className="mt-3">
+              <img 
+                src={message.imageUrl} 
+                alt="Image générée" 
+                className="w-full rounded-lg border border-gray-200 shadow-sm animate-fade-in" 
+                loading="lazy"
+              />
+            </div>
+          )}
+          
           {/* Car Information Display */}
           {message.hasCarInfo && message.carInfo && (
             <ChatCarInfo carInfo={message.carInfo} />
