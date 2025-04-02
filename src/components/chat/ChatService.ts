@@ -1,4 +1,3 @@
-
 import { Message, CarInfo } from './types';
 
 export class ChatService {
@@ -41,8 +40,8 @@ export class ChatService {
     userId: string
   ): Promise<{text: string, hasCarInfo?: boolean, carInfo?: CarInfo}> {
     try {
-      // Send message to n8n webhook
-      const response = await fetch('https://pamella.app.n8n.cloud/webhook-test/ArgusAI', {
+      // Updated webhook URL to the new endpoint
+      const response = await fetch('https://pamella.app.n8n.cloud/webhook-test/ArgusAI2.0', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
