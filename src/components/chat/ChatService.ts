@@ -1,3 +1,4 @@
+
 import { Message, CarInfo } from './types';
 
 export class ChatService {
@@ -59,8 +60,23 @@ export class ChatService {
 
       const data = await response.json();
       
-      // Check if n8n returned a response_message
-      if (data && data.response_message) {
+      // Check for different response formats from n8n
+      // Format 1: {output: "response text"}
+      if (data && data.output) {
+        return {
+          text: data.output,
+          hasCarInfo: false
+        };
+      } 
+      // Format 2: [{output: "response text"}]
+      else if (Array.isArray(data) && data.length > 0 && data[0].output) {
+        return {
+          text: data[0].output,
+          hasCarInfo: false
+        };
+      }
+      // Format 3: {response_message: "text"}
+      else if (data && data.response_message) {
         return {
           text: data.response_message,
           hasCarInfo: data.hasCarInfo || false,

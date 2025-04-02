@@ -12,7 +12,7 @@ const AssistantAI = () => {
           <div className="space-y-6 max-w-7xl mx-auto pb-8 px-4 sm:px-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent animate-fade-in">
-                Assistant IA
+                Assistant IA - Estimation de Véhicules
               </h1>
               <div className="text-sm text-gray-500">
                 Alimenté par n8n

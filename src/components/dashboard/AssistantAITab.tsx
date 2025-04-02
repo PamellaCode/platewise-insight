@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { MessageCircle, Info } from 'lucide-react';
 import Chatbot from '@/components/Chatbot';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const AssistantAITab: React.FC = () => {
   return <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -26,6 +27,14 @@ const AssistantAITab: React.FC = () => {
             <MessageCircle className="h-4 w-4 mr-2" /> Aide
           </Button>
         </div>
+        
+        <Alert className="mb-4 bg-blue-50 border-blue-200">
+          <AlertDescription>
+            Cet assistant est connecté à n8n pour un traitement intelligent de vos requêtes. 
+            Posez des questions sur l'estimation ou la vente de votre véhicule pour obtenir une réponse personnalisée.
+          </AlertDescription>
+        </Alert>
+        
         <Chatbot />
       </div>
     </div>;
