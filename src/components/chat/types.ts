@@ -16,4 +16,5 @@ export interface Message {
   carInfo?: CarInfo;
   showPrompts?: boolean;
   promptType?: string;
+  sessionId?: string;
 }

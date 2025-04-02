@@ -1,4 +1,3 @@
-
 import { Message, CarInfo } from './types';
 
 export class ChatService {
@@ -38,10 +37,10 @@ export class ChatService {
 
   static async processMessageWithN8n(
     input: string, 
-    userId: string
+    userId: string,
+    sessionId: string
   ): Promise<{text: string, hasCarInfo?: boolean, carInfo?: CarInfo}> {
     try {
-      // Updated webhook URL to the new endpoint
       const response = await fetch('https://pamella.app.n8n.cloud/webhook-test/ArgusAI2.0', {
         method: 'POST',
         headers: {
@@ -50,6 +49,7 @@ export class ChatService {
         body: JSON.stringify({
           user_message: input,
           user_id: userId,
+          session_id: sessionId,
           timestamp: new Date().toISOString()
         })
       });
@@ -60,22 +60,18 @@ export class ChatService {
 
       const data = await response.json();
       
-      // Check for different response formats from n8n
-      // Format 1: {output: "response text"}
       if (data && data.output) {
         return {
           text: data.output,
           hasCarInfo: false
         };
       } 
-      // Format 2: [{output: "response text"}]
       else if (Array.isArray(data) && data.length > 0 && data[0].output) {
         return {
           text: data[0].output,
           hasCarInfo: false
         };
       }
-      // Format 3: {response_message: "text"}
       else if (data && data.response_message) {
         return {
           text: data.response_message,
@@ -103,5 +99,18 @@ export class ChatService {
         callback(text);
       }
     }, typingSpeed);
+  }
+
+  static generateSessionId(): string {
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  }
+
+  static getSessionId(): string {
+    let sessionId = localStorage.getItem('argusai_session_id');
+    if (!sessionId) {
+      sessionId = ChatService.generateSessionId();
+      localStorage.setItem('argusai_session_id', sessionId);
+    }
+    return sessionId;
   }
 }

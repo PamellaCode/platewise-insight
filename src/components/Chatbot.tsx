@@ -34,6 +34,7 @@ const contextualPrompts = {
 };
 
 const Chatbot: React.FC = () => {
+  const [sessionId, setSessionId] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
@@ -46,6 +47,13 @@ const Chatbot: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { user } = useAuth();
+  
+  // Initialize the session ID when the component mounts
+  useEffect(() => {
+    const currentSessionId = ChatService.getSessionId();
+    setSessionId(currentSessionId);
+    console.log("Session ID:", currentSessionId);
+  }, []);
   
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({
@@ -68,7 +76,8 @@ const Chatbot: React.FC = () => {
       id: messages.length + 1,
       text: input,
       sender: 'user',
-      timestamp: new Date()
+      timestamp: new Date(),
+      sessionId: sessionId
     };
     
     setMessages(prev => [...prev, newUserMessage]);
@@ -81,7 +90,7 @@ const Chatbot: React.FC = () => {
       
       try {
         // Try with n8n first
-        response = await ChatService.processMessageWithN8n(input, userId);
+        response = await ChatService.processMessageWithN8n(input, userId, sessionId);
       } catch (error) {
         console.error('N8n processing failed, falling back to simulation:', error);
         // Fallback to simulated response
@@ -116,7 +125,8 @@ const Chatbot: React.FC = () => {
           hasCarInfo: response.hasCarInfo,
           carInfo: response.carInfo,
           showPrompts, 
-          promptType
+          promptType,
+          sessionId: sessionId
         };
         setMessages(prev => [...prev, botMessage]);
         setIsTyping(false);
@@ -130,7 +140,8 @@ const Chatbot: React.FC = () => {
         id: messages.length + 2,
         text: "Une erreur est survenue, veuillez réessayer.",
         sender: 'bot',
-        timestamp: new Date()
+        timestamp: new Date(),
+        sessionId: sessionId
       };
       
       setMessages(prev => [...prev, errorMessage]);
@@ -152,9 +163,12 @@ const Chatbot: React.FC = () => {
             <Car className="h-5 w-5 text-white" />
           </div>
         </div>
-        <div>
+        <div className="flex-1">
           <h3 className="font-bold text-lg mb-0">AssistantAI</h3>
           <p className="text-xs opacity-80 mb-0">En ligne</p>
+        </div>
+        <div className="text-xs opacity-70">
+          Session ID: {sessionId.substring(0, 8)}...
         </div>
       </div>
       
