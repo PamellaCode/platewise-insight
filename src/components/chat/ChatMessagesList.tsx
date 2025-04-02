@@ -38,7 +38,7 @@ const ChatMessagesList: React.FC<ChatMessagesListProps> = ({
     <ScrollArea className="flex-grow p-4 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="space-y-4">
         {messages.map((message) => (
-          <React.Fragment key={message.id}>
+          <div key={message.id}>
             <ChatMessage message={message} />
             
             {/* Affichage du champ de saisie de plaque après le premier message bot */}
@@ -53,7 +53,7 @@ const ChatMessagesList: React.FC<ChatMessagesListProps> = ({
                 onPromptClick={onPromptClick} 
               />
             )}
-          </React.Fragment>
+          </div>
         ))}
         
         {/* Typing Indicator */}
