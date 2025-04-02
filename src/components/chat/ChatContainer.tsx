@@ -21,13 +21,14 @@ const ChatContainer: React.FC = () => {
     isTyping,
     handleSend,
     handlePromptClick,
-    handleLicensePlateSubmit
+    handleLicensePlateSubmit,
+    clearChatHistory
   } = useChatMessages();
   
   return (
     <Card className="flex flex-col h-[600px] w-full bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
       {/* Header */}
-      <ChatHeader sessionId={sessionId} />
+      <ChatHeader sessionId={sessionId} onClearHistory={clearChatHistory} />
       
       {/* Messages Container */}
       <ChatMessagesList 

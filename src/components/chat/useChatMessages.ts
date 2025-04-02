@@ -4,27 +4,100 @@ import { Message } from './types';
 import { ChatService } from './ChatService';
 import { toast } from '@/components/ui/use-toast';
 import { useAuth } from '@/lib/auth';
+import Cookies from 'js-cookie';
+
+// Constante pour le nom du cookie
+const CHAT_HISTORY_COOKIE = 'argus_chat_history';
 
 export const useChatMessages = () => {
   const [sessionId, setSessionId] = useState<string>('');
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      text: "Bienvenue sur ArgusAI ! Pour estimer la valeur de votre véhicule, nous avons besoin de sa plaque d'immatriculation.",
-      sender: 'bot',
-      timestamp: new Date(),
-      showLicensePlateInput: true
-    }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const { user } = useAuth();
 
-  // Initialize the session ID when the component mounts
+  // Initialize the session ID and load chat history when the component mounts
   useEffect(() => {
     const currentSessionId = ChatService.getSessionId();
     setSessionId(currentSessionId);
     console.log("Session ID:", currentSessionId);
+    
+    // Charger l'historique depuis les cookies
+    loadChatHistory();
   }, []);
+
+  // Sauvegarde l'historique de chat dans un cookie
+  const saveChatHistory = (updatedMessages: Message[]) => {
+    try {
+      // Ne stockez que les 50 derniers messages pour éviter de dépasser la limite de taille des cookies
+      const messagesToSave = updatedMessages.slice(-50);
+      Cookies.set(CHAT_HISTORY_COOKIE, JSON.stringify(messagesToSave), { expires: 7 }); // Expire après 7 jours
+    } catch (error) {
+      console.error('Erreur lors de la sauvegarde de l\'historique:', error);
+    }
+  };
+
+  // Charge l'historique de chat depuis les cookies
+  const loadChatHistory = () => {
+    try {
+      const savedHistory = Cookies.get(CHAT_HISTORY_COOKIE);
+      
+      if (savedHistory) {
+        const parsedHistory = JSON.parse(savedHistory) as Message[];
+        setMessages(parsedHistory);
+      } else {
+        // Si pas d'historique, afficher le message d'accueil
+        setMessages([{
+          id: 1,
+          text: "Bienvenue sur ArgusAI ! Pour estimer la valeur de votre véhicule, nous avons besoin de sa plaque d'immatriculation.",
+          sender: 'bot',
+          timestamp: new Date(),
+          showLicensePlateInput: true
+        }]);
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement de l\'historique:', error);
+      // En cas d'erreur, afficher le message d'accueil par défaut
+      setMessages([{
+        id: 1,
+        text: "Bienvenue sur ArgusAI ! Pour estimer la valeur de votre véhicule, nous avons besoin de sa plaque d'immatriculation.",
+        sender: 'bot',
+        timestamp: new Date(),
+        showLicensePlateInput: true
+      }]);
+    }
+  };
+
+  // Efface l'historique de chat
+  const clearChatHistory = () => {
+    try {
+      // Supprimer le cookie
+      Cookies.remove(CHAT_HISTORY_COOKIE);
+      
+      // Réinitialiser les messages
+      const initialMessage = {
+        id: 1,
+        text: "Bienvenue sur ArgusAI ! Pour estimer la valeur de votre véhicule, nous avons besoin de sa plaque d'immatriculation.",
+        sender: 'bot',
+        timestamp: new Date(),
+        showLicensePlateInput: true
+      };
+      
+      setMessages([initialMessage]);
+      
+      // Notification de succès
+      toast({
+        title: "Historique effacé",
+        description: "Votre historique de conversation a été effacé avec succès.",
+      });
+    } catch (error) {
+      console.error('Erreur lors de la suppression de l\'historique:', error);
+      toast({
+        title: "Erreur",
+        description: "Impossible d'effacer l'historique pour le moment.",
+        variant: "destructive",
+      });
+    }
+  };
 
   const handleLicensePlateSubmit = async (licensePlate: string) => {
     await handleSend(licensePlate);
@@ -44,7 +117,11 @@ export const useChatMessages = () => {
       sessionId: sessionId
     };
     
-    setMessages(prev => [...prev, newUserMessage]);
+    const updatedMessages = [...messages, newUserMessage];
+    setMessages(updatedMessages);
+    // Sauvegarder l'historique après chaque message utilisateur
+    saveChatHistory(updatedMessages);
+    
     setIsTyping(true);
     
     try {
@@ -77,7 +154,10 @@ export const useChatMessages = () => {
           sessionId: sessionId
         };
         
-        setMessages(prev => [...prev, botMessage]);
+        const finalMessages = [...updatedMessages, botMessage];
+        setMessages(finalMessages);
+        // Sauvegarder l'historique après chaque réponse du bot
+        saveChatHistory(finalMessages);
         setIsTyping(false);
       });
     } catch (error) {
@@ -93,7 +173,9 @@ export const useChatMessages = () => {
         sessionId: sessionId
       };
       
-      setMessages(prev => [...prev, errorMessage]);
+      const finalMessages = [...updatedMessages, errorMessage];
+      setMessages(finalMessages);
+      saveChatHistory(finalMessages);
       
       toast({
         title: "Erreur",
@@ -109,6 +191,7 @@ export const useChatMessages = () => {
     isTyping,
     handleSend,
     handlePromptClick,
-    handleLicensePlateSubmit
+    handleLicensePlateSubmit,
+    clearChatHistory
   };
 };
