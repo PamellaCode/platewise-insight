@@ -11,7 +11,6 @@ const followUpPrompts = [
   { text: "Comparer mon véhicule à des modèles similaires", icon: "📊" },
   { text: "Comprendre comment la valeur de mon véhicule évolue dans le temps", icon: "📈" },
   { text: "Savoir si c'est le bon moment pour vendre mon véhicule", icon: "⏰" },
-  { text: "Générer une annonce pour LeBonCoin", icon: "📝" },
   { text: "Conseils pour vendre rapidement", icon: "💡" },
 ];
 
