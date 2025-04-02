@@ -34,7 +34,6 @@ const contextualPrompts = {
 };
 
 const Chatbot: React.FC = () => {
-  const [sessionId, setSessionId] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
@@ -47,13 +46,6 @@ const Chatbot: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { user } = useAuth();
-  
-  useEffect(() => {
-    // Initialize session ID
-    const id = ChatService.getSessionId();
-    setSessionId(id);
-    console.log("Session initialized with ID:", id);
-  }, []);
   
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({
@@ -89,7 +81,7 @@ const Chatbot: React.FC = () => {
       
       try {
         // Try with n8n first
-        response = await ChatService.processMessageWithN8n(input, userId, sessionId);
+        response = await ChatService.processMessageWithN8n(input, userId);
       } catch (error) {
         console.error('N8n processing failed, falling back to simulation:', error);
         // Fallback to simulated response
@@ -150,24 +142,19 @@ const Chatbot: React.FC = () => {
       });
     }
   };
-
+  
   return (
     <Card className="flex flex-col h-[600px] w-full bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-argus-blue-500 to-argus-teal-500 text-white">
-        <div className="flex items-center">
-          <div className="bg-white rounded-full p-2 mr-3">
-            <div className="flex items-center justify-center h-8 w-8 rounded-full bg-argus-blue-500">
-              <Car className="h-5 w-5 text-white" />
-            </div>
-          </div>
-          <div>
-            <h3 className="font-bold text-lg mb-0">AssistantAI</h3>
-            <p className="text-xs opacity-80 mb-0">En ligne</p>
+      <div className="flex items-center p-4 border-b bg-gradient-to-r from-argus-blue-500 to-argus-teal-500 text-white">
+        <div className="bg-white rounded-full p-2 mr-3">
+          <div className="flex items-center justify-center h-8 w-8 rounded-full bg-argus-blue-500">
+            <Car className="h-5 w-5 text-white" />
           </div>
         </div>
-        <div className="text-xs bg-white/10 px-3 py-1 rounded-full">
-          Session: {sessionId.substring(0, 8)}...
+        <div>
+          <h3 className="font-bold text-lg mb-0">AssistantAI</h3>
+          <p className="text-xs opacity-80 mb-0">En ligne</p>
         </div>
       </div>
       

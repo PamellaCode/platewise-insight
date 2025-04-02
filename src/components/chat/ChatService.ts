@@ -1,5 +1,5 @@
+
 import { Message, CarInfo } from './types';
-import { v4 as uuidv4 } from 'uuid';
 
 export class ChatService {
   static simulateResponse(input: string): Promise<{text: string, hasCarInfo?: boolean, carInfo?: CarInfo}> {
@@ -38,8 +38,7 @@ export class ChatService {
 
   static async processMessageWithN8n(
     input: string, 
-    userId: string,
-    sessionId: string
+    userId: string
   ): Promise<{text: string, hasCarInfo?: boolean, carInfo?: CarInfo}> {
     try {
       // Updated webhook URL to the new endpoint
@@ -51,7 +50,6 @@ export class ChatService {
         body: JSON.stringify({
           user_message: input,
           user_id: userId,
-          session_id: sessionId,
           timestamp: new Date().toISOString()
         })
       });
@@ -105,18 +103,5 @@ export class ChatService {
         callback(text);
       }
     }, typingSpeed);
-  }
-
-  static generateSessionId(): string {
-    return uuidv4();
-  }
-
-  static getSessionId(): string {
-    let sessionId = localStorage.getItem('argusai_session_id');
-    if (!sessionId) {
-      sessionId = ChatService.generateSessionId();
-      localStorage.setItem('argusai_session_id', sessionId);
-    }
-    return sessionId;
   }
 }

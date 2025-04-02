@@ -17,10 +17,3 @@ export interface Message {
   showPrompts?: boolean;
   promptType?: string;
 }
-
-export interface ChatSession {
-  id: string;
-  messages: Message[];
-  createdAt: Date;
-  updatedAt: Date;
-}
