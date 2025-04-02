@@ -14,4 +14,6 @@ export interface Message {
   isTyping?: boolean;
   hasCarInfo?: boolean;
   carInfo?: CarInfo;
+  showPrompts?: boolean;
+  promptType?: string;
 }

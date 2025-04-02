@@ -10,14 +10,37 @@ import ChatInput from './chat/ChatInput';
 import { ChatService } from './chat/ChatService';
 import { toast } from '@/components/ui/use-toast';
 import { useAuth } from '@/lib/auth';
+import ChatPromptGroup from './chat/ChatPromptGroup';
+
+// Options principales pour guider l'utilisateur
+const mainPrompts = [
+  { text: "Obtenir la cote Argus de mon véhicule", icon: "📌" },
+  { text: "Comparer mon véhicule à des modèles similaires", icon: "📌" },
+  { text: "Comprendre comment la valeur de mon véhicule évolue dans le temps", icon: "📌" },
+  { text: "Savoir si c'est le bon moment pour vendre mon véhicule", icon: "📌" },
+  { text: "Accéder à l'historique des prix de mon véhicule", icon: "📌" },
+];
+
+// Options de suivi en fonction du contexte
+const contextualPrompts = {
+  estimation: [
+    { text: "Entrer la plaque d'immatriculation", icon: "🚗" },
+    { text: "Saisir les caractéristiques manuellement", icon: "✏️" }
+  ],
+  vente: [
+    { text: "Générer une annonce pour LeBonCoin", icon: "📝" },
+    { text: "Conseils pour vendre rapidement", icon: "💡" }
+  ]
+};
 
 const Chatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Bonjour ! Je suis votre assistant AutoCote. Comment puis-je vous aider aujourd'hui ?",
+      text: "Bienvenue sur ArgusAI ! Comment puis-je vous aider aujourd'hui ?",
       sender: 'bot',
-      timestamp: new Date()
+      timestamp: new Date(),
+      showPrompts: true // Indique qu'il faut afficher les prompts principaux
     }
   ]);
   const [isTyping, setIsTyping] = useState(false);
@@ -33,6 +56,11 @@ const Chatbot: React.FC = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  const handlePromptClick = async (text: string) => {
+    // Ajouter le message de l'utilisateur basé sur le prompt
+    await handleSend(text);
+  };
   
   const handleSend = async (input: string) => {
     // Add user message
@@ -60,7 +88,25 @@ const Chatbot: React.FC = () => {
         response = await ChatService.simulateResponse(input);
       }
       
-      // Simulate typing effect with the received text
+      // Déterminer si nous devons afficher des prompts contextuels basés sur la réponse ou l'input
+      let showPrompts = false;
+      let promptType = null;
+
+      // Logique pour déterminer quels prompts contextuels afficher
+      if (input.toLowerCase().includes('estimer') || 
+          input.toLowerCase().includes('cote') || 
+          input.toLowerCase().includes('valeur') ||
+          input.toLowerCase().includes('véhicule')) {
+        showPrompts = true;
+        promptType = 'estimation';
+      } else if (input.toLowerCase().includes('vendre') || 
+                input.toLowerCase().includes('vente') ||
+                input.toLowerCase().includes('annonce')) {
+        showPrompts = true;
+        promptType = 'vente';
+      }
+
+      // Simuler le délai de frappe
       ChatService.simulateTyping(response.text, (text) => {
         const botMessage: Message = {
           id: messages.length + 2,
@@ -68,7 +114,9 @@ const Chatbot: React.FC = () => {
           sender: 'bot',
           timestamp: new Date(),
           hasCarInfo: response.hasCarInfo,
-          carInfo: response.carInfo
+          carInfo: response.carInfo,
+          showPrompts, 
+          promptType
         };
         setMessages(prev => [...prev, botMessage]);
         setIsTyping(false);
@@ -114,7 +162,22 @@ const Chatbot: React.FC = () => {
       <ScrollArea className="flex-grow p-4 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="space-y-4">
           {messages.map((message) => (
-            <ChatMessage key={message.id} message={message} />
+            <React.Fragment key={message.id}>
+              <ChatMessage message={message} />
+              
+              {message.sender === 'bot' && message.showPrompts && (
+                message.promptType ? 
+                  <ChatPromptGroup 
+                    prompts={contextualPrompts[message.promptType as keyof typeof contextualPrompts]} 
+                    onPromptClick={handlePromptClick} 
+                  />
+                : 
+                  <ChatPromptGroup 
+                    prompts={mainPrompts} 
+                    onPromptClick={handlePromptClick} 
+                  />
+              )}
+            </React.Fragment>
           ))}
           
           {/* Typing Indicator */}
