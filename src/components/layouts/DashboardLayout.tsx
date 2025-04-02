@@ -43,7 +43,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     await signOut();
   };
 
-  // Get first letter of email for avatar
   const userInitial = user?.email ? user.email[0].toUpperCase() : 'U';
 
   return (

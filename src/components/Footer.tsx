@@ -11,7 +11,11 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img src="/lovable-uploads/83105391-8a8a-4e29-94ee-18a986256fd2.png" alt="ArgusAI Logo" className="h-10" />
+              <img 
+                src="/lovable-uploads/83105391-8a8a-4e29-94ee-18a986256fd2.png" 
+                alt="ArgusAI Logo" 
+                className="h-10" 
+              />
               <span className="text-xl font-bold">ArgusAI</span>
             </div>
             <p className="text-sm text-gray-300">
