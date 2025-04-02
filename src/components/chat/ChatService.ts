@@ -1,3 +1,4 @@
+
 import { Message, CarInfo } from './types';
 
 export class ChatService {
@@ -59,17 +60,28 @@ export class ChatService {
       }
 
       const data = await response.json();
+      console.log("N8n response:", data);
+
+      // Vérifier si la réponse contient des caractéristiques de véhicule
+      const hasVehicleInfo = (text: string) => {
+        return text.includes("caractéristiques suivantes") || 
+               (text.includes("Marque") && text.includes("Modèle")) ||
+               text.includes("prix estimé");
+      };
       
       if (data && data.output) {
+        const text = data.output;
+        // Vérifier si le texte contient des informations sur le véhicule
         return {
-          text: data.output,
+          text: text,
           hasCarInfo: false
         };
       } 
       else if (Array.isArray(data) && data.length > 0 && data[0].output) {
+        const text = data[0].output;
         return {
-          text: data[0].output,
-          hasCarInfo: false
+          text: text,
+          hasCarInfo: hasVehicleInfo(text)
         };
       }
       else if (data && data.response_message) {

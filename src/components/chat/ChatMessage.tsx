@@ -21,30 +21,65 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
 
   // Function to format text with vehicle characteristics
   const formatVehicleInfo = (text: string) => {
-    if (text.includes("caractéristiques suivantes") || text.includes("Marque") || text.includes("Modèle")) {
-      const lines = text.split('-').filter(line => line.trim() !== '');
+    if (text.includes("caractéristiques suivantes") || 
+        (text.includes("Marque") && text.includes("Modèle"))) {
       
-      if (lines.length <= 1) return text;
+      // Traitement pour extraire les caractéristiques
+      let introText = "";
+      let characteristics: {label: string, value: string}[] = [];
       
-      const introText = lines[0];
-      const characteristics = lines.slice(1);
+      // Si le texte contient des lignes avec des tirets (format markdown)
+      if (text.includes("- **")) {
+        // Format: "Texte intro - **Label** : Valeur - **Label2** : Valeur2"
+        const parts = text.split("- **");
+        if (parts.length > 0) {
+          introText = parts[0].trim();
+          
+          // Extraire les paires label:valeur
+          for (let i = 1; i < parts.length; i++) {
+            const charPart = parts[i];
+            if (charPart.includes("** : ")) {
+              const [rawLabel, rawValue] = charPart.split("** : ");
+              const label = rawLabel.trim();
+              // Nettoyer la valeur (peut contenir du texte markdown)
+              let value = rawValue.split(/\n|(\*\*)/).filter(Boolean)[0].trim();
+              characteristics.push({ label, value });
+            }
+          }
+        }
+      } 
+      // Format de texte alternatif sans markdown
+      else {
+        const lines = text.split('-').filter(line => line.trim() !== '');
+        if (lines.length > 1) {
+          introText = lines[0].trim();
+          lines.slice(1).forEach(line => {
+            if (line.includes(':')) {
+              const [label, value] = line.split(':').map(s => s.trim());
+              characteristics.push({ label, value });
+            }
+          });
+        } else {
+          return text;
+        }
+      }
       
-      return (
-        <div className="vehicle-info">
-          <p className="mb-2">{introText}</p>
-          <div className="mt-3 pt-3 border-t border-gray-200 space-y-2 animate-fade-in">
-            {characteristics.map((item, index) => {
-              const [label, value] = item.split(':').map(s => s.trim());
-              return (
+      // Si nous avons effectivement extrait des caractéristiques, renvoyer le format amélioré
+      if (characteristics.length > 0) {
+        return (
+          <div className="vehicle-info">
+            <p className="mb-2">{introText}</p>
+            <div className="mt-3 pt-3 border-t border-gray-200 space-y-2 animate-fade-in">
+              {characteristics.map((item, index) => (
                 <div key={index} className="flex items-center gap-1.5 text-sm">
-                  <span className="font-bold">{label} :</span>
-                  <span>{value}</span>
+                  <span className="font-bold">{item.label} :</span>
+                  <span>{item.value}</span>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
-        </div>
-      );
+        );
+      }
     }
     return text;
   };
@@ -73,9 +108,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
               : "bg-white border border-gray-100 text-gray-800 rounded-bl-none"
           )}
         >
-          {typeof message.text === 'string' && message.text.includes("caractéristiques suivantes") 
-            ? formatVehicleInfo(message.text)
-            : message.text}
+          {typeof message.text === 'string' ? formatVehicleInfo(message.text) : message.text}
           
           {/* Car Information Display */}
           {message.hasCarInfo && message.carInfo && (
