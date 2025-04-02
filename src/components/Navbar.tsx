@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -43,7 +42,7 @@ const Navbar: React.FC = () => {
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center space-x-2">
               <img 
-                src="/lovable-uploads/8f9a39ff-7c91-49b9-b893-f85887ce27fb.png" 
+                src="/lovable-uploads/83105391-8a8a-4e29-94ee-18a986256fd2.png" 
                 alt="ArgusAI Logo" 
                 className="h-10"
               />
@@ -51,8 +50,7 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
           
-          {/* Desktop Navigation */}
-          <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
+          <div className="hidden md:flex md:items-center md:space-x-4">
             {navigation.map(item => (
               <Link 
                 key={item.name} 
@@ -113,7 +111,6 @@ const Navbar: React.FC = () => {
             )}
           </div>
           
-          {/* Mobile menu button */}
           <div className="flex items-center md:hidden">
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)} 
@@ -126,7 +123,6 @@ const Navbar: React.FC = () => {
         </div>
       </div>
       
-      {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="pt-2 pb-3 space-y-1 px-4">

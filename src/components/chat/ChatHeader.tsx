@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Trash2, MessageCircle } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface ChatHeaderProps {
@@ -13,8 +13,12 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ sessionId, onClearHistory }) =>
     <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-argus-blue-500 to-argus-teal-500 text-white">
       <div className="flex items-center">
         <div className="bg-white rounded-full p-2 mr-3">
-          <div className="flex items-center justify-center h-8 w-8 rounded-full bg-argus-blue-500">
-            <MessageCircle className="h-5 w-5 text-white" />
+          <div className="flex items-center justify-center h-8 w-8 rounded-full bg-white">
+            <img 
+              src="/lovable-uploads/83105391-8a8a-4e29-94ee-18a986256fd2.png" 
+              alt="ArgusAI Logo" 
+              className="h-8 w-8 object-contain" 
+            />
           </div>
         </div>
         <div>

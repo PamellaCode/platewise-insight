@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -72,7 +71,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
             <div className="flex-shrink-0 flex items-center px-4">
               <Link to="/dashboard" className="flex items-center space-x-2">
                 <img 
-                  src="/lovable-uploads/8f9a39ff-7c91-49b9-b893-f85887ce27fb.png" 
+                  src="/lovable-uploads/83105391-8a8a-4e29-94ee-18a986256fd2.png" 
                   alt="ArgusAI Logo" 
                   className="h-10" 
                 />
@@ -128,7 +127,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               <div className="flex items-center flex-shrink-0 px-4">
                 <Link to="/dashboard" className="flex items-center space-x-2">
                   <img 
-                    src="/lovable-uploads/8f9a39ff-7c91-49b9-b893-f85887ce27fb.png" 
+                    src="/lovable-uploads/83105391-8a8a-4e29-94ee-18a986256fd2.png" 
                     alt="ArgusAI Logo" 
                     className="h-10" 
                   />
