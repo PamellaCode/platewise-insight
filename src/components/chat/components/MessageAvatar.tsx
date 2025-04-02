@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { User } from 'lucide-react';
+import { User, MessageCircle } from 'lucide-react';
 import { Avatar } from '@/components/ui/avatar';
 import { AvatarFallback } from '@/components/ui/avatar';
 import { getMessageIcon } from '../utils/message-formatter';

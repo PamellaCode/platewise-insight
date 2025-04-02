@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Trash2 } from 'lucide-react';
+import { Trash2, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface ChatHeaderProps {
@@ -14,9 +14,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ sessionId, onClearHistory }) =>
       <div className="flex items-center">
         <div className="bg-white rounded-full p-2 mr-3">
           <div className="flex items-center justify-center h-8 w-8 rounded-full bg-argus-blue-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
+            <MessageCircle className="h-5 w-5 text-white" />
           </div>
         </div>
         <div>
