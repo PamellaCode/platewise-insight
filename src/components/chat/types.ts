@@ -17,4 +17,5 @@ export interface Message {
   showPrompts?: boolean;
   promptType?: string;
   sessionId?: string;
+  showLicensePlateInput?: boolean; // Nouveau champ pour indiquer s'il faut afficher l'input de plaque
 }

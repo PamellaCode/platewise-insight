@@ -11,37 +11,26 @@ import { ChatService } from './chat/ChatService';
 import { toast } from '@/components/ui/use-toast';
 import { useAuth } from '@/lib/auth';
 import ChatPromptGroup from './chat/ChatPromptGroup';
+import ChatLicensePlateInput from './chat/ChatLicensePlateInput';
 
-// Options principales pour guider l'utilisateur
-const mainPrompts = [
-  { text: "Obtenir la cote Argus de mon véhicule", icon: "📌" },
-  { text: "Comparer mon véhicule à des modèles similaires", icon: "📌" },
-  { text: "Comprendre comment la valeur de mon véhicule évolue dans le temps", icon: "📌" },
-  { text: "Savoir si c'est le bon moment pour vendre mon véhicule", icon: "📌" },
-  { text: "Accéder à l'historique des prix de mon véhicule", icon: "📌" },
+// Options de suivi après l'estimation
+const followUpPrompts = [
+  { text: "Comparer mon véhicule à des modèles similaires", icon: "📊" },
+  { text: "Comprendre comment la valeur de mon véhicule évolue dans le temps", icon: "📈" },
+  { text: "Savoir si c'est le bon moment pour vendre mon véhicule", icon: "⏰" },
+  { text: "Générer une annonce pour LeBonCoin", icon: "📝" },
+  { text: "Conseils pour vendre rapidement", icon: "💡" },
 ];
-
-// Options de suivi en fonction du contexte
-const contextualPrompts = {
-  estimation: [
-    { text: "Entrer la plaque d'immatriculation", icon: "🚗" },
-    { text: "Saisir les caractéristiques manuellement", icon: "✏️" }
-  ],
-  vente: [
-    { text: "Générer une annonce pour LeBonCoin", icon: "📝" },
-    { text: "Conseils pour vendre rapidement", icon: "💡" }
-  ]
-};
 
 const Chatbot: React.FC = () => {
   const [sessionId, setSessionId] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Bienvenue sur ArgusAI ! Comment puis-je vous aider aujourd'hui ?",
+      text: "Bienvenue sur ArgusAI ! Pour estimer la valeur de votre véhicule, nous avons besoin de sa plaque d'immatriculation.",
       sender: 'bot',
       timestamp: new Date(),
-      showPrompts: true // Indique qu'il faut afficher les prompts principaux
+      showLicensePlateInput: true // Indique qu'il faut afficher le champ de saisie plaque
     }
   ]);
   const [isTyping, setIsTyping] = useState(false);
@@ -66,8 +55,11 @@ const Chatbot: React.FC = () => {
   }, [messages]);
 
   const handlePromptClick = async (text: string) => {
-    // Ajouter le message de l'utilisateur basé sur le prompt
     await handleSend(text);
+  };
+
+  const handleLicensePlateSubmit = async (licensePlate: string) => {
+    await handleSend(licensePlate);
   };
   
   const handleSend = async (input: string) => {
@@ -96,38 +88,23 @@ const Chatbot: React.FC = () => {
         // Fallback to simulated response
         response = await ChatService.simulateResponse(input);
       }
-      
-      // Déterminer si nous devons afficher des prompts contextuels basés sur la réponse ou l'input
-      let showPrompts = false;
-      let promptType = null;
-
-      // Logique pour déterminer quels prompts contextuels afficher
-      if (input.toLowerCase().includes('estimer') || 
-          input.toLowerCase().includes('cote') || 
-          input.toLowerCase().includes('valeur') ||
-          input.toLowerCase().includes('véhicule')) {
-        showPrompts = true;
-        promptType = 'estimation';
-      } else if (input.toLowerCase().includes('vendre') || 
-                input.toLowerCase().includes('vente') ||
-                input.toLowerCase().includes('annonce')) {
-        showPrompts = true;
-        promptType = 'vente';
-      }
 
       // Simuler le délai de frappe
       ChatService.simulateTyping(response.text, (text) => {
+        // Vérifier si la réponse contient des informations sur un véhicule
+        const hasVehicleInfo = ChatService.checkIfHasVehicleInfo(text);
+        
         const botMessage: Message = {
           id: messages.length + 2,
           text,
           sender: 'bot',
           timestamp: new Date(),
-          hasCarInfo: response.hasCarInfo,
+          hasCarInfo: response.hasCarInfo || hasVehicleInfo,
           carInfo: response.carInfo,
-          showPrompts, 
-          promptType,
+          showPrompts: hasVehicleInfo, // Afficher les prompts uniquement après avoir montré les infos du véhicule
           sessionId: sessionId
         };
+        
         setMessages(prev => [...prev, botMessage]);
         setIsTyping(false);
       });
@@ -179,17 +156,17 @@ const Chatbot: React.FC = () => {
             <React.Fragment key={message.id}>
               <ChatMessage message={message} />
               
+              {/* Affichage du champ de saisie de plaque après le premier message bot */}
+              {message.sender === 'bot' && message.showLicensePlateInput && (
+                <ChatLicensePlateInput onSubmit={handleLicensePlateSubmit} />
+              )}
+              
+              {/* Affichage des questions prédéfinies après avoir obtenu les infos du véhicule */}
               {message.sender === 'bot' && message.showPrompts && (
-                message.promptType ? 
-                  <ChatPromptGroup 
-                    prompts={contextualPrompts[message.promptType as keyof typeof contextualPrompts]} 
-                    onPromptClick={handlePromptClick} 
-                  />
-                : 
-                  <ChatPromptGroup 
-                    prompts={mainPrompts} 
-                    onPromptClick={handlePromptClick} 
-                  />
+                <ChatPromptGroup 
+                  prompts={followUpPrompts} 
+                  onPromptClick={handlePromptClick} 
+                />
               )}
             </React.Fragment>
           ))}

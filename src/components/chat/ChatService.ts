@@ -61,33 +61,28 @@ export class ChatService {
 
       const data = await response.json();
       console.log("N8n response:", data);
-
-      // Vérifier si la réponse contient des caractéristiques de véhicule
-      const hasVehicleInfo = (text: string) => {
-        return text.includes("caractéristiques suivantes") || 
-               (text.includes("Marque") && text.includes("Modèle")) ||
-               text.includes("prix estimé");
-      };
       
       if (data && data.output) {
         const text = data.output;
-        // Vérifier si le texte contient des informations sur le véhicule
+        const hasVehicleInfo = this.checkIfHasVehicleInfo(text);
         return {
           text: text,
-          hasCarInfo: false
+          hasCarInfo: hasVehicleInfo
         };
       } 
       else if (Array.isArray(data) && data.length > 0 && data[0].output) {
         const text = data[0].output;
+        const hasVehicleInfo = this.checkIfHasVehicleInfo(text);
         return {
           text: text,
-          hasCarInfo: hasVehicleInfo(text)
+          hasCarInfo: hasVehicleInfo
         };
       }
       else if (data && data.response_message) {
+        const hasVehicleInfo = this.checkIfHasVehicleInfo(data.response_message);
         return {
           text: data.response_message,
-          hasCarInfo: data.hasCarInfo || false,
+          hasCarInfo: data.hasCarInfo || hasVehicleInfo,
           carInfo: data.carInfo || undefined
         };
       } else {
@@ -97,6 +92,15 @@ export class ChatService {
       console.error('Error processing message with n8n:', error);
       throw error;
     }
+  }
+
+  static checkIfHasVehicleInfo(text: string): boolean {
+    // Vérifier si le texte contient des caractéristiques de véhicule
+    return text.includes("caractéristiques suivantes") || 
+           (text.includes("Marque") && text.includes("Modèle")) ||
+           text.includes("prix estimé") ||
+           text.includes("cote") ||
+           text.includes("valeur") && text.includes("véhicule");
   }
 
   static simulateTyping(text: string, callback: (text: string) => void): void {
