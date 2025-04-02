@@ -29,27 +29,51 @@ export const formatMessageText = (text: string) => {
   formattedText = replaceEmojis(formattedText);
   
   // Ajout d'espacement entre les paragraphes
-  formattedText = formattedText.replace(/\n\n/g, '<div class="my-2"></div>');
+  formattedText = formattedText.replace(/\n\n/g, '<div class="my-3"></div>');
+  
+  // Conversion des sauts de ligne simples en balises <br>
+  formattedText = formattedText.replace(/\n/g, '<br>');
 
-  return <div className="message-content leading-relaxed" dangerouslySetInnerHTML={{ __html: formattedText }} />;
+  return <div className="message-content leading-relaxed text-normal" dangerouslySetInnerHTML={{ __html: formattedText }} />;
 };
 
 /**
- * Remplace les URLs par des liens cliquables avec texte descriptif
+ * Remplace les URLs par des liens cliquables avec texte descriptif et icônes
  */
 const replaceLinks = (text: string): string => {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
   return text.replace(urlRegex, (url) => {
     let linkText = "Plus d'informations";
+    let icon = "🔗";
     
-    if (url.includes("voiture") || url.includes("auto")) linkText = "📊 Voir les détails du véhicule";
-    else if (url.includes("prix") || url.includes("estimation")) linkText = "💰 Voir l'estimation";
-    else if (url.includes("contact")) linkText = "📞 Contact";
-    else if (url.includes("image") || url.includes("photo")) linkText = "🖼️ Voir l'image";
-    else if (url.includes("compare")) linkText = "⚖️ Comparer";
-    else if (url.includes("historique")) linkText = "📜 Voir l'historique";
+    if (url.includes("voiture") || url.includes("auto")) {
+      linkText = "Voir les détails du véhicule";
+      icon = "🚗";
+    }
+    else if (url.includes("prix") || url.includes("estimation")) {
+      linkText = "Voir l'estimation";
+      icon = "💰";
+    }
+    else if (url.includes("contact")) {
+      linkText = "Contact";
+      icon = "📞";
+    }
+    else if (url.includes("image") || url.includes("photo")) {
+      linkText = "Voir l'image";
+      icon = "🖼️";
+    }
+    else if (url.includes("compare")) {
+      linkText = "Comparer";
+      icon = "⚖️";
+    }
+    else if (url.includes("historique")) {
+      linkText = "Voir l'historique";
+      icon = "📜";
+    }
     
-    return `<a href="${url}" target="_blank" class="text-argus-blue-500 hover:text-argus-blue-700 underline font-medium inline-flex items-center gap-1">${linkText}</a>`;
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1 my-1 rounded-full bg-argus-blue-50 text-argus-blue-600 hover:bg-argus-blue-100 transition-colors duration-200 no-underline font-medium text-sm">
+      <span>${icon}</span>${linkText}
+    </a>`;
   });
 };
 
@@ -60,8 +84,9 @@ const formatTitles = (text: string): string => {
   const titleRegex = /\*\*(.*?)\*\*|^([^:]+):/gm;
   return text.replace(titleRegex, (match, p1, p2) => {
     const title = p1 || p2;
-    return `<div class="font-bold text-base mt-3 mb-2 text-argus-blue-700 flex items-center gap-1">
-      <span class="text-argus-blue-500">✦</span> ${title}
+    return `<div class="font-semibold text-base mt-4 mb-2 text-argus-teal-700 flex items-center gap-2 border-b border-argus-teal-100 pb-1">
+      <span class="text-argus-teal-500 inline-flex items-center justify-center h-5 w-5 rounded-full bg-argus-teal-50">✦</span>
+      ${title}
     </div>`;
   });
 };
@@ -72,9 +97,9 @@ const formatTitles = (text: string): string => {
 const formatListItems = (text: string): string => {
   const listItemRegex = /^[•\-]\s(.*?)$/gm;
   return text.replace(listItemRegex, 
-    '<div class="flex items-start mt-1.5 mb-1.5">' +
-    '<span class="text-argus-teal-500 mr-2 mt-0.5">•</span>' +
-    '<span>$1</span>' +
+    '<div class="flex items-start py-1 my-0.5">' +
+    '<span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-argus-teal-50 text-argus-teal-500 mr-2 flex-shrink-0">•</span>' +
+    '<span class="text-gray-700">$1</span>' +
     '</div>'
   );
 };
@@ -84,7 +109,7 @@ const formatListItems = (text: string): string => {
  */
 const highlightValues = (text: string): string => {
   const highlightRegex = /`(.*?)`/g;
-  return text.replace(highlightRegex, '<span class="font-medium text-argus-teal-600 bg-argus-teal-50 px-1.5 py-0.5 rounded">$1</span>');
+  return text.replace(highlightRegex, '<span class="font-medium text-argus-teal-600 bg-argus-teal-50 px-2 py-0.5 rounded-md mx-0.5">$1</span>');
 };
 
 /**
@@ -93,7 +118,7 @@ const highlightValues = (text: string): string => {
 const formatBlockquotes = (text: string): string => {
   const blockquoteRegex = /^>\s(.*?)$/gm;
   return text.replace(blockquoteRegex,
-    '<blockquote class="pl-4 border-l-4 border-argus-teal-200 bg-argus-teal-50/50 py-2 px-3 rounded-r my-3 text-gray-700 italic">$1</blockquote>'
+    '<blockquote class="pl-4 border-l-4 border-argus-blue-200 bg-argus-blue-50/50 py-3 px-4 rounded-r my-4 text-gray-700 italic">$1</blockquote>'
   );
 };
 
@@ -103,25 +128,33 @@ const formatBlockquotes = (text: string): string => {
 const formatInfoBoxes = (text: string): string => {
   // Boîte d'information
   text = text.replace(/!INFO:(.*?)(?:\n|$)/g, 
-    '<div class="info-box flex items-start gap-2 bg-blue-50 border-l-4 border-blue-300 p-3 rounded-r my-3">' +
-    '<span class="text-blue-500">ℹ️</span>' +
-    '<div>$1</div>' +
+    '<div class="info-box flex items-start gap-3 bg-blue-50 border border-blue-100 rounded-lg p-3 my-4">' +
+    '<span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600 flex-shrink-0">ℹ️</span>' +
+    '<div class="text-blue-800">$1</div>' +
     '</div>'
   );
   
   // Boîte d'avertissement
   text = text.replace(/!ATTENTION:(.*?)(?:\n|$)/g, 
-    '<div class="warning-box flex items-start gap-2 bg-amber-50 border-l-4 border-amber-300 p-3 rounded-r my-3">' +
-    '<span class="text-amber-500">⚠️</span>' +
-    '<div>$1</div>' +
+    '<div class="warning-box flex items-start gap-3 bg-amber-50 border border-amber-100 rounded-lg p-3 my-4">' +
+    '<span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-amber-100 text-amber-600 flex-shrink-0">⚠️</span>' +
+    '<div class="text-amber-800">$1</div>' +
     '</div>'
   );
   
   // Boîte de conseil
   text = text.replace(/!CONSEIL:(.*?)(?:\n|$)/g, 
-    '<div class="tip-box flex items-start gap-2 bg-teal-50 border-l-4 border-teal-300 p-3 rounded-r my-3">' +
-    '<span class="text-teal-500">💡</span>' +
-    '<div>$1</div>' +
+    '<div class="tip-box flex items-start gap-3 bg-teal-50 border border-teal-100 rounded-lg p-3 my-4">' +
+    '<span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-teal-100 text-teal-600 flex-shrink-0">💡</span>' +
+    '<div class="text-teal-800">$1</div>' +
+    '</div>'
+  );
+
+  // Boîte de succès
+  text = text.replace(/!SUCCÈS:(.*?)(?:\n|$)/g, 
+    '<div class="success-box flex items-start gap-3 bg-green-50 border border-green-100 rounded-lg p-3 my-4">' +
+    '<span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-100 text-green-600 flex-shrink-0">✅</span>' +
+    '<div class="text-green-800">$1</div>' +
     '</div>'
   );
 
