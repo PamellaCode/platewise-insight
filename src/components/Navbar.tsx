@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, LogIn, UserPlus, LogOut } from 'lucide-react';
 import { useAuth } from '@/lib/auth';
+
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -25,17 +26,18 @@ const Navbar: React.FC = () => {
     name: 'Actualités & Tendances',
     path: '/news-and-trends'
   }];
+
   const handleLogout = async () => {
     await signOut();
     navigate('/');
   };
+
   return <nav className="bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" alt="ArgusAI Logo" className="h-10" />
-              
+              <img src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" alt="ArgusAI Logo" className="h-12 w-12" />
             </Link>
           </div>
           
@@ -114,4 +116,5 @@ const Navbar: React.FC = () => {
         </div>}
     </nav>;
 };
+
 export default Navbar;

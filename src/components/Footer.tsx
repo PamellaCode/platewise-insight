@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
               <img 
                 src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" 
                 alt="ArgusAI Logo" 
-                className="h-10" 
+                className="h-14 w-14" 
               />
               <span className="text-xl font-bold">ArgusAI</span>
             </div>
