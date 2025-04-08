@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
-
 interface SubscriptionProps {
   plan: 'essentiel' | 'standard' | 'expert';
   displayName: string;
@@ -12,7 +11,6 @@ interface SubscriptionProps {
   creditsUsed: number;
   renewalDate: Date;
 }
-
 interface EstimationItem {
   id: number;
   licensePlate: string;
@@ -22,24 +20,26 @@ interface EstimationItem {
   estimatedPrice: number;
   date: Date;
 }
-
 interface OverviewTabProps {
   subscription: SubscriptionProps;
   recentEstimations: EstimationItem[];
 }
-
-const SubscriptionCard: React.FC<{ subscription: SubscriptionProps, className?: string }> = ({ subscription, className }) => {
-  const usagePercentage = (subscription.creditsUsed / subscription.creditsTotal) * 100;
+const SubscriptionCard: React.FC<{
+  subscription: SubscriptionProps;
+  className?: string;
+}> = ({
+  subscription,
+  className
+}) => {
+  const usagePercentage = subscription.creditsUsed / subscription.creditsTotal * 100;
   const formatDate = (date: Date) => {
     return new Intl.DateTimeFormat('fr-FR', {
       day: '2-digit',
       month: '2-digit',
-      year: 'numeric',
+      year: 'numeric'
     }).format(date);
   };
-
-  return (
-    <Card className={className}>
+  return <Card className={className}>
       <CardHeader>
         <CardTitle>Votre abonnement</CardTitle>
         <CardDescription>Formule {subscription.displayName}</CardDescription>
@@ -61,23 +61,22 @@ const SubscriptionCard: React.FC<{ subscription: SubscriptionProps, className?: 
           <Link to="/dashboard/subscription">Gérer l'abonnement</Link>
         </Button>
       </CardFooter>
-    </Card>
-  );
+    </Card>;
 };
-
-const RecentEstimations: React.FC<{ estimations: EstimationItem[] }> = ({ estimations }) => {
+const RecentEstimations: React.FC<{
+  estimations: EstimationItem[];
+}> = ({
+  estimations
+}) => {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('fr-FR', {
       style: 'currency',
       currency: 'EUR',
-      maximumFractionDigits: 0,
+      maximumFractionDigits: 0
     }).format(price);
   };
-
-  return (
-    <div className="divide-y divide-gray-200">
-      {estimations.map((estimation) => (
-        <div key={estimation.id} className="py-4">
+  return <div className="divide-y divide-gray-200">
+      {estimations.map(estimation => <div key={estimation.id} className="py-4">
           <div className="flex items-center justify-between">
             <div>
               <div className="font-medium">{estimation.brand} {estimation.model}</div>
@@ -85,16 +84,12 @@ const RecentEstimations: React.FC<{ estimations: EstimationItem[] }> = ({ estima
             </div>
             <div className="font-bold">{formatPrice(estimation.estimatedPrice)}</div>
           </div>
-        </div>
-      ))}
-    </div>
-  );
+        </div>)}
+    </div>;
 };
-
-const AssistantAIPromo: React.FC = () => (
-  <Card>
+const AssistantAIPromo: React.FC = () => <Card>
     <CardHeader>
-      <CardTitle>Besoin d'aide ?</CardTitle>
+      <CardTitle>Essayez notre assistant IA !</CardTitle>
       <CardDescription>Essayez notre assistant IA</CardDescription>
     </CardHeader>
     <CardContent>
@@ -107,17 +102,13 @@ const AssistantAIPromo: React.FC = () => (
         <Link to="/dashboard/assistant-ai">Parler à l'assistant IA</Link>
       </Button>
     </CardFooter>
-  </Card>
-);
-
-const OverviewTab = ({ subscription, recentEstimations }: OverviewTabProps) => {
-
-  return (
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <SubscriptionCard 
-        subscription={subscription} 
-        className="col-span-full lg:col-span-1"
-      />
+  </Card>;
+const OverviewTab = ({
+  subscription,
+  recentEstimations
+}: OverviewTabProps) => {
+  return <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <SubscriptionCard subscription={subscription} className="col-span-full lg:col-span-1" />
       
       <div className="col-span-full lg:col-span-2">
         <Card>
@@ -145,8 +136,6 @@ const OverviewTab = ({ subscription, recentEstimations }: OverviewTabProps) => {
       </div>
       
       <AssistantAIPromo />
-    </div>
-  );
+    </div>;
 };
-
 export default OverviewTab;
