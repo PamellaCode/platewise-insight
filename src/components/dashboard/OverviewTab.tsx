@@ -89,8 +89,8 @@ const RecentEstimations: React.FC<{
 };
 const AssistantAIPromo: React.FC = () => <Card>
     <CardHeader>
-      <CardTitle>Essayez notre assistant IA !</CardTitle>
-      <CardDescription>Essayez notre assistant IA</CardDescription>
+      <CardTitle className="text-center">Essayez notre assistant IA !</CardTitle>
+      
     </CardHeader>
     <CardContent>
       <p className="text-sm text-gray-500">
