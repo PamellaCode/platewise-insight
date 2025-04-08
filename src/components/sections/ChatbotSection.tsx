@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, MessageCircle } from 'lucide-react';
@@ -84,14 +83,12 @@ const ChatbotSection: React.FC = () => {
           duration: 0.6,
           delay: 0.2
         }}>
-            {/* Chatbot Illustration */}
             <Card className="flex flex-col h-[500px] w-full bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
-              {/* Header */}
               <div className="flex items-center p-4 border-b bg-gradient-to-r from-argus-blue-500 to-argus-teal-500 text-white">
                 <div className="bg-white rounded-full p-2 mr-3">
                   <div className="flex items-center justify-center h-8 w-8 rounded-full bg-white">
                     <img 
-                      src="/lovable-uploads/83105391-8a8a-4e29-94ee-18a986256fd2.png" 
+                      src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" 
                       alt="ArgusAI Logo"
                       className="h-8 w-8 object-contain"
                     />
@@ -103,7 +100,6 @@ const ChatbotSection: React.FC = () => {
                 </div>
               </div>
               
-              {/* Messages Container */}
               <div className="flex-grow p-4 bg-gradient-to-br from-gray-50 to-blue-50">
                 <div className="space-y-4">
                   {mockMessages.map((message) => (
@@ -112,7 +108,6 @@ const ChatbotSection: React.FC = () => {
                 </div>
               </div>
               
-              {/* Input Area */}
               <div className="p-4 border-t border-gray-100 bg-white">
                 <div className="flex space-x-2">
                   <input 
@@ -131,4 +126,5 @@ const ChatbotSection: React.FC = () => {
       </div>
     </section>;
 };
+
 export default ChatbotSection;

@@ -13,13 +13,13 @@ const MessageAvatar: React.FC<MessageAvatarProps> = ({ sender, text }) => {
     return (
       <Avatar className="h-9 w-9 border-2 border-argus-teal-500 shadow-sm">
         <AvatarImage 
-          src="/lovable-uploads/83105391-8a8a-4e29-94ee-18a986256fd2.png" 
+          src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" 
           alt="ArgusAI Logo"
           className="p-1" 
         />
         <AvatarFallback className="bg-argus-blue-500 text-white p-0">
           <img 
-            src="/lovable-uploads/83105391-8a8a-4e29-94ee-18a986256fd2.png" 
+            src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" 
             alt="ArgusAI Logo" 
             className="h-full w-full object-contain p-1" 
           />

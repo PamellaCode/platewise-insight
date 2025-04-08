@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -42,7 +43,7 @@ const Navbar: React.FC = () => {
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center space-x-2">
               <img 
-                src="/lovable-uploads/83105391-8a8a-4e29-94ee-18a986256fd2.png" 
+                src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" 
                 alt="ArgusAI Logo" 
                 className="h-10"
               />

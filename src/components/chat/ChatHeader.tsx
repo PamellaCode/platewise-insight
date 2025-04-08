@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -15,7 +14,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ sessionId, onClearHistory }) =>
         <div className="bg-white rounded-full p-2 mr-3">
           <div className="flex items-center justify-center h-8 w-8 rounded-full bg-white">
             <img 
-              src="/lovable-uploads/83105391-8a8a-4e29-94ee-18a986256fd2.png" 
+              src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" 
               alt="ArgusAI Logo" 
               className="h-8 w-8 object-contain" 
             />
