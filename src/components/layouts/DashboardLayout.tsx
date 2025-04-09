@@ -28,9 +28,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   
   const navigation = [
     { name: 'Tableau de bord', path: '/dashboard', icon: Home },
+    { name: 'Assistant IA', path: '/dashboard/assistant-ai', icon: MessageCircle },
     { name: 'Historique', path: '/dashboard/history', icon: History },
     { name: 'Mes estimations', path: '/dashboard/estimations', icon: FileText },
-    { name: 'Assistant IA', path: '/dashboard/assistant-ai', icon: MessageCircle },
     { name: 'Statistiques', path: '/dashboard/stats', icon: BarChart2 },
     { name: 'Abonnement', path: '/dashboard/subscription', icon: CreditCard },
     { name: 'Profil', path: '/dashboard/profile', icon: User },
