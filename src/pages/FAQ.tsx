@@ -47,8 +47,27 @@ const FAQ: React.FC = () => {
     }
   ];
 
+  // Create structured data for FAQPage
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
-    <MainLayout>
+    <MainLayout 
+      title="FAQ - Vos questions sur l'estimation automobile | ArgusAI"
+      description="Trouvez des réponses à toutes vos questions sur notre service d'estimation automobile par IA. Découvrez comment ArgusAI vous aide à connaître la valeur réelle de votre véhicule."
+      keywords="FAQ estimation voiture, questions argus automobile, aide estimation véhicule, support ArgusAI"
+      structuredData={faqStructuredData}
+    >
       <div className="container mx-auto px-4 py-12">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
