@@ -11,7 +11,8 @@ import {
   User, 
   X,
   History,
-  LogOut
+  LogOut,
+  House
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Toaster } from '@/components/ui/toaster';
@@ -27,6 +28,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const { user, signOut } = useAuth();
   
   const navigation = [
+    { name: 'Accueil', path: '/', icon: House },
     { name: 'Tableau de bord', path: '/dashboard', icon: Home },
     { name: 'Assistant IA', path: '/dashboard/assistant-ai', icon: MessageCircle },
     { name: 'Historique', path: '/dashboard/history', icon: History },
