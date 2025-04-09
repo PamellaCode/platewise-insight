@@ -23,6 +23,12 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({
               <span>Aperçu</span>
             </Link>
           </TabsTrigger>
+          <TabsTrigger value="assistant-ai" asChild>
+            <Link to="/dashboard/assistant-ai" className="flex items-center gap-2">
+              <MessageCircle className="h-4 w-4" />
+              <span>Assistant IA</span>
+            </Link>
+          </TabsTrigger>
           <TabsTrigger value="history" asChild>
             <Link to="/dashboard/history" className="flex items-center gap-2">
               <History className="h-4 w-4" />
@@ -31,12 +37,28 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({
           </TabsTrigger>
         </>
       )}
-      <TabsTrigger value="assistant-ai" asChild>
-        <Link to="/dashboard/assistant-ai" className="flex items-center gap-2">
-          <MessageCircle className="h-4 w-4" />
-          <span>Assistant IA</span>
-        </Link>
-      </TabsTrigger>
+      {isAssistantAI && (
+        <>
+          <TabsTrigger value="overview" asChild>
+            <Link to="/dashboard" className="flex items-center gap-2">
+              <BarChart2 className="h-4 w-4" />
+              <span>Aperçu</span>
+            </Link>
+          </TabsTrigger>
+          <TabsTrigger value="assistant-ai" asChild>
+            <Link to="/dashboard/assistant-ai" className="flex items-center gap-2">
+              <MessageCircle className="h-4 w-4" />
+              <span>Assistant IA</span>
+            </Link>
+          </TabsTrigger>
+          <TabsTrigger value="history" asChild>
+            <Link to="/dashboard/history" className="flex items-center gap-2">
+              <History className="h-4 w-4" />
+              <span>Historique</span>
+            </Link>
+          </TabsTrigger>
+        </>
+      )}
     </TabsList>
   );
 };
