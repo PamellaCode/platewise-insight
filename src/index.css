@@ -14,19 +14,19 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Nouvelle couleur primaire (violet) */
-    --primary: 260 100% 64%;
+    /* Updated color to light red */
+    --primary: 0 75% 74%;
     --primary-foreground: 210 40% 98%;
 
-    /* Nouvelle couleur secondaire (rouge) */
-    --secondary: 0 75% 60%;
+    /* Dark violet as secondary */
+    --secondary: 260 65% 40%;
     --secondary-foreground: 210 40% 98%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    /* Nouvelle couleur d'accent (bleu) */
-    --accent: 220 100% 60%;
+    /* Light violet as accent */
+    --accent: 260 100% 64%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
@@ -49,19 +49,19 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    /* Nouvelle couleur primaire (violet) en mode sombre */
-    --primary: 260 80% 60%;
+    /* Updated color to light red in dark mode */
+    --primary: 0 70% 70%;
     --primary-foreground: 210 40% 98%;
 
-    /* Nouvelle couleur secondaire (rouge) en mode sombre */
-    --secondary: 0 70% 55%;
+    /* Dark violet as secondary in dark mode */
+    --secondary: 260 60% 35%;
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    /* Nouvelle couleur d'accent (bleu) en mode sombre */
-    --accent: 220 90% 55%;
+    /* Light violet as accent in dark mode */
+    --accent: 260 80% 60%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;

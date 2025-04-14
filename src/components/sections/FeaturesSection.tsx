@@ -19,30 +19,30 @@ const FeaturesSection: React.FC = () => {
       icon: <Zap className="h-12 w-12 text-argus-red-500" />,
       title: 'Estimation instantanée',
       description: 'Obtenez une estimation de la valeur de votre véhicule en quelques secondes',
+      bgColor: "bg-gradient-to-br from-argus-red-50 to-argus-red-200 border-argus-red-200"
+    },
+    {
+      icon: <BarChart className="h-12 w-12 text-argus-violet-700" />,
+      title: 'Analyse précise',
+      description: 'Notre algorithme analyse des millions de données pour une estimation au plus juste',
       bgColor: "bg-gradient-to-br from-argus-violet-50 to-argus-violet-200 border-argus-violet-200"
     },
     {
-      icon: <BarChart className="h-12 w-12 text-argus-blue-500" />,
-      title: 'Analyse précise',
-      description: 'Notre algorithme analyse des millions de données pour une estimation au plus juste',
-      bgColor: "bg-gradient-to-br from-argus-blue-100 to-argus-blue-300 border-argus-blue-300"
-    },
-    {
-      icon: <Shield className="h-12 w-12 text-argus-violet-500" />,
+      icon: <Shield className="h-12 w-12 text-argus-violet-800" />,
       title: 'Données sécurisées',
       description: 'Vos informations personnelles sont protégées et jamais partagées',
-      bgColor: "bg-gradient-to-br from-argus-red-100 to-argus-red-300 border-argus-red-300"
+      bgColor: "bg-gradient-to-br from-argus-red-100 to-argus-violet-100 border-argus-violet-200"
     },
     {
-      icon: <Clock className="h-12 w-12 text-argus-red-500" />,
+      icon: <Clock className="h-12 w-12 text-argus-red-600" />,
       title: 'Historique des prix',
       description: 'Accédez à l\'évolution des prix du marché pour mieux anticiper',
-      bgColor: "bg-gradient-to-br from-argus-violet-100 to-argus-violet-300 border-argus-violet-300"
+      bgColor: "bg-gradient-to-br from-argus-violet-100 to-argus-red-100 border-argus-red-200"
     }
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-argus-blue-50 to-argus-violet-100">
+    <section className="py-20 bg-gradient-to-b from-argus-red-50 to-argus-violet-100">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-argus-violet-100 text-argus-violet-800 font-medium text-sm mb-4">

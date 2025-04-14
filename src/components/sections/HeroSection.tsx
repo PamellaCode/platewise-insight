@@ -8,7 +8,7 @@ import LicensePlateSearch from '@/components/LicensePlateSearch';
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="bg-gradient-to-r from-argus-violet-500 via-argus-blue-500 to-argus-red-500 text-white relative overflow-hidden py-24">
+    <section className="bg-gradient-to-r from-argus-red-500 to-argus-violet-800 text-white relative overflow-hidden py-24">
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 left-0 w-40 h-40 rounded-full bg-white/20 -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-60 h-60 rounded-full bg-white/20 translate-x-1/2 translate-y-1/2"></div>
@@ -31,7 +31,7 @@ const HeroSection: React.FC = () => {
             <div className="flex flex-wrap gap-4">
               <Button 
                 size="lg" 
-                className="bg-white text-argus-violet-600 hover:bg-blue-50 px-6 py-6 text-base" 
+                className="bg-white text-argus-violet-800 hover:bg-blue-50 px-6 py-6 text-base" 
                 asChild
               >
                 <Link to="/how-it-works" className="flex items-center">
