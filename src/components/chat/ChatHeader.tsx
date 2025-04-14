@@ -13,7 +13,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   onClearHistory
 }) => {
   return (
-    <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-argus-red-500 via-argus-violet-800 to-argus-blue-800 text-white">
+    <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-argus-red-400/90 via-argus-violet-400/90 to-argus-blue-400/90 text-white backdrop-blur-sm">
       <div className="flex items-center">
         <div className="bg-white rounded-full p-2 mr-3">
           <div className="flex items-center justify-center h-12 w-12 rounded-full bg-white">

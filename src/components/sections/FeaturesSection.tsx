@@ -16,36 +16,40 @@ const staggerContainer = {
 const FeaturesSection: React.FC = () => {
   const features = [
     {
-      icon: <Zap className="h-12 w-12 text-argus-red-500" />,
+      icon: <Zap className="h-12 w-12 text-argus-red-400" />,
       title: 'Estimation instantanée',
       description: 'Obtenez une estimation de la valeur de votre véhicule en quelques secondes',
-      bgColor: "bg-gradient-to-br from-argus-red-50 to-argus-red-200 border-argus-red-200"
+      bgColor: "bg-gradient-to-br from-argus-red-50 to-argus-red-100 border-argus-red-200",
+      shadowColor: "shadow-argus-red-100/50"
     },
     {
-      icon: <BarChart className="h-12 w-12 text-argus-violet-700" />,
+      icon: <BarChart className="h-12 w-12 text-argus-violet-400" />,
       title: 'Analyse précise',
       description: 'Notre algorithme analyse des millions de données pour une estimation au plus juste',
-      bgColor: "bg-gradient-to-br from-argus-violet-50 to-argus-violet-200 border-argus-violet-200"
+      bgColor: "bg-gradient-to-br from-argus-violet-50 to-argus-violet-100 border-argus-violet-200",
+      shadowColor: "shadow-argus-violet-100/50"
     },
     {
-      icon: <Shield className="h-12 w-12 text-argus-violet-800" />,
+      icon: <Shield className="h-12 w-12 text-argus-blue-400" />,
       title: 'Données sécurisées',
       description: 'Vos informations personnelles sont protégées et jamais partagées',
-      bgColor: "bg-gradient-to-br from-argus-red-100 to-argus-violet-100 border-argus-violet-200"
+      bgColor: "bg-gradient-to-br from-argus-blue-50 to-argus-blue-100 border-argus-blue-200",
+      shadowColor: "shadow-argus-blue-100/50"
     },
     {
-      icon: <Clock className="h-12 w-12 text-argus-red-600" />,
+      icon: <Clock className="h-12 w-12 text-argus-red-400" />,
       title: 'Historique des prix',
       description: 'Accédez à l\'évolution des prix du marché pour mieux anticiper',
-      bgColor: "bg-gradient-to-br from-argus-violet-100 to-argus-red-100 border-argus-red-200"
+      bgColor: "bg-gradient-to-br from-argus-red-50 to-argus-blue-50 border-argus-violet-200",
+      shadowColor: "shadow-argus-violet-100/50"
     }
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-argus-red-50 to-argus-violet-100">
+    <section className="py-20 bg-gradient-to-b from-white to-argus-violet-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 rounded-full bg-argus-violet-100 text-argus-violet-800 font-medium text-sm mb-4">
+          <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-argus-red-100 to-argus-violet-100 text-argus-violet-600 font-medium text-sm mb-4 shadow-sm">
             Pourquoi ArgusAI
           </span>
           <h2 className="section-title">
@@ -66,11 +70,11 @@ const FeaturesSection: React.FC = () => {
           {features.map((feature, index) => (
             <motion.div 
               key={index} 
-              className={`rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center relative border ${feature.bgColor}`} 
+              className={`rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center relative border backdrop-blur-sm ${feature.bgColor} ${feature.shadowColor}`} 
               variants={fadeIn} 
               whileHover={{
                 y: -5,
-                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)'
               }}
             >
               <div className="flex justify-center mb-6">

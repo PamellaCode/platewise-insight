@@ -63,14 +63,14 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Updated color palette with light red and dark violet and dark blue
+				// Updated futuristic color palette with lighter shades
 				'argus-red': {
 					50: '#FFF5F5',
 					100: '#FFEBEB',
 					200: '#FFDADA',
 					300: '#FFBDBD',
 					400: '#FF9A9A',
-					500: '#FF7B7B', // Lighter red as primary
+					500: '#FF7B7B', // Lighter more vibrant red as primary
 					600: '#E86969',
 					700: '#C75353',
 					800: '#A14343',
@@ -82,11 +82,11 @@ export default {
 					200: '#D9C9FF',
 					300: '#BDA3FF',
 					400: '#9C73FF',
-					500: '#7C46FF', // Keep this violet
+					500: '#7C46FF', // Brighter violet
 					600: '#6A34E8',
 					700: '#5827C2',
-					800: '#432090', // Darker violet
-					900: '#331978', // Very dark violet
+					800: '#432090', 
+					900: '#331978', 
 				},
 				'argus-blue': {
 					50: '#EFF4FF',
@@ -94,11 +94,11 @@ export default {
 					200: '#B9D1FF',
 					300: '#8BB1FF',
 					400: '#5987FF',
-					500: '#3563FD',
+					500: '#3563FD', // Brighter blue
 					600: '#2A4DE9',
 					700: '#233BC4',
-					800: '#20309E', // Dark blue
-					900: '#1E2A79', // Very dark blue
+					800: '#20309E', 
+					900: '#1E2A79', 
 				},
 				'auto-gold': {
 					DEFAULT: '#D4AF37',

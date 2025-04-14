@@ -13,7 +13,7 @@ const AssistantAITab: React.FC = () => {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" className="text-argus-violet-700 gap-2">
+                <Button variant="ghost" className="text-argus-violet-500 gap-2">
                   <Info className="h-5 w-5" />
                   À propos de cet assistant
                 </Button>
@@ -24,8 +24,8 @@ const AssistantAITab: React.FC = () => {
             </Tooltip>
           </TooltipProvider>
           
-          <Alert className="bg-gradient-to-r from-argus-red-100 to-argus-violet-100 border-argus-violet-200">
-            <AlertDescription className="flex items-center text-argus-violet-800">
+          <Alert className="bg-gradient-to-r from-argus-red-100 to-argus-blue-100 border-argus-violet-200 shadow-sm">
+            <AlertDescription className="flex items-center text-argus-violet-600">
               <MessageCircle className="h-4 w-4 mr-2" />
               Assistant AI prêt à répondre à vos questions sur votre véhicule
             </AlertDescription>
