@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   const currentPath = location.pathname;
   const currentYear = new Date().getFullYear();
 
-  return <footer className="bg-argus-blue-500 text-white">
+  return <footer className="bg-gradient-to-r from-argus-red-500 via-argus-violet-800 to-argus-blue-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
@@ -128,7 +128,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
-        <div className="mt-12 border-t border-argus-blue-700 pt-8 flex flex-col md:flex-row justify-between">
+        <div className="mt-12 border-t border-opacity-30 border-white pt-8 flex flex-col md:flex-row justify-between">
           <p className="text-sm text-gray-300">&copy; {currentYear} ArgusAI. Tous droits réservés.</p>
           <p className="text-sm text-gray-300 mt-2 md:mt-0">
             Conçu et développé en France avec ❤️

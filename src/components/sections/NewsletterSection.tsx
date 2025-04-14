@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 
 const NewsletterSection: React.FC = () => {
   return (
-    <div className="mt-16 bg-gradient-to-r from-argus-red-50 to-argus-violet-100 rounded-xl p-8">
+    <div className="mt-16 bg-gradient-to-r from-argus-red-50 via-argus-violet-100 to-argus-blue-100 rounded-xl p-8">
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <h2 className="text-2xl font-semibold mb-2">Restez informé des dernières tendances</h2>

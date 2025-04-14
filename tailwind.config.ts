@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Updated color palette with light red and dark violet
+				// Updated color palette with light red and dark violet and dark blue
 				'argus-red': {
 					50: '#FFF5F5',
 					100: '#FFEBEB',
@@ -97,8 +97,8 @@ export default {
 					500: '#3563FD',
 					600: '#2A4DE9',
 					700: '#233BC4',
-					800: '#20309E',
-					900: '#1E2A79',
+					800: '#20309E', // Dark blue
+					900: '#1E2A79', // Very dark blue
 				},
 				'auto-gold': {
 					DEFAULT: '#D4AF37',

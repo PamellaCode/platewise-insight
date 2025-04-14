@@ -6,10 +6,10 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-gradient-to-r from-argus-red-500 to-argus-violet-800 hover:from-argus-red-600 hover:to-argus-violet-900 text-white font-semibold shadow hover:shadow-lg hover:-translate-y-0.5 transition-all",
+        default: "bg-gradient-to-r from-argus-red-500 via-argus-violet-800 to-argus-blue-800 hover:from-argus-red-600 hover:via-argus-violet-900 hover:to-argus-blue-900 text-white font-semibold shadow hover:shadow-lg hover:-translate-y-0.5 transition-all",
         destructive: "bg-destructive text-white hover:bg-destructive/90 shadow hover:shadow-lg hover:-translate-y-0.5 transition-all",
         outline: "border-2 border-argus-violet-500 bg-transparent text-argus-violet-600 hover:bg-argus-violet-50 hover:text-argus-violet-700 shadow hover:shadow-lg hover:-translate-y-0.5 transition-all",
-        secondary: "bg-gradient-to-r from-argus-violet-800 to-argus-red-500 text-white font-semibold shadow hover:shadow-lg hover:from-argus-violet-900 hover:to-argus-red-600 hover:-translate-y-0.5 transition-all",
+        secondary: "bg-gradient-to-r from-argus-blue-800 via-argus-violet-800 to-argus-red-500 text-white font-semibold shadow hover:shadow-lg hover:from-argus-blue-900 hover:via-argus-violet-900 hover:to-argus-red-600 hover:-translate-y-0.5 transition-all",
         ghost: "hover:bg-gray-100 text-argus-violet-600 hover:text-argus-violet-700 hover:-translate-y-0.5 transition-all",
         link: "text-argus-violet-600 underline-offset-4 hover:underline transition-all font-semibold",
       },
