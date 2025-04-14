@@ -25,7 +25,14 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
         </div>
       </div>
       
-      <Button variant="ghost" size="icon" onClick={onClearHistory} className="text-white hover:bg-white/20" title="Effacer l'historique">
+      <Button 
+        variant="ghost" 
+        size="icon" 
+        onClick={onClearHistory} 
+        className="text-white hover:bg-white/20" 
+        title="Effacer l'historique"
+        aria-label="Effacer l'historique"
+      >
         <Trash2 className="h-5 w-5" />
       </Button>
     </div>
