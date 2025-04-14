@@ -48,7 +48,7 @@ export const MessageBubble: React.FC<{
       className={cn(
         "px-6 py-4 rounded-2xl shadow-md text-sm",
         sender === "user"
-          ? "bg-gradient-to-r from-argus-blue-500 to-argus-blue-600 text-white rounded-br-none"
+          ? "bg-gradient-to-r from-argus-violet-500 to-argus-blue-600 text-white rounded-br-none"
           : "bg-white border border-gray-100 text-gray-800 rounded-bl-none"
       )}
     >

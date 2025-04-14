@@ -12,7 +12,8 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   sessionId,
   onClearHistory
 }) => {
-  return <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-argus-blue-500 to-argus-teal-500 text-white">
+  return (
+    <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-argus-violet-500 to-argus-red-500 text-white">
       <div className="flex items-center">
         <div className="bg-white rounded-full p-2 mr-3">
           <div className="flex items-center justify-center h-12 w-12 rounded-full bg-white">
@@ -27,7 +28,8 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
       <Button variant="ghost" size="icon" onClick={onClearHistory} className="text-white hover:bg-white/20" title="Effacer l'historique">
         <Trash2 className="h-5 w-5" />
       </Button>
-    </div>;
+    </div>
+  );
 };
 
 export default ChatHeader;

@@ -63,30 +63,42 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Palette personnalisée pour l'application
-				'argus-blue': {
-					50: '#E6EEF3',
-					100: '#C1D4E2',
-					200: '#9CB8D1',
-					300: '#769DC0',
-					400: '#5A8BB3',
-					500: '#0A3D62', // Couleur primaire de l'application
-					600: '#09375A',
-					700: '#072F4F',
-					800: '#062745',
-					900: '#041C33',
+				// Nouvelle palette de couleurs inspirée du logo (rouge, violet, bleu)
+				'argus-red': {
+					50: '#FFF1F1',
+					100: '#FFE2E2',
+					200: '#FFC9C9',
+					300: '#FF9F9F',
+					400: '#FF6B6B',
+					500: '#FF3D3D', // Couleur primaire rouge
+					600: '#E52C2C',
+					700: '#C41E1E',
+					800: '#A21D1D',
+					900: '#841F1F',
 				},
-				'argus-teal': {
-					50: '#E8F8F5',
-					100: '#C4EDE4',
-					200: '#9EE2D3',
-					300: '#78D7C1',
-					400: '#5DCEB3',
-					500: '#1ABC9C', // Couleur secondaire de l'application
-					600: '#18AB8F',
-					700: '#14957D',
-					800: '#11806B',
-					900: '#0A5C4B',
+				'argus-violet': {
+					50: '#F5F1FF',
+					100: '#EDE4FF',
+					200: '#D9C9FF',
+					300: '#BDA3FF',
+					400: '#9C73FF',
+					500: '#7C46FF', // Couleur primaire violet
+					600: '#6A34E8',
+					700: '#5827C2',
+					800: '#46219D',
+					900: '#391D7A',
+				},
+				'argus-blue': {
+					50: '#EFF4FF',
+					100: '#DEE9FF',
+					200: '#B9D1FF',
+					300: '#8BB1FF',
+					400: '#5987FF',
+					500: '#3563FD', // Couleur primaire bleue (remplace l'ancienne)
+					600: '#2A4DE9',
+					700: '#233BC4',
+					800: '#20309E',
+					900: '#1E2A79',
 				},
 				'auto-gold': {
 					DEFAULT: '#D4AF37',
@@ -95,7 +107,7 @@ export default {
 					200: '#EAD599',
 					300: '#E2C066',
 					400: '#DAAA33',
-					500: '#D4AF37', // Couleur principale
+					500: '#D4AF37',
 					600: '#B1922C',
 					700: '#8F7523',
 					800: '#6D5919',
