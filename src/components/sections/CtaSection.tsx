@@ -7,7 +7,7 @@ import { ArrowRight } from 'lucide-react';
 
 const CtaSection: React.FC = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-argus-blue-600 via-argus-violet-500 to-argus-red-500 text-white">
+    <section className="py-20 bg-gradient-to-r from-argus-blue-500 via-argus-violet-500 to-argus-red-500 text-white">
       <div className="container mx-auto px-4 text-center">
         <motion.div 
           className="max-w-3xl mx-auto" 

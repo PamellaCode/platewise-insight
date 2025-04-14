@@ -63,18 +63,18 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Nouvelle palette de couleurs inspirée du logo (rouge, violet, bleu)
+				// Nouvelle palette de couleurs inversée (bleu, violet, rouge) avec rouge moins intense
 				'argus-red': {
-					50: '#FFF1F1',
-					100: '#FFE2E2',
-					200: '#FFC9C9',
-					300: '#FF9F9F',
-					400: '#FF6B6B',
-					500: '#FF3D3D', // Couleur primaire rouge
-					600: '#E52C2C',
-					700: '#C41E1E',
-					800: '#A21D1D',
-					900: '#841F1F',
+					50: '#FFF5F5',
+					100: '#FFECEC',
+					200: '#FFD8D8',
+					300: '#FFB8B8',
+					400: '#FF9595',
+					500: '#ea384c', // Rouge moins intense
+					600: '#D13144',
+					700: '#B22738',
+					800: '#921F2E',
+					900: '#781B26',
 				},
 				'argus-violet': {
 					50: '#F5F1FF',
@@ -82,7 +82,7 @@ export default {
 					200: '#D9C9FF',
 					300: '#BDA3FF',
 					400: '#9C73FF',
-					500: '#7C46FF', // Couleur primaire violet
+					500: '#9b87f5', // Violet légèrement ajusté
 					600: '#6A34E8',
 					700: '#5827C2',
 					800: '#46219D',
@@ -94,7 +94,7 @@ export default {
 					200: '#B9D1FF',
 					300: '#8BB1FF',
 					400: '#5987FF',
-					500: '#3563FD', // Couleur primaire bleue (remplace l'ancienne)
+					500: '#1EAEDB', // Bleu légèrement ajusté
 					600: '#2A4DE9',
 					700: '#233BC4',
 					800: '#20309E',
