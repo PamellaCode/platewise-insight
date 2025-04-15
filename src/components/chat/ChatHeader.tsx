@@ -17,7 +17,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
       <div className="flex items-center">
         <div className="bg-white/10 backdrop-blur-md rounded-full p-2 mr-3 border border-white/20">
           <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-br from-argus-blue-500 to-argus-violet-700">
-            <img src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" alt="ArgusAI Logo" className="h-10 w-10 object-contain" />
+            <img src="/lovable-uploads/8de0bf4a-e266-423d-a7bc-bb1705c2c533.png" alt="ArgusAI Logo" className="h-10 w-10 object-contain" />
           </div>
         </div>
         <div>

@@ -58,23 +58,24 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         <div className={`relative flex-1 flex flex-col max-w-xs w-full bg-argus-blue-500 transform transition ease-in-out duration-300 ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
-          <div className="absolute top-0 right-0 -mr-12 pt-2">
-            <button
-              className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-              onClick={() => setIsSidebarOpen(false)}
-            >
-              <span className="sr-only">Fermer le menu</span>
-              <X className="h-6 w-6 text-white" aria-hidden="true" />
-            </button>
+          <div className="flex-shrink-0 flex items-center px-4">
+            <Link to="/dashboard" className="flex items-center space-x-2">
+              <img 
+                src="/lovable-uploads/8de0bf4a-e266-423d-a7bc-bb1705c2c533.png" 
+                alt="ArgusAI Logo" 
+                className="h-10" 
+              />
+              <span className="text-xl font-bold text-white">ArgusAI</span>
+            </Link>
           </div>
           
           <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
             <div className="flex-shrink-0 flex items-center px-4">
               <Link to="/dashboard" className="flex items-center space-x-2">
                 <img 
-                  src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" 
+                  src="/lovable-uploads/8de0bf4a-e266-423d-a7bc-bb1705c2c533.png" 
                   alt="ArgusAI Logo" 
-                  className="h-10" 
+                  className="h-14 w-14" 
                 />
                 <span className="text-xl font-bold text-white">ArgusAI</span>
               </Link>
@@ -128,7 +129,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               <div className="flex items-center flex-shrink-0 px-4">
                 <Link to="/dashboard" className="flex items-center space-x-2">
                   <img 
-                    src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" 
+                    src="/lovable-uploads/8de0bf4a-e266-423d-a7bc-bb1705c2c533.png" 
                     alt="ArgusAI Logo" 
                     className="h-14 w-14" 
                   />

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -37,7 +38,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" alt="ArgusAI Logo" className="h-12 w-12" />
+              <img src="/lovable-uploads/8de0bf4a-e266-423d-a7bc-bb1705c2c533.png" alt="ArgusAI Logo" className="h-12 w-12" />
             </Link>
           </div>
           

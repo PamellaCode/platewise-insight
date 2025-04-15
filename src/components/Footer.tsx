@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -14,7 +13,7 @@ const Footer: React.FC = () => {
             <div className="flex items-center space-x-2">
               <div className="bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20">
                 <img 
-                  src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" 
+                  src="/lovable-uploads/8de0bf4a-e266-423d-a7bc-bb1705c2c533.png" 
                   alt="ArgusAI Logo" 
                   className="h-10 w-10" 
                 />
