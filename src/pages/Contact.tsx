@@ -62,10 +62,10 @@ const Contact: React.FC = () => {
           className="max-w-6xl mx-auto"
         >
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-argus-blue-600 via-argus-violet-600 to-argus-red-600 bg-clip-text text-transparent">
               Contactez-nous
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Une question, une suggestion ou besoin d'assistance ? 
               Notre équipe est à votre disposition pour vous aider.
             </p>
@@ -73,11 +73,11 @@ const Contact: React.FC = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Contact Form */}
-            <Card className="p-8 shadow-lg">
-              <h2 className="text-2xl font-bold mb-6">Envoyez-nous un message</h2>
+            <Card className="p-8 shadow-lg bg-black/40 backdrop-blur-lg border border-white/10 text-white">
+              <h2 className="text-2xl font-bold mb-6 text-white">Envoyez-nous un message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <Label htmlFor="name">Votre nom</Label>
+                  <Label htmlFor="name" className="text-gray-300">Votre nom</Label>
                   <Input 
                     id="name" 
                     name="name" 
@@ -85,12 +85,12 @@ const Contact: React.FC = () => {
                     onChange={handleChange} 
                     placeholder="Jean Dupont" 
                     required 
-                    className="mt-2"
+                    className="mt-2 bg-black/30 border-white/10 text-white"
                   />
                 </div>
                 
                 <div>
-                  <Label htmlFor="email">Votre email</Label>
+                  <Label htmlFor="email" className="text-gray-300">Votre email</Label>
                   <Input 
                     id="email" 
                     name="email" 
@@ -99,38 +99,38 @@ const Contact: React.FC = () => {
                     onChange={handleChange} 
                     placeholder="jean.dupont@example.com" 
                     required 
-                    className="mt-2"
+                    className="mt-2 bg-black/30 border-white/10 text-white"
                   />
                 </div>
                 
                 <div>
-                  <Label>Sujet de votre message</Label>
+                  <Label className="text-gray-300">Sujet de votre message</Label>
                   <RadioGroup 
                     value={formData.subject} 
                     onValueChange={handleSubjectChange}
                     className="mt-3 space-y-3"
                   >
                     <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="support" id="support" />
-                      <Label htmlFor="support" className="cursor-pointer">Support technique</Label>
+                      <RadioGroupItem value="support" id="support" className="border-white/30 text-argus-blue-400" />
+                      <Label htmlFor="support" className="cursor-pointer text-gray-300">Support technique</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="sales" id="sales" />
-                      <Label htmlFor="sales" className="cursor-pointer">Renseignements commerciaux</Label>
+                      <RadioGroupItem value="sales" id="sales" className="border-white/30 text-argus-blue-400" />
+                      <Label htmlFor="sales" className="cursor-pointer text-gray-300">Renseignements commerciaux</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="partnership" id="partnership" />
-                      <Label htmlFor="partnership" className="cursor-pointer">Proposition de partenariat</Label>
+                      <RadioGroupItem value="partnership" id="partnership" className="border-white/30 text-argus-blue-400" />
+                      <Label htmlFor="partnership" className="cursor-pointer text-gray-300">Proposition de partenariat</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="other" id="other" />
-                      <Label htmlFor="other" className="cursor-pointer">Autre sujet</Label>
+                      <RadioGroupItem value="other" id="other" className="border-white/30 text-argus-blue-400" />
+                      <Label htmlFor="other" className="cursor-pointer text-gray-300">Autre sujet</Label>
                     </div>
                   </RadioGroup>
                 </div>
                 
                 <div>
-                  <Label htmlFor="message">Votre message</Label>
+                  <Label htmlFor="message" className="text-gray-300">Votre message</Label>
                   <Textarea 
                     id="message" 
                     name="message" 
@@ -138,11 +138,11 @@ const Contact: React.FC = () => {
                     onChange={handleChange} 
                     placeholder="Détaillez votre demande ici..." 
                     required 
-                    className="mt-2 h-32"
+                    className="mt-2 h-32 bg-black/30 border-white/10 text-white"
                   />
                 </div>
                 
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                <Button type="submit" className="w-full bg-gradient-to-r from-argus-blue-600 via-argus-violet-600 to-argus-red-600 hover:from-argus-blue-700 hover:via-argus-violet-700 hover:to-argus-red-700 border border-white/10" disabled={isSubmitting}>
                   {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
                 </Button>
               </form>
@@ -150,45 +150,45 @@ const Contact: React.FC = () => {
             
             {/* Contact Info */}
             <div className="space-y-8">
-              <div className="bg-blue-50 p-8 rounded-xl">
+              <div className="bg-gradient-to-br from-argus-blue-900/30 to-argus-violet-900/30 p-8 rounded-xl border border-white/10 backdrop-blur-lg text-white">
                 <h2 className="text-2xl font-bold mb-6">Nos coordonnées</h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-semibold text-lg text-blue-700">Adresse</h3>
-                    <p className="mt-1">25 rue de la Paix<br />75002 Paris, France</p>
+                    <h3 className="font-semibold text-lg text-argus-blue-400">Adresse</h3>
+                    <p className="mt-1 text-gray-300">25 rue de la Paix<br />75002 Paris, France</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-blue-700">Téléphone</h3>
-                    <p className="mt-1">+33 1 23 45 67 89</p>
+                    <h3 className="font-semibold text-lg text-argus-blue-400">Téléphone</h3>
+                    <p className="mt-1 text-gray-300">+33 1 23 45 67 89</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-blue-700">Email</h3>
-                    <p className="mt-1">contact@argusia.fr</p>
+                    <h3 className="font-semibold text-lg text-argus-blue-400">Email</h3>
+                    <p className="mt-1 text-gray-300">contact@argusia.fr</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg text-blue-700">Horaires d'ouverture</h3>
-                    <p className="mt-1">Lundi - Vendredi: 9h00 - 18h00<br />Fermé les weekends et jours fériés</p>
+                    <h3 className="font-semibold text-lg text-argus-blue-400">Horaires d'ouverture</h3>
+                    <p className="mt-1 text-gray-300">Lundi - Vendredi: 9h00 - 18h00<br />Fermé les weekends et jours fériés</p>
                   </div>
                 </div>
               </div>
               
-              <div>
+              <div className="bg-black/40 backdrop-blur-lg border border-white/10 p-6 rounded-xl text-white">
                 <h2 className="text-2xl font-bold mb-6">FAQ</h2>
                 <div className="space-y-4">
-                  <div className="border-b pb-4">
+                  <div className="border-b border-white/10 pb-4">
                     <h3 className="font-semibold text-lg">Quel est le délai de réponse ?</h3>
-                    <p className="mt-1 text-gray-600">Nous nous efforçons de répondre à toutes les demandes dans un délai de 24 à 48 heures ouvrées.</p>
+                    <p className="mt-1 text-gray-300">Nous nous efforçons de répondre à toutes les demandes dans un délai de 24 à 48 heures ouvrées.</p>
                   </div>
-                  <div className="border-b pb-4">
+                  <div className="border-b border-white/10 pb-4">
                     <h3 className="font-semibold text-lg">Comment puis-je suivre ma demande ?</h3>
-                    <p className="mt-1 text-gray-600">Vous recevrez un email de confirmation avec un numéro de suivi après l'envoi de votre message.</p>
+                    <p className="mt-1 text-gray-300">Vous recevrez un email de confirmation avec un numéro de suivi après l'envoi de votre message.</p>
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg">Puis-je prendre rendez-vous avec un expert ?</h3>
-                    <p className="mt-1 text-gray-600">Oui, vous pouvez demander un rendez-vous téléphonique ou en visioconférence dans le formulaire de contact.</p>
+                    <p className="mt-1 text-gray-300">Oui, vous pouvez demander un rendez-vous téléphonique ou en visioconférence dans le formulaire de contact.</p>
                   </div>
                 </div>
-                <Button variant="outline" className="mt-6" asChild>
+                <Button variant="outline" className="mt-6 border-argus-blue-600/50 text-argus-blue-400 hover:bg-argus-blue-900/30" asChild>
                   <a href="/faq">Voir toutes les FAQ</a>
                 </Button>
               </div>
@@ -197,8 +197,8 @@ const Contact: React.FC = () => {
           
           {/* Map */}
           <div className="mt-16">
-            <h2 className="text-2xl font-bold mb-6 text-center">Nous trouver</h2>
-            <div className="aspect-video w-full rounded-xl overflow-hidden border shadow-md">
+            <h2 className="text-2xl font-bold mb-6 text-center text-white">Nous trouver</h2>
+            <div className="aspect-video w-full rounded-xl overflow-hidden border border-white/10 shadow-md">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.2150562069455!2d2.3288130999999997!3d48.8689631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e3c844d5635%3A0xb5ca5e53f4542b73!2s25%20Rue%20de%20la%20Paix%2C%2075002%20Paris!5e0!3m2!1sfr!2sfr!4v1655123945548!5m2!1sfr!2sfr" 
                 width="100%" 
@@ -212,9 +212,9 @@ const Contact: React.FC = () => {
           </div>
           
           {/* Newsletter */}
-          <div className="mt-16 bg-gradient-to-r from-blue-600 to-teal-500 rounded-xl p-8 text-white text-center">
+          <div className="mt-16 bg-gradient-to-r from-argus-blue-900 via-argus-violet-900 to-argus-red-900 rounded-xl p-8 text-white text-center border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.4)] backdrop-blur-md">
             <h2 className="text-3xl font-bold mb-4">Restez informé</h2>
-            <p className="text-lg mb-6 max-w-2xl mx-auto">
+            <p className="text-lg mb-6 max-w-2xl mx-auto text-gray-300">
               Inscrivez-vous à notre newsletter pour recevoir les dernières actualités, 
               mises à jour et conseils d'ArgusIA.
             </p>
@@ -222,14 +222,14 @@ const Contact: React.FC = () => {
               <Input 
                 placeholder="Votre adresse email" 
                 type="email" 
-                className="bg-white text-gray-800 border-0"
+                className="bg-black/30 text-white border-white/10"
               />
-              <Button variant="secondary" className="whitespace-nowrap">
+              <Button variant="secondary" className="whitespace-nowrap bg-gradient-to-r from-argus-violet-600 to-argus-blue-600 hover:from-argus-violet-700 hover:to-argus-blue-700 text-white border border-white/10">
                 S'inscrire
               </Button>
             </div>
-            <div className="mt-4 flex items-center justify-center text-sm">
-              <Check className="h-4 w-4 mr-1" />
+            <div className="mt-4 flex items-center justify-center text-sm text-gray-300">
+              <Check className="h-4 w-4 mr-1 text-argus-blue-400" />
               <span>En vous inscrivant, vous acceptez notre politique de confidentialité</span>
             </div>
           </div>

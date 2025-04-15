@@ -119,26 +119,26 @@ const Terms: React.FC = () => {
           className="max-w-4xl mx-auto"
         >
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-argus-blue-600 via-argus-violet-600 to-argus-red-600 bg-clip-text text-transparent">
               Conditions Générales d'Utilisation
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Veuillez lire attentivement ces conditions avant d'utiliser notre service d'estimation de véhicules.
             </p>
           </div>
 
-          <Card className="mb-8 shadow-lg border-t-4 border-t-blue-500">
-            <CardHeader className="bg-blue-50/50">
-              <CardTitle className="flex items-center">
-                <FileText className="mr-2 h-6 w-6 text-blue-600" />
+          <Card className="mb-8 shadow-lg border-t-4 border-t-argus-blue-500 bg-black/40 backdrop-blur-lg border border-white/10 text-white">
+            <CardHeader className="bg-argus-blue-900/30">
+              <CardTitle className="flex items-center text-white">
+                <FileText className="mr-2 h-6 w-6 text-argus-blue-400" />
                 Conditions d'utilisation d'ArgusIA
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-gray-300">
                 Dernière mise à jour: 15 juin 2023
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-6">
-              <p className="text-gray-700">
+              <p className="text-gray-300">
                 Les présentes Conditions Générales d'Utilisation ("CGU") constituent un accord juridiquement contraignant 
                 entre vous et ArgusIA. En utilisant notre service, vous reconnaissez avoir lu, compris et accepté d'être lié par ces conditions.
               </p>
@@ -148,11 +148,11 @@ const Terms: React.FC = () => {
           <div className="space-y-4">
             <Accordion type="single" collapsible className="w-full">
               {termsOfServiceSections.map((section) => (
-                <AccordionItem key={section.id} value={section.id} className="border rounded-lg p-2 bg-white shadow-sm mb-4">
-                  <AccordionTrigger className="hover:bg-gray-50 px-4 py-2 rounded-md font-medium">
+                <AccordionItem key={section.id} value={section.id} className="border rounded-lg p-2 bg-black/40 backdrop-blur-lg border-white/10 shadow-md mb-4">
+                  <AccordionTrigger className="hover:bg-argus-blue-900/20 px-4 py-2 rounded-md font-medium text-white">
                     {section.title}
                   </AccordionTrigger>
-                  <AccordionContent className="px-4 pt-2 pb-4">
+                  <AccordionContent className="px-4 pt-2 pb-4 text-gray-300">
                     {section.content}
                   </AccordionContent>
                 </AccordionItem>
@@ -160,30 +160,30 @@ const Terms: React.FC = () => {
             </Accordion>
           </div>
 
-          <div className="mt-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
+          <div className="mt-8 p-6 bg-argus-blue-900/30 border border-argus-blue-600/20 rounded-lg backdrop-blur-md">
             <div className="flex items-start mb-4">
-              <div className="bg-blue-600 p-2 rounded-full mr-4">
+              <div className="bg-argus-blue-600 p-2 rounded-full mr-4 shadow-[0_0_15px_rgba(0,123,255,0.5)]">
                 <Shield className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-blue-800">Votre accord est important</h3>
-                <p className="text-blue-700 mt-2">
+                <h3 className="text-xl font-semibold text-argus-blue-300">Votre accord est important</h3>
+                <p className="text-argus-blue-200 mt-2">
                   En utilisant les services d'ArgusIA, vous confirmez avoir lu et accepté ces conditions d'utilisation 
-                  ainsi que notre <a href="/privacy" className="font-medium underline">politique de confidentialité</a>.
+                  ainsi que notre <a href="/privacy" className="font-medium underline text-argus-blue-400 hover:text-argus-blue-300">politique de confidentialité</a>.
                 </p>
               </div>
             </div>
 
             <div className="flex flex-col md:flex-row md:justify-between space-y-4 md:space-y-0 md:space-x-4 mt-6">
               <div className="flex items-center">
-                <Check className="h-5 w-5 text-green-600 mr-2" />
-                <span>Dernière révision: 15 juin 2023</span>
+                <Check className="h-5 w-5 text-argus-blue-400 mr-2" />
+                <span className="text-gray-300">Dernière révision: 15 juin 2023</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Button variant="outline" asChild>
+                <Button variant="outline" className="border-argus-blue-600/50 text-argus-blue-400 hover:bg-argus-blue-900/30" asChild>
                   <a href="/contact">Nous contacter</a>
                 </Button>
-                <Button asChild>
+                <Button className="bg-gradient-to-r from-argus-blue-600 to-argus-violet-600 hover:from-argus-blue-700 hover:to-argus-violet-700 border border-white/10" asChild>
                   <a href="/">Retour à l'accueil</a>
                 </Button>
               </div>

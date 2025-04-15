@@ -76,22 +76,22 @@ const FAQ: React.FC = () => {
           className="max-w-3xl mx-auto"
         >
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-argus-blue-600 via-argus-violet-600 to-argus-red-600 bg-clip-text text-transparent">
               Foire aux questions
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Vous avez des questions sur notre service d'estimation de véhicules ? Consultez nos réponses aux questions les plus fréquentes ci-dessous.
             </p>
           </div>
           
-          <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div className="bg-black/40 backdrop-blur-lg rounded-xl shadow-lg p-6 border border-white/10">
             <Accordion type="single" collapsible className="w-full">
               {faqItems.map((item, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-lg font-semibold hover:text-blue-600 transition-colors">
+                  <AccordionTrigger className="text-lg font-semibold hover:text-argus-blue-400 transition-colors text-white">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-gray-700">
+                  <AccordionContent className="text-gray-300">
                     <p>{item.answer}</p>
                   </AccordionContent>
                 </AccordionItem>
@@ -100,12 +100,12 @@ const FAQ: React.FC = () => {
           </div>
           
           <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-300 mb-4">
               Vous n'avez pas trouvé la réponse à votre question ?
             </p>
             <Link 
               to="/contact"
-              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold py-3 px-8 rounded-lg shadow hover:shadow-lg hover:-translate-y-0.5 transition-all inline-flex items-center"
+              className="bg-gradient-to-r from-argus-blue-600 via-argus-violet-600 to-argus-red-600 hover:from-argus-blue-700 hover:via-argus-violet-700 hover:to-argus-red-700 text-white font-semibold py-3 px-8 rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 transition-all inline-flex items-center border border-white/10 backdrop-blur-sm"
             >
               Contactez-nous
             </Link>
