@@ -8,14 +8,34 @@ import LicensePlateSearch from '@/components/LicensePlateSearch';
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="bg-gradient-to-r from-argus-red-400/90 via-argus-violet-400/90 to-argus-blue-400/90 text-white relative overflow-hidden py-24 backdrop-blur-sm">
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute top-0 left-0 w-40 h-40 rounded-full bg-white/30 -translate-x-1/2 -translate-y-1/2 blur-xl"></div>
-        <div className="absolute bottom-0 right-0 w-60 h-60 rounded-full bg-white/30 translate-x-1/2 translate-y-1/2 blur-xl"></div>
-        <div className="absolute top-1/2 left-1/4 w-20 h-20 rounded-full bg-white/30 blur-lg"></div>
-        <div className="absolute bottom-1/4 right-1/3 w-32 h-32 rounded-full bg-white/20 blur-lg"></div>
-        <div className="absolute top-1/3 right-1/4 w-16 h-16 rounded-full bg-white/20 blur-md"></div>
+    <section className="bg-gradient-to-r from-argus-red-600/95 via-argus-violet-600/95 to-argus-blue-600/95 text-white relative overflow-hidden py-24 backdrop-blur-sm">
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Electric pulse effects */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-20">
+          <div className="absolute top-1/4 left-1/2 w-1 h-1 bg-blue-400 rounded-full shadow-lg animate-ping" style={{ animationDuration: '3s', boxShadow: '0 0 20px 10px rgba(59, 130, 246, 0.5)' }}></div>
+          <div className="absolute top-3/4 left-1/4 w-1 h-1 bg-purple-400 rounded-full shadow-lg animate-ping" style={{ animationDuration: '4s', boxShadow: '0 0 20px 10px rgba(168, 85, 247, 0.5)' }}></div>
+          <div className="absolute top-2/4 right-1/4 w-1 h-1 bg-red-400 rounded-full shadow-lg animate-ping" style={{ animationDuration: '5s', boxShadow: '0 0 20px 10px rgba(248, 113, 113, 0.5)' }}></div>
+        </div>
+        
+        {/* Futuristic background elements */}
+        <div className="absolute -inset-4 opacity-30">
+          <div className="absolute top-0 left-0 w-40 h-40 rounded-full bg-white/10 -translate-x-1/2 -translate-y-1/2 blur-xl"></div>
+          <div className="absolute bottom-0 right-0 w-60 h-60 rounded-full bg-white/10 translate-x-1/2 translate-y-1/2 blur-xl"></div>
+          <div className="absolute top-1/2 left-1/4 w-20 h-20 rounded-full bg-white/10 blur-lg"></div>
+          <div className="absolute bottom-1/4 right-1/3 w-32 h-32 rounded-full bg-white/10 blur-lg"></div>
+          <div className="absolute top-1/3 right-1/4 w-16 h-16 rounded-full bg-white/10 blur-md"></div>
+        </div>
+        
+        {/* Grid lines */}
+        <div className="absolute inset-0 backdrop-blur-[1px] opacity-10" 
+             style={{ 
+               backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px), 
+                                 linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
+               backgroundSize: '20px 20px'
+             }}>
+        </div>
       </div>
+      
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <motion.div 
@@ -33,7 +53,7 @@ const HeroSection: React.FC = () => {
             <div className="flex flex-wrap gap-4">
               <Button 
                 size="lg" 
-                className="bg-white text-argus-violet-500 hover:bg-blue-50 px-6 py-6 text-base shadow-xl hover:shadow-2xl backdrop-blur-sm" 
+                className="bg-white/10 text-white hover:bg-white/20 px-6 py-6 text-base shadow-xl hover:shadow-2xl backdrop-blur-sm border border-white/20" 
                 asChild
               >
                 <Link to="/how-it-works" className="flex items-center">
@@ -43,7 +63,7 @@ const HeroSection: React.FC = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="text-white border-white hover:bg-white/10 px-6 py-6 text-base shadow-xl hover:shadow-2xl backdrop-blur-sm" 
+                className="text-white border-white/40 hover:bg-white/10 px-6 py-6 text-base shadow-xl hover:shadow-2xl backdrop-blur-sm" 
                 asChild
               >
                 <Link to="/pricing">

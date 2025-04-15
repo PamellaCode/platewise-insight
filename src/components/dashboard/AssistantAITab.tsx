@@ -24,8 +24,8 @@ const AssistantAITab: React.FC = () => {
             </Tooltip>
           </TooltipProvider>
           
-          <Alert className="bg-gradient-to-r from-argus-red-100 to-argus-blue-100 border-argus-violet-200 shadow-sm">
-            <AlertDescription className="flex items-center text-argus-violet-600">
+          <Alert className="bg-gradient-to-r from-argus-red-200 to-argus-blue-200 border-argus-violet-300 shadow-sm">
+            <AlertDescription className="flex items-center text-argus-violet-700">
               <MessageCircle className="h-4 w-4 mr-2" />
               Assistant AI prêt à répondre à vos questions sur votre véhicule
             </AlertDescription>
