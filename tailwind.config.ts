@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,42 +62,41 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Updated futuristic color palette with lighter shades
 				'argus-red': {
-					50: '#FFF5F5',
-					100: '#FFEBEB',
-					200: '#FFDADA',
-					300: '#FFBDBD',
-					400: '#FF9A9A',
-					500: '#FF7B7B', // Lighter more vibrant red as primary
-					600: '#E86969',
-					700: '#C75353',
-					800: '#A14343',
-					900: '#863A3A',
+					50: '#FFF0F0',
+					100: '#FFE0E0',
+					200: '#FFC8C8',
+					300: '#FFA6A6',
+					400: '#FF8585',
+					500: '#FF6B6B',
+					600: '#DB5252',
+					700: '#B73A3A',
+					800: '#933131',
+					900: '#6E2424',
 				},
 				'argus-violet': {
-					50: '#F5F1FF',
-					100: '#EDE4FF',
-					200: '#D9C9FF',
-					300: '#BDA3FF',
-					400: '#9C73FF',
-					500: '#7C46FF', // Brighter violet
-					600: '#6A34E8',
-					700: '#5827C2',
-					800: '#432090', 
-					900: '#331978', 
+					50: '#F4EEFF',
+					100: '#E6DAFF',
+					200: '#CDB7FF',
+					300: '#B092FF',
+					400: '#9370FF',
+					500: '#7650FF',
+					600: '#5E3FDB',
+					700: '#4A32B7',
+					800: '#372593',
+					900: '#261A6E',
 				},
 				'argus-blue': {
-					50: '#EFF4FF',
-					100: '#DEE9FF',
-					200: '#B9D1FF',
-					300: '#8BB1FF',
-					400: '#5987FF',
-					500: '#3563FD', // Brighter blue
-					600: '#2A4DE9',
-					700: '#233BC4',
-					800: '#20309E', 
-					900: '#1E2A79', 
+					50: '#E6F0FF',
+					100: '#CCE1FF',
+					200: '#99C2FF',
+					300: '#6EA3FF',
+					400: '#4A84FF',
+					500: '#2265FF',
+					600: '#1B50DB',
+					700: '#153EB7',
+					800: '#0E2C93',
+					900: '#071A6E',
 				},
 				'auto-gold': {
 					DEFAULT: '#D4AF37',

@@ -1,75 +1,21 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
+    --primary: 0 75% 65%;
+    --secondary: 260 65% 55%;
+    --accent: 260 100% 65%;
+    --background: 210 40% 97%;
     --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    /* Updated color to lighter red */
-    --primary: 0 75% 74%;
-    --primary-foreground: 210 40% 98%;
-
-    /* Lighter violet as secondary */
-    --secondary: 260 65% 60%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    /* Light violet as accent */
-    --accent: 260 100% 70%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    /* Updated color to lighter red in dark mode */
-    --primary: 0 70% 70%;
-    --primary-foreground: 210 40% 98%;
-
-    /* Lighter violet as secondary in dark mode */
-    --secondary: 260 60% 55%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    /* Light violet as accent in dark mode */
-    --accent: 260 80% 65%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --primary: 0 70% 60%;
+    --secondary: 260 60% 50%;
+    --accent: 260 80% 60%;
+    --background: 222.2 84% 5.9%;
   }
 }
 
@@ -107,7 +53,6 @@
   }
 }
 
-/* Styles spécifiques à l'application */
 .hero-gradient {
   background-image: linear-gradient(to right, rgba(156, 115, 255, 0.8), rgba(89, 135, 255, 0.7)), url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23FF9A9A' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
@@ -134,7 +79,6 @@
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Styles pour les boutons avec dégradés */
 .btn-gradient {
   transition: all 0.3s ease;
   background-size: 200% auto;
@@ -148,7 +92,6 @@
   box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Glassmorphism effects */
 .glass-card {
   @apply bg-white/20 backdrop-blur-md border border-white/30 shadow-lg;
 }
@@ -157,7 +100,6 @@
   @apply backdrop-blur-md bg-opacity-20;
 }
 
-/* Améliorations de lisibilité */
 .text-improved {
   @apply text-gray-900 leading-relaxed;
   max-width: 70ch;
@@ -178,7 +120,6 @@
   @apply bg-white shadow-lg rounded-xl p-6 border border-gray-100;
 }
 
-/* Amélioration de la lisibilité des sections */
 .section-title {
   @apply font-bold mb-3 text-3xl md:text-4xl tracking-tight;
   text-wrap: balance;
@@ -189,7 +130,6 @@
   text-wrap: pretty;
 }
 
-/* Styles pour les messages de chat */
 .message-content {
   @apply space-y-1;
 }
@@ -211,7 +151,6 @@
   @apply text-argus-violet-500 mr-2 flex-shrink-0;
 }
 
-/* Styles améliorés pour les messages formatés */
 .message-content a {
   @apply text-argus-blue-600 hover:text-argus-blue-800 transition-colors underline font-medium;
 }
@@ -220,17 +159,14 @@
   @apply text-argus-blue-800;
 }
 
-/* Style pour les sections de titre dans les messages */
 .message-content .message-section-title {
   @apply text-argus-violet-700 font-bold text-base mt-3 mb-2;
 }
 
-/* Style pour les éléments mis en évidence dans les messages */
 .message-content .highlight {
   @apply font-medium text-argus-red-600 bg-argus-red-50 px-1.5 py-0.5 rounded;
 }
 
-/* Style pour les listes à puces dans les messages */
 .message-content .list-item {
   @apply flex items-start mt-1.5 mb-1.5;
 }
@@ -239,12 +175,10 @@
   @apply text-argus-red-500 mr-2;
 }
 
-/* Style pour les séparateurs dans les messages */
 .message-content .separator {
   @apply my-2 border-t border-gray-100;
 }
 
-/* Animation pour les nouveaux messages */
 .new-message {
   animation: slide-in 0.3s ease-out forwards;
 }
@@ -260,7 +194,6 @@
   }
 }
 
-/* Styles pour les messages formatés */
 .message-content {
   @apply space-y-1;
 }
@@ -282,7 +215,6 @@
   @apply text-argus-violet-500 mr-2 flex-shrink-0;
 }
 
-/* Styles améliorés pour les messages formatés */
 .message-content a {
   @apply text-argus-blue-600 hover:text-argus-blue-800 transition-colors underline font-medium;
 }
@@ -291,17 +223,14 @@
   @apply text-argus-blue-800;
 }
 
-/* Style pour les sections de titre dans les messages */
 .message-content .message-section-title {
   @apply text-argus-violet-700 font-bold text-base mt-3 mb-2;
 }
 
-/* Style pour les éléments mis en évidence dans les messages */
 .message-content .highlight {
   @apply font-medium text-argus-red-600 bg-argus-red-50 px-1.5 py-0.5 rounded;
 }
 
-/* Style pour les listes à puces dans les messages */
 .message-content .list-item {
   @apply flex items-start mt-1.5 mb-1.5;
 }
@@ -310,12 +239,10 @@
   @apply text-argus-red-500 mr-2;
 }
 
-/* Style pour les séparateurs dans les messages */
 .message-content .separator {
   @apply my-2 border-t border-gray-100;
 }
 
-/* Nouveaux styles pour améliorer les messages */
 .message-content blockquote {
   @apply pl-4 border-l-4 border-argus-violet-200 bg-argus-violet-50/50 py-2 px-3 rounded-r my-3 text-gray-700 italic;
 }
@@ -348,7 +275,6 @@
   @apply bg-argus-red-50 border-l-4 border-argus-red-300 p-3 rounded-r my-3;
 }
 
-/* Animation de fade-in pour les éléments */
 .fade-in-element {
   animation: fadeInElement 0.5s ease-out forwards;
 }
