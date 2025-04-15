@@ -247,27 +247,6 @@
   @apply my-2 border-t border-gray-100;
 }
 
-/* Dashboard specific styles */
-.dashboard-card {
-  @apply bg-gray-800/60 border-gray-700 backdrop-blur-md shadow-xl;
-}
-
-.dashboard-title {
-  @apply bg-gradient-to-r from-argus-red-400 via-argus-violet-400 to-argus-blue-400 bg-clip-text text-transparent;
-}
-
-.dashboard-item-hover {
-  @apply transition-all duration-300 hover:bg-gray-800/60 hover:shadow-lg hover:-translate-y-1;
-}
-
-.dashboard-gradient {
-  @apply bg-gradient-to-r from-argus-red-900/60 via-argus-violet-900/60 to-argus-blue-900/60;
-}
-
-.dashboard-bg {
-  @apply bg-gray-900 text-white;
-}
-
 .message-content blockquote {
   @apply pl-4 border-l-4 border-argus-violet-200 bg-argus-violet-50/50 py-2 px-3 rounded-r my-3 text-gray-700 italic;
 }
@@ -308,19 +287,3 @@
   0% { opacity: 0; transform: translateY(5px); }
   100% { opacity: 1; transform: translateY(0); }
 }
-
-/* Dashboard electric effect */
-.electric-glow {
-  box-shadow: 0 0 10px rgba(105, 48, 224, 0.5), 0 0 20px rgba(14, 77, 224, 0.3);
-  animation: pulse 3s infinite alternate;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 10px rgba(224, 58, 58, 0.5), 0 0 20px rgba(14, 77, 224, 0.3);
-  }
-  100% {
-    box-shadow: 0 0 15px rgba(105, 48, 224, 0.7), 0 0 30px rgba(224, 58, 58, 0.5);
-  }
-}
-
