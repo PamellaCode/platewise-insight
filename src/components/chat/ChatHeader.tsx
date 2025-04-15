@@ -13,10 +13,10 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   onClearHistory
 }) => {
   return (
-    <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-argus-red-600/95 via-argus-violet-600/95 to-argus-blue-600/95 text-white backdrop-blur-sm shadow-md">
+    <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-argus-red-900/95 via-argus-violet-900/95 to-argus-blue-900/95 text-white backdrop-blur-sm shadow-md">
       <div className="flex items-center">
         <div className="bg-white/10 backdrop-blur-md rounded-full p-2 mr-3 border border-white/20">
-          <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-br from-argus-blue-500 to-argus-violet-700">
+          <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-br from-argus-blue-700 to-argus-violet-900">
             <img src="/lovable-uploads/2da57f4b-a186-4187-8eac-43f7b77087c3.png" alt="ArgusAI Logo" className="h-10 w-10 object-contain" />
           </div>
         </div>

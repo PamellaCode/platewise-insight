@@ -6,8 +6,13 @@ import StatisticsTab from '@/components/dashboard/StatisticsTab';
 const Statistics = () => {
   return (
     <DashboardLayout>
-      <div className="animate-fade-in h-full bg-gradient-to-br from-argus-blue-900/20 to-argus-violet-900/20 backdrop-blur-sm rounded-xl border border-white/10 p-4 shadow-lg">
-        <StatisticsTab />
+      <div className="animate-fade-in h-full">
+        <div className="py-6 px-4 sm:px-6">
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-argus-red-400 via-argus-violet-400 to-argus-blue-400 bg-clip-text text-transparent animate-fade-in mb-6">
+            Statistiques
+          </h1>
+          <StatisticsTab />
+        </div>
       </div>
     </DashboardLayout>
   );

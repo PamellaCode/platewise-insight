@@ -13,19 +13,19 @@ const AssistantAITab: React.FC = () => {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" className="text-argus-violet-500 gap-2">
+                <Button variant="ghost" className="text-argus-violet-400 gap-2">
                   <Info className="h-5 w-5" />
                   À propos de cet assistant
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>
+              <TooltipContent className="bg-gray-800 text-white border-gray-700">
                 <p>Cet assistant utilise n8n pour traiter vos messages et vous fournir des réponses personnalisées.</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
           
-          <Alert className="bg-gradient-to-r from-argus-red-200 to-argus-blue-200 border-argus-violet-300 shadow-sm">
-            <AlertDescription className="flex items-center text-argus-violet-700">
+          <Alert className="bg-gradient-to-r from-argus-red-900/60 to-argus-blue-900/60 border-argus-violet-800 shadow-md backdrop-blur-sm">
+            <AlertDescription className="flex items-center text-white">
               <MessageCircle className="h-4 w-4 mr-2" />
               Assistant AI prêt à répondre à vos questions sur votre véhicule
             </AlertDescription>
