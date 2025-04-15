@@ -37,44 +37,44 @@ const HistoryTab: React.FC<HistoryTabProps> = ({ estimations }) => {
   };
 
   return (
-    <Card>
+    <Card className="bg-gray-800/60 border-gray-700">
       <CardHeader>
-        <CardTitle>Historique des estimations</CardTitle>
-        <CardDescription>Vos estimations de véhicules passées</CardDescription>
+        <CardTitle className="text-white">Historique des estimations</CardTitle>
+        <CardDescription className="text-gray-300">Vos estimations de véhicules passées</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
           {estimations.map((estimation) => (
-            <div key={estimation.id} className="border-b pb-4 last:border-0 last:pb-0">
+            <div key={estimation.id} className="border-b border-gray-700 pb-4 last:border-0 last:pb-0">
               <div className="flex justify-between items-start">
                 <div className="flex items-start space-x-3">
-                  <div className="bg-auto-blue-50 text-auto-blue-500 p-2 rounded-lg">
+                  <div className="bg-gradient-to-br from-argus-blue-800 to-argus-blue-600 text-white p-2 rounded-lg shadow-md">
                     <Car className="h-6 w-6" />
                   </div>
                   <div>
-                    <div className="font-medium">
+                    <div className="font-medium text-white">
                       {estimation.brand} {estimation.model} ({estimation.year})
                     </div>
-                    <div className="text-sm text-gray-500 mt-1">
+                    <div className="text-sm text-gray-400 mt-1">
                       Plaque: {estimation.licensePlate}
                     </div>
-                    <div className="text-sm text-gray-500">
+                    <div className="text-sm text-gray-400">
                       Estimé le {formatDate(estimation.date)}
                     </div>
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="font-bold text-auto-blue-500 text-lg">
+                  <div className="font-bold text-argus-red-400 text-lg">
                     {formatPrice(estimation.estimatedPrice)}
                   </div>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="mt-2 text-blue-600"
+                    className="mt-2 text-argus-blue-400 border-argus-blue-800 hover:bg-argus-blue-900/30"
                     asChild
                   >
                     <Link to={`/dashboard/estimations/${estimation.id}`}>
-                      <FileText className="h-4 w-4 mr-1 text-blue-600" /> Détails
+                      <FileText className="h-4 w-4 mr-1 text-argus-blue-400" /> Détails
                     </Link>
                   </Button>
                 </div>
